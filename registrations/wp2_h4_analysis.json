@@ -10,5 +10,9 @@
     "P-H4": "Lower-half m closer to 1 by >= 0.10 in most blocks revives H4: m would be a secant artifact, the plateau reading of wp2p0b would be confounded by cell-|a| composition across n_cal, and the quantized-world derivation would need re-examination at matched |a|."
   },
   "decision_rule": "Guarded temper cells per env-alpha (registered battery guards), split at the median |aligned_mean|; through-origin regression of measured kappa on kappa_pred per half; comparison at 2 combined SE.",
-  "amendments": []
+  "amendments": [],
+  "verdicts": {
+    "date": "2026-08-19",
+    "P-H4": "CONFIRMED (H4 dead): 8 of 8 env-alpha blocks agree at 2 combined SE (max z = 1.91), and in 6 of 8 the small-|a| half sits FARTHER from 1 than the large-|a| half, the opposite of H4's signature. m is not a secant artifact of a curved relation; the amplification is present at the smallest measurable aligned errors."
+  }
 }
