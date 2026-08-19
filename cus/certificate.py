@@ -30,6 +30,14 @@ No kappa, no m, no lambda* enters the bound; those are explanatory
 for Phase 4: miscalibration mass hidden by within-bin cancellation or
 placed outside the audited commit region; estimator errors invisible on
 held-out source but loss-aligned under the target.
+
+REVISION 1 (red-team round 1, R1-3): the certificate carries a
+deployment-visible FRESHNESS PRECONDITION. Post-audit drift breached
+the bound at +5.9 beta-units on tickets (and marginally at +3.6) while
+the stale bound barely moved, so alpha_cert is valid only while
+drift_monitor(audited target sample, arriving covariates) stays at or
+below the tolerance set by the last surviving round-1 point; beyond
+it the certificate must be recomputed against a fresh target sample.
 """
 
 from __future__ import annotations
@@ -131,3 +139,23 @@ def certificate(env, audit, alpha, rng, feat, beta, what_fn,
         "b_own_ucb": b_own_ucb,
         "se_a": se_a,
     }
+
+
+def drift_monitor(X_audited, X_arriving,
+                  clip: tuple[float, float] = (0.01, 0.99)):
+    """Deployment-visible freshness check (Revision 1): the estimated
+    chi-square divergence of the arriving covariate mix from the audited
+    target sample, by the same classifier-odds machinery the deployment
+    already runs. Both inputs are covariates only; no labels.
+
+    Returns chi2_hat = E_audited[r_n^2] - 1 with r_n the mean-one
+    normalized odds ratio dQ_arriving/dQ_audited.
+    """
+    X = np.vstack([X_audited, X_arriving])
+    y = np.concatenate([np.zeros(len(X_audited)), np.ones(len(X_arriving))])
+    clf = LogisticRegression(max_iter=2000)
+    clf.fit(X, y)
+    p = np.clip(clf.predict_proba(X_audited)[:, 1], clip[0], clip[1])
+    r = p / (1.0 - p)
+    rn = r / r.mean()
+    return float((rn ** 2).mean() - 1.0)

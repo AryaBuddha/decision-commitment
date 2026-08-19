@@ -10,5 +10,13 @@
     "honesty_note": "The probes show survival comes substantially from CalErr_loc's looseness rather than from detection (the stale bound at R1-3 does not track the drift, it merely exceeds it). If round 1 survives, this covering-by-margin character is filed as the certificate's measured character, not as vindication of its detection power."
   },
   "decision_rule": "Breach per attack cell = realized population excess (200 trials, fresh draws) minus the median certificate bound over 30 deployment draws (R1-2: per-draw pairing over 200 draws as stated). Certificate survives an attack if covered in >= 27/30 draws (R1-2: >= 90% per-draw coverage). Any breach triggers the registered revision loop: revise the certificate, commit the revision, and re-attack in round 2.",
-  "amendments": []
+  "amendments": [],
+  "verdicts": {
+    "date": "2026-08-19",
+    "run": "artifacts/wp2rt1_4f824cb58e5a71a8, EVIDENCE TIER",
+    "R1-1": "SURVIVED as predicted: excess +0.0193, median bound +0.0544, breach -0.0351 inside the registered [-0.07, -0.02], covered 30/30. Claims' correlate reconstruction caps the danger before the audit's interaction blindness matters.",
+    "R1-2": "SURVIVED (RISKY confirmed): per-draw coverage 191/200 (tickets) and 182/200 (compliance), both >= 90%. The certificate covers the object deployments face (its own draw's excess); the in-sample validation's comparisons of per-draw bounds against mean-over-fits excess are the mismatched reading on high-variance estimator cells.",
+    "R1-3": "THE BREACH, exactly where registered: survival at +2.4 beta-units of post-audit drift (28/30, breach -0.0240 in window), MARGINAL FAILURE of the 27/30 rule at +3.6 units (25/30, median breach still negative at -0.0114), and full breach at +5.9 units (+0.0142 median, in the registered [0, +0.08]; covered 8/30). The stale certificate does not track drift (its bound barely moves: 0.0496 to 0.0506) and survives only while CalErr_loc's margin exceeds the drift's damage.",
+    "revision": "REVISION 1, committed with these verdicts: the certificate CONTRACT gains a deployment-visible freshness precondition. The deployment monitors chi2_hat(arriving covariates || audited target sample) with the same classifier-odds machinery it already runs; alpha_cert is valid only while the drift since audit stays inside the last surviving round-1 point (+2.4 beta-units on the attack geometry, i.e. relative chi2 about 0.9 measured on tickets); beyond it the certificate must be recomputed against a fresh target sample. This converts an unbounded silent failure into a monitored validity window. Round 2 re-attacks INSIDE the window and attacks the certificate's own silent defaults."
+  }
 }
