@@ -1,0 +1,21 @@
+{
+  "experiment": "wp1_battery_claims_logit",
+  "registered": "2026-08-19",
+  "config_hash": "b5806ff79e969839",
+  "evidence_tier": "REAL. Block B3: shift-response (four arms, seven levels, 500 trials) plus temper collapse (paired-difference form, 300 trials per cell) on the gated claims-logit variant (gates ALL PASS at 6a1d980a7c21ed3c).",
+  "question": "Do the programme's findings survive a change of induction family, from plateaued rule-level scores to a continuous per-case scorer?",
+  "predictions": {
+    "PB3-1": "Oracle Proposition 2 consistent-with-control at the adjusted level at all seven levels; unweighted in adjusted VIOLATION from level 1 with a monotone decay of similar magnitude to tree-claims (design probe, disclosed: 0.1212 at beta 5); estimated equivalent to oracle at every level.",
+    "PB3-2": "Plateau conservatism vanishes with plateaus: the temper battery's mean oracle excess is within [-0.003, 0] (audit: -0.0013, close to the bare B/(n+1) charge of -0.001), against -0.0040 on tree-claims. This is the intercept half of the F17 affine account tested by removing its cause.",
+    "PB3-3": "The amplification gap closes on the continuous family: |temper paired-difference slope - 1.056| <= 0.15 (audit kappa_pred 1.056; tree-claims gap was 0.19). Joint with B2, this decides whether plateau discreteness is what kappa_pred misses.",
+    "PB3-4": "The blind-feature mechanism is family-independent: the sweep decay comes from inconsistency exactly as on tree-claims, while the severity G3 lift is nil on this family (audit: -0.0002; the linear scorer absorbs severity linearly), predicting that a severity tilt would self-correct here, registered as a note for any future tilt-location run on this variant, not tested in this battery."
+  },
+  "falsifiers": {
+    "PB3-2": "Oracle excess below -0.003 with continuous scores would mean the intercept is not plateau overshoot and F17's mechanism claim is wrong.",
+    "PB3-3": "A gap above 0.15 here AND no gap closure in B2 jointly exonerate discreteness and leave kappa_pred's incompleteness unexplained; either alone localizes it.",
+    "PB3-1": "Standing paths."
+  },
+  "decision_rule": "Sweep verdicts at bonferroni z 2.4573 against alpha 0.10; temper slope through origin on paired differences; tolerances as stated. All comparisons to tree-claims cite archived hashes.",
+  "notes": "Design audit, disclosed and never citable: wrong rate 0.125; 200 distinct-score grid cells; G3 lifts inconsistency +0.0518, severity -0.0003; kappa_pred 1.056; oracle excess -0.0013; unweighted 0.1212 +/- 0.0033 at beta 5 (30 trials).",
+  "amendments": []
+}
