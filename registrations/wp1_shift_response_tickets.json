@@ -1,0 +1,24 @@
+{
+  "experiment": "wp1_shift_response_tickets",
+  "registered": "2026-08-19",
+  "config_hash": "d8b48cff3ab2e336",
+  "evidence_tier": "REAL. Primary sweep on the gated tickets environment; 500 trials per level, Bonferroni z = 2.4573 across seven levels; protocol identical to wp1_shift_response_claims.",
+  "question": "Does realized commit-error risk on tickets track the APE forecast filed before this registration, and do the theorem-backed arms hold?",
+  "predictions": {
+    "P1": "THE SHAPE CLAIM: realized unweighted mean risk equals alpha + APE(level) within +/- 0.0075 at EVERY one of the seven levels (APE, filed pre-registration in cross_environment_hypothesis.json: [-0.0032, 0.0085, 0.0216, 0.037, 0.0534, 0.0704, 0.0887]). In particular: monotone rise; Bonferroni-adjusted VIOLATION at every level >= 1 and excess near +0.089 at the top.",
+    "P2": "Oracle Proposition 2 consistent-with-control at the adjusted level at every level; failures follow the standing bug-presumption path.",
+    "P3": "Estimated arm equivalent to oracle at every level (adjusted paired CI inside [-0.005, +0.005]); the tilt is log-linear in a manifest feature, so the logistic estimator is correctly specified and Q1 is deliberately unexercised here.",
+    "P4": "Unweighted commit rate at every level matches the CFR forecast within +/- 0.02 (the self-correction component is separately forecastable).",
+    "P5": "True-ratio ESS falls with beta but stays above 100 of 1000 at the top level (bounded tilt).",
+    "P6": "The MC Proposition 3 envelope exceeds 1 from the first nonzero level (vacuous by orders of magnitude) while realized unweighted risk stays below 0.20."
+  },
+  "falsifiers": {
+    "P1": "A level where realized risk departs the APE forecast beyond tolerance localizes exactly where the audit model is too weak; the miss pattern is WP2 boundary data and feeds the cross-environment H1 verdict.",
+    "P2": "Standing rule: implementation, sampling, dependence, assumptions, in that order, before any other reading.",
+    "P3": "Non-equivalence with a correctly specified estimator implicates split hygiene.",
+    "P4": "CFR missing while APE holds means compensating errors; flag before quoting APE for this environment."
+  },
+  "decision_rule": "Per level three-outcome rule on mean marginal error mass; confirmatory z = 2.4573, raw z = 1.645 labelled exploratory. P1 and P4 tolerances as stated, judged per level. Region-conditional risk is reported DESCRIPTIVELY with no registered claim (lesson of the claims P5 miss). Sampling rung 2; divergences MC-estimated with SE.",
+  "notes": "APE/CFR were filed after gates and before this registration; design-phase 30-trial decay probes during generator tuning are disclosed (tickets 0.188, fraud 0.087, moderation 0.111, compliance 0.140 excess+alpha at the top level) and never citable. The realized-vs-APE comparison is the per-environment half of the cross-environment hypothesis; the cross-environment verdicts (H0-H3) are judged only in cross_environment_hypothesis.json after all four sweeps.",
+  "amendments": []
+}
