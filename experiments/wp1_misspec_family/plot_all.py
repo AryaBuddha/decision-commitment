@@ -48,8 +48,8 @@ def main() -> None:
     ax.set_title("One coordinate, five environments\n"
                  f"{n} evidence-tier cells; within-env collapse 5/5 "
                  "(Spearman 0.90 to 0.96, residual pass >= 98%);\n"
-                 "slopes 0.74 to 0.96, statistically indistinguishable "
-                 "(no pair beyond 2 SE)")
+                 "through-origin slopes shown are superseded by the affine "
+                 "form (Block A): see F17")
     ax.legend(fontsize=8, loc="upper left")
     ax.grid(alpha=0.25)
     ax.text(0.99, 0.02,
