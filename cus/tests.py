@@ -31,8 +31,19 @@ def test_prop2_monotone_in_test_weight():
     assert np.all(np.diff(lams) >= 0), lams
 
 
+def test_rejection_tilt_exactness():
+    """Rung 2 self-check: rejection draws from the exp(beta*tanh(x_k)) tilt
+    must match importance-weighted source moments within Monte Carlo error."""
+    from cus import shift
+    rng = np.random.default_rng(2)
+    rep = shift.rejection_exactness_check(rng, beta=1.0, dim=2, d=5, n=200_000)
+    assert rep["ok"], rep
+
+
 if __name__ == "__main__":
     test_prop2_reduces_to_unweighted()
     test_prop2_monotone_in_test_weight()
     print("[tests] prop2 == unweighted at w=1: PASS")
     print("[tests] prop2 monotone in w(x):     PASS")
+    test_rejection_tilt_exactness()
+    print("[tests] rejection tilt exact (rung 2): PASS")

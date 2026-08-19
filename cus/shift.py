@@ -219,3 +219,116 @@ def ratio_error_battery(w_hat: np.ndarray, w_true: np.ndarray) -> dict:
         "log_ratio_rmse": float(np.sqrt(np.mean((np.log(a) - np.log(b)) ** 2))),
         "w_hat_max": float(a.max()),
     }
+
+
+# ---------------------------------------------------------------------------
+# Rung 2: exact rejection sampling for BOUNDED tilts.
+#
+# The misspecification sweep needs a tilt the linear-logistic estimator
+# cannot represent. exp(beta * tanh(x_k)) is bounded (tanh in [-1, 1]), so
+# exp(beta * tanh(x_k)) <= exp(|beta|) gives an acceptance bound and
+# rejection sampling from fresh N(0, I) proposals draws the tilted
+# population EXACTLY. This is the rung-2 mechanism of RESEARCH_PLAN 3.2;
+# every run using it must pass rejection_exactness_check (importance-
+# weighted source moments vs rejection-sample moments) before trials start.
+#
+# The normalizer Z = E_P0[exp(beta * tanh(Z))] has no closed form; it is a
+# one-dimensional integral computed by adaptive quadrature, exact to
+# quadrature tolerance (~1e-10), which is what "closed form" degrades to on
+# this rung. chi2 uses the same route.
+# ---------------------------------------------------------------------------
+
+def _tanh_tilt_Z(beta: float, moment: int = 1) -> float:
+    """E_P0[ exp(moment * beta * tanh(Z)) ] for Z ~ N(0,1), by quadrature."""
+    from scipy import integrate
+    from scipy.stats import norm
+    val, _ = integrate.quad(
+        lambda t: np.exp(moment * beta * np.tanh(t)) * norm.pdf(t),
+        -np.inf, np.inf)
+    return float(val)
+
+
+def tanh_tilt_ratio(X: np.ndarray, beta: float, dim: int) -> np.ndarray:
+    """Normalised ratio dQ/dP0 for the tilt exp(beta * tanh(x_dim)).
+
+    w(x) = exp(beta * tanh(x_dim)) / Z, with E_P0[w] = 1 to quadrature
+    tolerance. Bounded: w <= exp(|beta|) / Z, which also floors ESS.
+    """
+    Z = _tanh_tilt_Z(beta)
+    return np.exp(beta * np.tanh(X[:, dim])) / Z
+
+
+def tanh_tilt_chi2(beta: float) -> float:
+    """chi2(Q || P0) = E_P0[exp(2 beta tanh)] / Z^2 - 1, by quadrature."""
+    Z = _tanh_tilt_Z(beta)
+    return float(_tanh_tilt_Z(beta, moment=2) / Z ** 2 - 1.0)
+
+
+_REJ_Z_CACHE: dict = {}
+
+
+def rejection_tilt_draw(rng: np.random.Generator,
+                        n: int,
+                        d: int,
+                        beta: float,
+                        dim: int) -> np.ndarray:
+    """Exact draws from Q proportional to exp(beta * tanh(x_dim)) * N(0, I_d).
+
+    Rejection sampling: propose X ~ N(0, I_d), accept with probability
+    exp(beta * tanh(x_dim)) / exp(|beta|) <= 1. Accepted draws are exact
+    samples from Q; acceptance rate is Z / exp(|beta|).
+    """
+    bound = np.exp(abs(beta))
+    out = []
+    got = 0
+    while got < n:
+        batch = max(int((n - got) * bound / max(_REJ_Z_CACHE.setdefault(
+            beta, _tanh_tilt_Z(beta)), 1e-12)) + 64, 256)
+        X = rng.standard_normal((batch, d))
+        acc = np.exp(beta * np.tanh(X[:, dim])) / bound
+        keep = rng.random(batch) < acc
+        Xk = X[keep]
+        out.append(Xk)
+        got += len(Xk)
+    return np.vstack(out)[:n]
+
+
+def rejection_exactness_check(rng: np.random.Generator,
+                              beta: float,
+                              dim: int,
+                              d: int = 5,
+                              n: int = 200_000,
+                              n_sigma: float = 5.0) -> dict:
+    """Self-check that rejection draws match the tilted population.
+
+    Compares rejection-sample moments E_Q[g] against importance-weighted
+    source moments E_P0[w g] for g in {x_dim, x_dim^2, tanh(x_dim), and one
+    nuisance coordinate as an indexing canary}. Each comparison must fall
+    within n_sigma combined Monte Carlo standard errors. Returns a dict with
+    per-moment diffs and an overall ``ok`` flag.
+    """
+    Xs = rng.standard_normal((n, d))
+    w = tanh_tilt_ratio(Xs, beta, dim)
+    Xr = rejection_tilt_draw(rng, n, d, beta, dim)
+
+    other = (dim + 1) % d
+    gs = {
+        "x": Xs[:, dim], "x2": Xs[:, dim] ** 2,
+        "tanh_x": np.tanh(Xs[:, dim]), "nuisance": Xs[:, other],
+    }
+    gr = {
+        "x": Xr[:, dim], "x2": Xr[:, dim] ** 2,
+        "tanh_x": np.tanh(Xr[:, dim]), "nuisance": Xr[:, other],
+    }
+    report = {"ok": True, "beta": beta, "n": n}
+    for k in gs:
+        src = w * gs[k]
+        m_src, se_src = float(src.mean()), float(src.std() / np.sqrt(n))
+        m_rej, se_rej = float(gr[k].mean()), float(gr[k].std() / np.sqrt(n))
+        tol = n_sigma * float(np.hypot(se_src, se_rej))
+        diff = abs(m_src - m_rej)
+        report[k] = {"iw": m_src, "rejection": m_rej,
+                     "diff": diff, "tol": tol}
+        if diff > tol:
+            report["ok"] = False
+    return report
