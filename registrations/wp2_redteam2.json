@@ -9,5 +9,13 @@
     "R2-3": "Binning default: n_bins in {5, 10, 20}. PREDICTED: median bound spread across bin counts <= 0.01 at both cells; the decile choice is not load-bearing."
   },
   "decision_rule": "R2-1 coverage and detection at 27/30; R2-2/R2-3 on median bounds over 15 draws. Any breach revises and re-attacks; a full-survival round closes Phase 4 with the certificate's character stated (including round 1's honesty note that survival inside the window rests on CalErr_loc margin, not drift tracking).",
-  "amendments": []
+  "amendments": [],
+  "verdicts": {
+    "date": "2026-08-19",
+    "run": "artifacts/wp2rt2_575dbfb434d904f9, EVIDENCE TIER",
+    "R2-1": "CONFIRMED, both clauses: the monitor orders the drifts strictly (medians 0.051 / 0.208 / 0.468; the +3.6-to-+1.2 ratio is 9.2x against the registered 2x), the inside-window deployment is covered 30/30, and the outside-window deployment (+3.6, covered only 20/30) has monitor p10 = 0.442, far above any tolerance at or below the +2.4 point's 0.208: detection is 30/30. Round 1's silent failure is now a detected one. FILED REFINEMENT (Revision 1a): the +2.4 edge itself is marginal on fresh seeds (25/30 covered), so the final contract sets the tolerance at monitor <= 0.10, strictly inside the fully-surviving +1.2 point (p90 0.063) and strictly below the marginal edge (p10 0.181): both sides carry margin.",
+    "R2-2": "CONFIRMED (RISKY): the audit model's C default is benign within the registered window (gaps 0.0066 on claims, 0.0092 on tickets, both <= 0.01). Unlike the ratio fit (B4), the audit's regularization does not carry a conclusion at these audit sizes; the knob is now ledgered either way.",
+    "R2-3": "MISS, filed verbatim, and it forces REVISION 2: the bin-count spread is 0.0166 (claims) and 0.0313 (tickets), both beyond the registered 0.01. Within-bin cancellation (attack surface i) hides one to three hundredths of miscalibration mass at decile binning. The final recipe pins n_bins = 20, the conservative end measured; bounds rise, coverage can only improve, and the price increase is the honest cost of the localization actually localizing.",
+    "phase4_exit": "Two registered rounds complete. One breach (post-audit drift) converted into a monitored validity window with two-sided margin; one load-bearing silent default (binning) found and pinned; three attack families survived with quantified slack (R1-1 -0.035, R1-2 per-draw 95.5%/91%, R2-2 <= 0.0092), with the standing honesty note that survival inside the window rests substantially on CalErr_loc margin rather than drift tracking. FINAL CERTIFICATE (v2): alpha_cert = alpha + a_plugin + CalErr_loc(20 bins) + b_own_ucb + z se_a, valid while drift_monitor(audited target sample, arrivals) <= 0.10."
+  }
 }
