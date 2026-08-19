@@ -138,3 +138,24 @@ platform weakness. One verbatim miss: region-1 (high provider flag rate)
 risk sits BELOW aggregate at every level; the induced rules already
 handle that region cautiously, so the group-conditional extension needs a
 region defined on the blind feature instead, under a fresh registration.
+
+## F10. EVIDENCE TIER: tilt location is governed by gold-relevance net of self-correction, not visibility alone (3879b17b6fa4ae6f)
+
+At matched chi2 on the claims environment, the tilt on the rule-visible,
+gold-heavy feature (severity) decays unweighted CRC harder than the tilt
+on the rule-blind feature (inconsistency) at every level (+0.0059,
++0.0153, +0.0234; z up to 14.9), inverting the placeholder's ordering,
+and the inversion was registered as the prediction before the run from a
+disclosed 30-trial probe. The mechanism resolved into two separately
+visible effects: the visible tilt triggers a genuine score-side response
+(unweighted deferral rises to 0.168 vs 0.090 at zero shift; the
+registered prediction that deferral would stay flat missed, verbatim)
+but the response loses to the gold-side risk mass the tilt moves; the
+blind tilt barely moves deferral at all and breaks CRC through pure
+calibration invalidity. chi2 matches covariate-space divergence, not
+risk relevance: two shifts of identical chi2 differ threefold in damage
+depending on where they fall. The oracle pays for this honestly, deferring
+0.306 vs 0.209 at the top level. Practitioner reading: knowing HOW MUCH
+the case mix drifted (any divergence monitor gives that) says little
+about guarantee damage without knowing WHERE the drift falls relative to
+what the rules can see and what drives correctness.
