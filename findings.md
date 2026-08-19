@@ -377,3 +377,32 @@ the top-tilt non-equivalence, and the fix is nearly free, unlike clip
 widening. One registered word missed: the pd-vs-C decrease is monotone
 in only two of four cells, with every non-monotone step within 2 SE of
 zero (filed verbatim).
+
+## F21. The m(alpha) amplification is solved: charge asymmetry plus crossing noise plus discrete-crossing arithmetic, with H3 and H4 dead on both tiers (wp2sw, wp2qsw, wp2mc, wp2_h4_analysis)
+
+Three registered experiments and one registered analysis close the
+question WP1 left open. In the smooth analytic world (rung 1,
+quadrature-exact baselines, secant identity exact to 3e-11), the
+B/(n+1) pseudo-loss charge is a DERIVED amplifier (Lemma 4 of
+wp2_theory.md: arms are charged (1 + chi2_arm)(B - alpha)/n_cal, and
+their chi2 differ), large at small budgets (1.70 at alpha 0.02, n_cal
+250) and dead by 10000; crossing noise dies at root-n and partially
+CANCELS the charge at small budgets; the per-covariate gap is at most
+0.001 (H3 dead); and the smooth world has NO plateau at all. The
+gated-tier plateau (m 1.07 to 1.84 at n_cal where budget terms are
+dead) belongs to SCORE DISCRETENESS: the two arms cross on different
+plateaus, excess = a(lam_e) + overshoot with a(lam_e)/a(lam*) the
+loss-tail ratio at the two crossings, an arithmetic that amplifies OR
+compresses depending on where alpha lands (2.16 at K=8 alpha 0.05;
+0.78 at K=8 alpha 0.10), survives infinite calibration, explains B2's
+non-monotone granularity verdict, and on the gated tier reproduces
+per-cell measured m at slopes 0.97 to 1.12 (R2 0.79 to 0.96 where
+plateau spread exists), the alpha-0.05 environment ordering
+(claims_logit 1.20 < claims 1.32 < tickets 1.68), and the tickets
+non-monotonicity that Phase 0 flagged. H4 is dead by registered split
+analysis (8/8 blocks; small-|a| halves sit FARTHER from 1). Honest
+boundary, filed in the verdicts: the derived arithmetic is exact only
+in the large-budget limit; at intermediate budgets crossing noise
+softens it from below, so m is bounded, not pointwise derived, between
+the regimes. In the own-threshold coordinate (F19) none of this
+exists, which is why the certificate lives there.

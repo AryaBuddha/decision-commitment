@@ -163,14 +163,30 @@ therefore
 
     m(cell) = G(Lam_e)/G(Lam_o) + (b_e - b_o) / (kappa a),
 
-a quantity that (i) survives n_cal -> infinity, (ii) grows as alpha
-falls relative to the plateau loss mass at the crossing, (iii) depends
-on the environment's local score geometry, and (iv) vanishes in the
-own-threshold coordinate. Status: derivation elementary given Lemma 2;
-whether it QUANTITATIVELY reproduces the measured plateaus (1.11/1.26
-on claims; ordering logit < claims < spike at 0.10) is the registered
-quantized-world test (wp2_quantized_switchboard, P-Q1/P-Q2).
-Grade: pending that verdict.
+a quantity that (i) survives n_cal -> infinity, (ii) moves with alpha
+through where the crossing lands on the plateau structure, (iii)
+depends on the environment's local score geometry, and (iv) vanishes in
+the own-threshold coordinate.
+
+VERDICTS (wp2qsw, wp2mc). The plateau-ownership prediction CONFIRMED
+(risky): at n_cal 100000, alpha 0.05, m runs 2.16 (K=8) down to 1.01
+(continuous), and the arithmetic also COMPRESSES (0.78 at K=8, alpha
+0.10) because the sign is set by where alpha's crossing lands, which
+retroactively explains B2's non-monotone granularity result. On the
+gated tier the identity-derived per-cell m reproduces measured m at
+slopes 0.97 to 1.12 with R2 0.79 to 0.96 wherever plateau spread
+exists, reproduces the environment ordering at alpha 0.05, and owns
+the tickets anomaly (m_derived 1.68 at 0.05 vs 1.07 at 0.10).
+
+GRADE, stated precisely: m is DERIVED in the large-budget limit
+(deterministic crossing arithmetic, computable from calibration draws)
+and BOUNDED at finite budgets: empirical-crossing noise SOFTENS the
+plateau arithmetic from below at intermediate budgets (measured m
+1.084 vs derived 1.513 at K=16, n_cal 10000, converging by 100000),
+while the Lemma-4 charge adds from above at small budgets. The exact
+finite-budget composition is an open refinement, CONJECTURED-WITH-
+EVIDENCE: max(1, m_derived) + charge bounds m at the measured grids.
+None of this is load-bearing for the certificate (Section 6).
 
 ## 6. What enters the certificate
 
