@@ -15,5 +15,12 @@
   },
   "decision_rule": "Guards as in the battery (|a*| >= 0.003, slope_what >= 0.02, kappa_pred computable). Verdicts prediction-by-prediction, misses verbatim.",
   "notes": "Registered while the quantized-world derivation test (wp2qsw) runs, before its verdicts; the two experiments test the same mechanism on the two tiers, per the Phase 1 exit criterion. The seed 20260821 is fresh (not shared with any Phase 0 run).",
-  "amendments": []
+  "amendments": [],
+  "verdicts": {
+    "date": "2026-08-19",
+    "run": "artifacts/wp2mc_4f15d0310ff68a3f, EVIDENCE TIER, 128 cells, 300 trials/cell",
+    "P-MC1": "PARTIAL MISS, filed verbatim: 5 of 8 blocks pass both clauses against the registered 6. Slopes are 0.973 to 1.115 in all 8 blocks (claims alpha 0.05 exceeds the [0.90, 1.10] window by 0.015, about one SE); R2 is 0.79 to 0.96 in the six blocks with real plateau spread (claims, spike, tickets) and fails only on claims_logit (-0.60 and 0.30), whose continuous scores give the least m_derived spread. The mechanism's own account of the logit R2 failure (little plateau variation to explain) is noted but was NOT registered in advance, so P-MC1 stands as a miss.",
+    "P-MC2": "CONFIRMED (RISKY): mean m_derived at alpha 0.05 orders claims_logit 1.198 < claims 1.321 < tickets 1.681, reproducing the fresh battery's environment ordering, and tickets' 0.05-vs-0.10 gap is 0.614, twice the registered 0.3 floor. The tickets anomaly (P0-5 miss) IS plateau geometry.",
+    "P-MC3": "CONFIRMED: the identity-implied paired difference matches the evaluation-window paired difference within 2 combined SE in 122 of 128 cells (95.3%), extending F19's own-coordinate exactness from the unweighted arm to tempered arms on all four environments."
+  }
 }
