@@ -1,0 +1,28 @@
+{
+  "experiment": "wp1_misspec_claims",
+  "registered": "2026-08-19",
+  "config_hash": "56704982681d6960",
+  "evidence_tier": "REAL. The paper's central question at evidence tier: does the aligned-error collapse survive contact with a real rule-induction environment? Gated claims environment (5459d3b5a7b3c1a1). Confirmatory: n_trials = 300 per cell (SE 0.0009 to 0.0013, inside the 0.001 to 0.002 sizing target), 58 cells: 30 realistic degradation cells and 28 synthetic-estimator cells, aligned error recorded per trial from the start.",
+  "question": "On the claims environment, is excess marginal risk under estimated-ratio Proposition 2 one-dimensional in signed aligned error a = E[(w_norm - w_hat_norm) L(lambda*)], pooled across four realistic degradation axes and two synthetic families at two shift levels?",
+  "predictions": {
+    "P1": "THE CENTRAL CLAIM. Pooled across all 58 cells: Spearman rho >= 0.9 and at least 90% of cells within max(3*SE_cell, 0.0075) of the pooled unweighted isotonic fit. If this holds, the WP2 target functional is confirmed on a real environment and the collapse figure becomes the paper's central figure.",
+    "P2": "Deprivation is the anti-conservative arm: the rho = 0 cells (inconsistency hidden from the ratio fit, mirroring the attribute the demonstration log never recorded) are in VIOLATION at both betas (confirmatory z = 2.2414, one-sided 0.05/2), with mean risk within 3 combined SE of the wp1c unweighted arm at matched beta (0.1129 at beta 3, 0.1212 at beta 5), and risk monotone as rho falls at both betas.",
+    "P3": "Tempering traces the monotone path: strictly decreasing mean risk in gamma at both betas up to adjacent inversions within 2 combined SE; gamma = 0 within 3 combined SE of the wp1c unweighted arm at matched beta; gamma = 1 equivalent to oracle; gamma = 1.5 conservative (mean excess < 0) at both betas. Coincidence check: temper gamma = 0.8 and directional delta = -1 at beta = 5 define the same normalised estimator and agree within 2 combined SE.",
+    "P4": "The through-origin slope on cells with |a| <= 0.02 lies in [0.8, 1.5] (the kappa ~ 1 first-order identity of wp2_notes, with allowance for the lumpier plateau loss geometry of 46 discrete score levels).",
+    "P5": "Residual failures, if any, concentrate at large aligned error: no cell with |a| <= 0.02 fails the residual criterion.",
+    "P6": "The mismatch (clip) cells cluster near the origin (|aligned| <= 0.005 in all six cells) because the tilt is log-linear in the manifest and the logistic estimator is correctly specified; clipping at these betas produces only small signed error in either direction.",
+    "P7": "Arithmetic and envelope: |a| <= L1 in every cell (violation is a code bug); B*L1 remains a valid envelope in every cell.",
+    "P8": "The oracle arm is not in VIOLATION in any of the 58 cells at the raw per-cell level (theorem-backed, exact rung-2 ratio)."
+  },
+  "falsifiers": {
+    "P1": "If the collapse fails here while holding on the placeholder, the coordinate is environment-dependent and WP2's functional needs an environment term (plateau geometry being the named suspect); the failing cells' residual structure identifies it. This outcome would be the paper's central caveat and is publishable as such.",
+    "P2": "If rho = 0 does not violate, the ratio fit reconstructs the blind feature from rule-visible correlates, meaning deprivation on real environments is milder than the placeholder suggested; report the reconstruction accuracy alongside.",
+    "P3": "Non-monotone tempering or coincidence failure implicates the synthetic harness before any scientific reading.",
+    "P4": "A slope outside [0.8, 1.5] with the collapse still holding means kappa deviates from 1 on plateau geometry; wp2_notes section 2 gets rewritten with the measured value.",
+    "P6": "Large aligned error in the clip cells would mean clipping bites harder on real manifolds than the design probe suggested; becomes a WP2 boundary datum.",
+    "P8": "An oracle violation surviving the unit test and the rung-2 fidelity check contradicts a published theorem and is treated with that standard of evidence."
+  },
+  "decision_rule": "Collapse verdict from the two preregistered criteria in P1 (this is the confirmatory endpoint). Named-cell confirmatory claims use one-sided z at 0.05 divided by the number of cells named in that prediction (P2: z = 2.2414 for 2 cells). Per-cell three-outcome verdicts elsewhere use raw z = 1.645 and are labelled exploratory. Equivalence claims use the 90% paired CI inside [-0.005, +0.005]. Primary endpoint: marginal error mass. Aligned error uses per-sample mean-1 normalisation of the exact unnormalised rung-2 ratio, so no MC normaliser enters a or the |a| <= L1 arithmetic; MC-estimated chi2 (with SE) labels the shift levels only (0.38 at beta 3, 1.83 at beta 5).",
+  "notes": "Design-phase probes, disclosed and never citable: 30-trial clip probes at beta 5 showed est risk 0.0959 with aligned +0.0017 at clip (0.01, 0.99) and 0.1002 with aligned -0.0013 at (0.2, 0.8), informing P6. P2's expectation that rho = 0 mirrors the unweighted arm comes from the placeholder result plus wp1c; no deprivation probe was run on claims. Cell rng uses SeedSequence [seed, 10*is_family + group_idx, setting_idx, beta_millis]. The runner accepts --smoke N for pipeline debugging; smoke outputs suffixed and never cited.",
+  "amendments": []
+}
