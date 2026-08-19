@@ -1,0 +1,8 @@
+{
+  "environment": "claims_logit",
+  "frozen": "2026-08-19",
+  "gate_config_hash": "6a1d980a7c21ed3c",
+  "purpose": "Block B3: the second induction family. Same generator, gold, induction view, region, and tilt machinery as env_claims; the tree rule list is replaced by a logistic scorer on a fresh demonstration log ([env_seed, 1] stream), decision 1{p >= 0.5}, evidence s = max(p, 1-p): per-case, near-continuous. The evidence-score clause of the claims contract is REPLACED accordingly; everything else carries over. Whatever the batteries show, the tree-only caveat either falls or becomes a measured boundary.",
+  "gate_thresholds": "identical to env_claims amendment-2 form (decision-conditional G3 at 0.02; G5 floor 20)",
+  "amendments": []
+}
