@@ -1,0 +1,15 @@
+{
+  "experiment": "wp2_certificate_v3",
+  "registered": "2026-08-19",
+  "config_hash": "7f8658cdfc4cac42",
+  "evidence_tier": "REAL. The 674-cell in-sample validation recomputed under the FINAL certificate form v3: the certified excess floored at zero (a certificate exists to bound risk from above; certifying risk strictly below alpha was an over-claim and produced the v2 validation's 26 safe-side technical misses), reliability bins pinned at 20 (Revision 2), per-draw values stored (the P-C4 instrumentation fix). Same 674 cells, 30 draws each, seed unchanged (coverage is against archived population values, not a sampling claim).",
+  "predictions": {
+    "P-V3-1": "COVERAGE: 674/674 at the 27/30 rule. Derivation, registered: the floor makes every negative-excess cell covered in every draw by construction; the v2 run's three positive-excess draw-tail cells (compliance starvation n_fit 50 beta 5.506 at 26/30; spike alpha 0.15 temper 0.8 beta 7.008 at 26/30; tickets alpha 0.05 temper 0.5 beta 5.982 at 25/30) sat within one to two draws of the rule at 10 bins, and the 20-bin pin raises bounds by roughly +0.01 to +0.03 (R2-3 measured spreads), which should clear them. Falsifier: any of the three named cells still failing localizes a genuine draw-tail fragility that flooring and binning do not fix, and it gets a registered follow-up before prose.",
+    "P-V3-2": "The dangerous-cell safety statistic is preserved or improved: zero of the 219 dangerous cells (archived excess >= 0.005) have a median bound below their excess.",
+    "P-V3-3": "PRICE under the final form, reported honestly: mean conservatism across all cells predicted in [0.045, 0.075] (the floor raises safe-cell conservatism to |excess| and the 20-bin pin adds its measured 0.01 to 0.03; both effects push up from v2's 0.0464).",
+    "P-V3-4": "The P-C4 clause finally evaluated as registered, on per-draw values: b_own_ucb <= 0.005 in >= 85% of all draws pooled (window widened honestly from the missed 95%: the v2 cell-mean proxy measured 88.7%)."
+  },
+  "decision_rule": "As the v2 validation, with the floored bound as the certified quantity and per-draw arrays stored per cell. Verdicts prediction-by-prediction, misses verbatim.",
+  "notes": "The v1/v2 runner's config gained a version key so its frozen hash no longer matches and it can never silently rerun under the changed certificate() semantics; the amendment on wp2_certificate records this. Registered together with wp2_slack_attribution, which consumes this run's per-draw parts.",
+  "amendments": []
+}

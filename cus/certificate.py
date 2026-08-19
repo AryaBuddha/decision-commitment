@@ -38,6 +38,16 @@ the stale bound barely moved, so alpha_cert is valid only while
 drift_monitor(audited target sample, arriving covariates) stays at or
 below the tolerance set by the last surviving round-1 point; beyond
 it the certificate must be recomputed against a fresh target sample.
+
+REVISION 3 (definitional, post-validation): the certified excess is
+FLOORED AT ZERO. A certificate exists to bound risk from above; a
+negative bound was an over-claim (certifying risk strictly below
+alpha) that produced 26 formally-uncovered SAFE cells in the v2
+validation. alpha_cert = alpha + max(0, bound); the raw signed bound
+is still reported for diagnostics. The certificate also now reports
+the gap and confidence components of CalErr_loc separately, so slack
+can be attributed, and callers are expected to store per-draw values
+(the P-C4 instrumentation lesson).
 """
 
 from __future__ import annotations
@@ -104,6 +114,7 @@ def certificate(env, audit, alpha, rng, feat, beta, what_fn,
         if C_src.sum() >= n_bins * 20 else np.linspace(0, 1, n_bins + 1)
     edges[0], edges[-1] = -np.inf, np.inf
     gap_ub = np.zeros(n_bins)
+    gap_part = np.zeros(n_bins)
     for b in range(n_bins):
         m = C_src & (m_src >= edges[b]) & (m_src < edges[b + 1])
         nb = int(m.sum())
@@ -113,6 +124,7 @@ def certificate(env, audit, alpha, rng, feat, beta, what_fn,
         gap = abs(float(src.wrong[m].mean()) - float(m_src[m].mean()))
         se = float(np.sqrt(max(src.wrong[m].mean()
                                * (1 - src.wrong[m].mean()), 0.25 / nb) / nb))
+        gap_part[b] = gap
         gap_ub[b] = gap + z * se
     # transfer through both weightings
     def mass(vals, Cmask, wts):
@@ -124,18 +136,23 @@ def certificate(env, audit, alpha, rng, feat, beta, what_fn,
     q_tgt = mass(m_tgt, C_tgt, np.ones(n_tgt))
     q_src = mass(m_src, C_src, wn_src)
     cal_err = float((q_tgt + q_src) @ gap_ub)
+    cal_err_gap = float((q_tgt + q_src) @ gap_part)
 
     # own crossing margin on held-out source
     bterm = wn_src * src.wrong * C_src
     b_own = float(bterm.mean()) - alpha
     b_own_ucb = b_own + z * float(bterm.std() / np.sqrt(n_src))
 
-    bound = a_plugin + cal_err + b_own_ucb + z * se_a
+    bound_raw = a_plugin + cal_err + b_own_ucb + z * se_a
+    bound = max(0.0, bound_raw)          # Revision 3: never certify below alpha
     return {
         "alpha_cert": alpha + bound,
         "excess_bound": bound,
+        "excess_bound_raw": bound_raw,
         "a_plugin": a_plugin,
         "cal_err_loc": cal_err,
+        "cal_err_gap": cal_err_gap,
+        "cal_err_conf": cal_err - cal_err_gap,
         "b_own_ucb": b_own_ucb,
         "se_a": se_a,
     }

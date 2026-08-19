@@ -1,0 +1,15 @@
+{
+  "experiment": "wp2_slack_attribution",
+  "registered": "2026-08-19",
+  "config_hash": "analysis-only: consumes artifacts/wp2cert_v3 (7f8658cdfc4cac42) per-draw parts plus one registered lever probe; registered before any attribution was computed",
+  "evidence_tier": "EVIDENCE-TIER DATA, analysis registration. The v2 validation missed its anti-vacuity clause (median looseness 4.1x on dangerous cells). This analysis attributes the slack term by term instead of accepting it.",
+  "question": "Which term owns the looseness: the audit plug-in's overshoot (a_plugin - realized excess), the localized reliability bound's MEASURED gap component, its CONFIDENCE charge (the z * binomial SE summed over bins and both weightings), the crossing margin b_own_ucb, or the plug-in SE margin? And is any of it structural (a worst-case constant) rather than statistical?",
+  "predictions": {
+    "P-SA1": "CalErr_loc owns the slack: on dangerous cells (archived excess >= 0.005), mean CalErr_loc >= 60% of mean slack (bound - excess).",
+    "P-SA2": "RISKY, the tightening diagnosis: within CalErr_loc on dangerous cells, the CONFIDENCE charge (z * SE part) owns >= 50%. If instead the measured gap dominates, the audit model is genuinely miscalibrated inside commit regions and tightening requires better audit models, not more data; that verdict would redirect the paper's certificate section.",
+    "P-SA3": "The structural answer to the translated-coordinate hypothesis, stated for the record: the v3 bound contains NO worst-case translation constant by construction (it is assembled in the own-rule coordinate, F19; the m_max * kappa_pred alternative was rejected at the Phase 3 freeze, checkpoint 3). The attribution therefore must account for >= 95% of the slack with the four statistical terms alone (a_plugin overshoot, CalErr gap, CalErr confidence, b_own_ucb + z se_a); any unexplained remainder above 5% falsifies the claim that the F19 dividend was fully banked.",
+    "P-SA4": "RISKY, the lever test: quadrupling the held-out samples (n_src = n_tgt = 40000) on a 30-cell dangerous subsample reduces the mean bound by >= 0.010 (the confidence charge scales as one over root n_src; if bounds do not shrink, the slack is gap-dominated or structural and P-SA2's falsifier branch holds)."
+  },
+  "decision_rule": "Attribution on the v3 per-draw parts, dangerous cells only, slack = mean bound - archived excess, components averaged over draws. Lever probe: 30 dangerous cells sampled by largest archived excess, 10 draws each at n_src = n_tgt in {10000, 40000}, same seed streams. Verdicts prediction-by-prediction, misses verbatim.",
+  "amendments": []
+}

@@ -31,8 +31,8 @@ from cus.envs.family import GenEnv                # noqa: E402
 
 
 CONFIG = {
-    "experiment": "wp2_certificate",
-    "certificate_version": "v2-as-run; certificate() is now v3 (floored), rerun forbidden",
+    "experiment": "wp2_certificate_v3",
+    "certificate_version": "v3: bound floored at zero (Revision 3), per-draw values stored (the P-C4 instrumentation fix)",
     "batteries": {
         "wp1mc_56704982681d6960": "claims",
         "wp1mf_tickets_85e921864acbedcc": "tickets",
@@ -43,7 +43,7 @@ CONFIG = {
     },
     "n_draws": 30, "cover_rule": 27,
     "n_cal": 1000, "n_src": 10000, "n_tgt": 10000, "n_audit": 60000,
-    "n_lambda": 400, "n_bins": 10, "z": 1.645,
+    "n_lambda": 400, "n_bins": 20, "z": 1.645,
     "ratio_C": 1.0,
     "seed": 20260821,
 }
@@ -55,7 +55,7 @@ def config_hash(cfg):
 
 def check_registration():
     h = config_hash(CONFIG)
-    reg = json.loads((ROOT / "registrations" / "wp2_certificate.json").read_text())
+    reg = json.loads((ROOT / "registrations" / "wp2_certificate_v3.json").read_text())
     if reg.get("config_hash") != h:
         raise SystemExit(f"Config hash {h} != registered {reg.get('config_hash')}.")
     print(f"[prereg] config {h} matches registration")
@@ -204,6 +204,10 @@ def main():
             "b_own_ucb_mean": float(np.mean([p["b_own_ucb"] for p in parts])),
             "cal_err_mean": float(np.mean([p["cal_err_loc"] for p in parts])),
             "a_plugin_mean": float(np.mean([p["a_plugin"] for p in parts])),
+            "draws": {k: [round(float(p[k]), 6) for p in parts]
+                      for k in ("excess_bound", "excess_bound_raw",
+                                "a_plugin", "cal_err_loc", "cal_err_gap",
+                                "cal_err_conf", "b_own_ucb", "se_a")},
         })
         if i % 50 == 0:
             print(f"[wp2cert] {i:>4} cells done ({time.time() - t00:.0f}s)",
