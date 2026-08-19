@@ -1,0 +1,10 @@
+{
+  "environment": "returns",
+  "registered": "2026-08-19",
+  "gate_config_hash": "c3a910b524c084eb",
+  "purpose": "WP2 Phase 5 HOLDOUT (environment 7). Designed 2026-08-19 AFTER the certificate freeze commit (registrations/wp2_certificate.json at config ec-frozen 8098257736fc71f5); spike (environment 6) is spent and must not be reused. This environment exists to answer the one-authorial-hand objection: the certificate's inputs are computed from its deployment-visible data BEFORE any realized-risk sweep, the predicted safe operating envelope is registered, and then the sweep runs, whatever the outcome.",
+  "design_intent": "Returns-abuse triage. Two gold-heavy drift candidates: desc_vagueness (visible to induction, partial score-side defense expected) and serial_rate (induction-blind, WEAK logged proxy flag_hist at coefficient 0.35: reconstruction strength deliberately between tickets' none and fraud's full), plus a gold interaction 1.2 * desc_vagueness * serial_rate that the certificate's audit model class (linear-logistic within decision) cannot represent: the holdout stresses exactly the surfaces the red team probed. Coarser rules than claims (depth 6, min_leaf 50, noise 0.07).",
+  "contract": "As the family contract: one routed decision per generated instance; frozen 13-feature manifest; Laplace (k+1)/(n+2) rule-level evidence scores; gold(X, u) deterministic and mechanically recomputable; region = category_risk >= 0.55; rung-2 exact rejection tilts on the bounded manifest features; chi2 reported per level by MC.",
+  "design_iterations_disclosed": "Three, never citable: gold intercept -2.05 (base wrongness 0.087, alpha 0.10 degenerate at zero shift), -1.93 (0.095, pin 0.70), frozen at -1.82 (wrongness 0.104, zero-shift pin 0.23, 33 rules, unweighted excess +0.030/+0.036 at beta 6 on the two tilts, chi2(serial 6.0) about 6.5).",
+  "amendments": []
+}
