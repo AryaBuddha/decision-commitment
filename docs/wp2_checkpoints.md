@@ -147,3 +147,31 @@ finite-budget composition of noise-softening and plateau arithmetic
 safe-side bound dips (no risk content, disclosed anatomy); Phase 6
 extensions (group-conditional two-step, Learn-then-Test selective
 certification, gradual drift).
+
+### Checkpoint 6: the two corrections before prose (2026-08-19)
+
+Operator review after checkpoint 5 found two gaps, both accepted.
+
+First, essential: the capstone had covered a deployment whose excess
+was negative everywhere, validating the workflow but not the
+protection. Fixed by the stressed capstone (wp2_prospective_stress):
+the WP1 degradation axes instantiated on the same holdout, envelope
+registered before the sweep, and the result is the claim the paper
+actually needs: 12/12 covered while six no-correction deployments
+genuinely failed their certified level, envelope approached (0.37) and
+not crossed. A disclosed probe filed on the way: the fit-based
+degradations are heavily defended on this holdout (F14 prospectively),
+so no-correction is the honest stress.
+
+Second, cheap: attack the looseness instead of accepting it.
+Certificate v3 floors the certified excess at zero (never certify
+below alpha; the definitional fix that converts the 26 safe-side
+technical misses into trivial coverage), the 674-cell validation is
+recomputed under the final form with per-draw values stored (the P-C4
+instrumentation lesson), and a registered slack-attribution analysis
+decomposes the bound term by term, including the structural question
+(the own-coordinate certificate carries no worst-case translation
+constant; the F19 dividend was banked at the Phase 3 freeze) and a
+sample-size lever probe. Verdicts below in the registrations.
+
+The freeze on paper prose lifts after these verdicts are filed.
