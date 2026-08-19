@@ -279,5 +279,22 @@
     "H2b": "CONFIRMED descriptively: claims APE(top) computed post-hoc is +0.0249 vs realized +0.0231 (the audit logistic hit its iteration cap on claims, noted), inserting claims between compliance and moderation in both orderings; five environments, one ordering.",
     "practitioner_claim": "H1 AND H2 both hold, so the registered claim stands at evidence tier: APE, computed from labelled source data plus unlabelled target covariates only (what a deployment actually has), calibrated realized CRC decay within 0.0063 worst-case across 28 preregistered level-cells and ranked five environments exactly, including forecasting BEFORE the sweeps that one environment's decay would be non-monotone and end back inside the certified level while another would lose control from the first tilt notch. Figure: docs/wp1_ape_forecast.png.",
     "boundary_note": "The forecast residuals are small but systematically negative for the defended environments at strong tilt (realized slightly safer than forecast, up to 0.0063): the plug-in audit slightly overestimates committed-wrong mass where deferral responds. On the arm no deployment should use without weights, APE errs toward caution; noted for the WP2 certificate's sign analysis."
+  },
+  "collapse_extension": {
+    "registered": "2026-08-19",
+    "status": "Registered BEFORE any collapse battery runs on environments 2-5 (the four wp1_misspec_<env> experiments; per-environment registrations carry the cell-level predictions and config hashes).",
+    "question": "Is the aligned-error collapse within-environment universal, and is the collapse CURVE itself environment-dependent through the loss-curve geometry (kappa), as the first-order theory predicts?",
+    "predictions": {
+      "C1": "Within-environment collapse holds in all four environments: Spearman >= 0.9 and residual pass >= 0.9 (tolerance max(3*SE, 0.0075), pooled unweighted isotonic fit) over each environment's 58 cells.",
+      "C2": "Each environment's through-origin slope on |a| <= 0.02 cells lies in [0.7, 1.5] (window widened from claims' [0.8, 1.5] because the coarse-rule environments have lumpier plateau geometry).",
+      "C3": "The curve is NOT universal across environments: at least one pair of environment slopes differs by more than 2 combined SE (OLS-through-origin SE on the slope-window cells). Pooling all 232 family cells still preserves ordering (pooled Spearman >= 0.9) because sign and monotonicity are universal even where slope is not.",
+      "C4": "The reconstruction spectrum: the gap between each environment's unweighted endpoint (temper gamma = 0) and its full-deprivation cell (rho = 0) at the higher beta level measures how much of the dropped drift driver the ratio fit rebuilds from logged correlates. Registered hard numbers: tickets gap <= 0.005 (frustration is independent by construction, nothing to rebuild), fraud gap >= 0.010 (the correlated-defense environment); moderation and compliance strictly between their environment's two anchors, reported descriptively.",
+      "C5": "The clip now bites realistically: at each environment's higher beta level, exp(beta) exceeds the default clip's expressible odds (99), so even the baseline full-view cells show positive aligned error of the size seen in the sweep P3 misses (tickets and compliance near +0.006 to +0.009; fraud and moderation near zero), and the tight-clip mismatch cells sit further out on the anti-conservative branch. Unlike claims, realistic cells on these environments REACH beyond the near-origin regime."
+    },
+    "falsifiers": {
+      "C1": "A within-environment collapse failure names its environment's residual structure as the WP2 boundary; plateau geometry (compliance, 22 rules) is the registered suspect.",
+      "C3": "If all slopes agree within noise, kappa is empirically universal across tree-induced environments and WP2's constant simplifies; the good miss.",
+      "C4": "A tickets gap above 0.005 means the estimator manufactures signal where none exists (bug path); a fraud gap below 0.010 weakens the correlated-logging-protects-you claim and it gets requalified."
+    }
   }
 }
