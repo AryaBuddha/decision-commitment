@@ -1,0 +1,38 @@
+# Design decisions ledger (Block B0)
+
+One row per experimental constant: value, origin (theory / convention /
+convenience), what conclusion it could plausibly move, and which
+experiment tests it. "Convenience, untested" is acceptable only with a
+statement of what testing it would take. Response to critique defect D1.
+Started 2026-08-19; append rows when new constants enter the codebase.
+
+| Constant | Value | Origin | What it could move | Tested by |
+|---|---|---|---|---|
+| alpha | 0.10 | Convention (typical certified-error budget in the CRC literature) | Everything downstream of the threshold location: kappa (loss-curve slope at lambda* depends on where alpha lands on the curve), plateau conservatism, decay magnitudes | Block B1 sweeps alpha in {0.05, 0.20} with A3-predicted slopes registered first |
+| ratio clip | (0.01, 0.99) | Convention (Tibshirani et al. report RF probabilities hitting 1 without it) | Binds at extreme bounded tilts (exp(beta) > 99), breaking oracle-equivalence of correctly specified estimators (found in wp1f tickets and compliance P3 misses); direction of clip-induced aligned error depends on the environment's loss-alignment (wp1mf C5 verdict) | Block B4 sweeps clip toward wider bounds on the two blind-driver environments; the misspec batteries already sweep it tighter |
+| tree max_depth | 7 (5 compliance, 8 moderation) | Convenience: produces 30 to 65 rules, clearing gate G5 with margin | Score granularity, hence plateau conservatism and possibly the below-1 slope attenuation (D4) | Block B2 re-induces claims at depth {4, 7, 10} x min_leaf {80, 40, 20} |
+| tree min_samples_leaf | 40 (60 then 48 compliance) | Convenience, same role as depth | Same as depth; the compliance retune to 48 was gate-driven (G5 floor) and is recorded in its freeze doc | Block B2 |
+| expert (demo) noise | 0.06 (0.12 compliance) | Convenience: enough label noise that leaf purities spread below 1.0, giving the evidence score dynamic range | Evidence-score informativeness; the compliance value was a deliberate weak-evidence design intent, registered before construction | Untested as a sweep; testing = one claims variant at noise {0.02, 0.12}; low priority because B2 moves the same quantity (score spread) more directly |
+| n_demo | 6000 | Convenience | Rule quality and score shrinkage jointly | Untested; partially covered by B2's min_leaf axis (leaf counts move the same shrinkage) |
+| n_cal | 1000 | Convention (matches CRC literature examples); budget question made explicit | Threshold noise, finite-sample B/(n+1) charge | Ablation C (a473b915381bcb1e): mean control at 250 to 4000; dispersion floored by n_eval noise |
+| n_eval | 1000 | Convenience | Floors realized-risk dispersion per trial (measured exponent 0.32 vs sqrt in Ablation C, the PC2 miss); does NOT move means | Ablation C found it; a targeted n_eval sweep would only re-measure binomial noise, so: convenience, tested indirectly, no further test planned |
+| n_fit | 1000 | Convenience | Ratio-estimator quality; swept as the starvation axis {50..1000} in both misspec batteries | Misspec batteries (fa8459, 56704982, wp1mf x4) |
+| n_trials | 200 pilot / 300 battery / 500 sweep | Convention per RESEARCH_PLAN Part 4.3 sizing (SE 0.001 to 0.002) | Verdict resolvability only | Sized, not swept; SEs reported everywhere |
+| lambda grid | linspace(0, 1, 400) | Convenience | Grid quantization of thresholds; irrelevant while scores occupy <= 65 distinct values (grid is 6x finer than the finest score gap) | Becomes binding only in B3 (continuous scores); B3's gates re-check G5 against it |
+| two shift levels per battery | grid indices 3 and 5 | Convenience (cost); levels tie to the sweeps' own grids | Collapse-curve sampling range; the pilot's second-order regime was reached only via synthetic cells | A1 adds the remaining five sweep levels per environment to the same curves at zero sweep cost |
+| beta grids / chi2 matching | top level matched to chi2 3.47 by MC bisection | Theory-adjacent: cross-environment comparisons need matched divergence | H2 rank claims; tilt-location comparisons | Matching is itself verified per cell (each cell re-reports MC chi2 with SE) |
+| bounded tilt features | [0, 1] manifest features, exponential tilts | Theory: rung-2 exactness requires bounded tilt features (RESEARCH_PLAN 3.2); bounding also floors ESS | Everything: exactness of the oracle arm | Gate G2 per environment; rejection self-check in cus.tests |
+| evidence score formula | Laplace (k+1)/(n+2) leaf consistency | Convention (Laplace smoothing); frozen per contract | Score spread (G5), plateau structure | B2 moves granularity; B3 replaces the formula family entirely |
+| residual tolerance | max(3*SE_cell, 0.0075) | Convenience anchored to delta_control: 0.0075 = 1.5x delta_control; 3*SE covers trial noise | Collapse pass rates | Same tolerance reused unchanged across placeholder, claims, family, and A1, so its bite is comparable everywhere; a stricter-tolerance re-read of archived cells is free if ever challenged |
+| slope window | [0.8, 1.5] claims, [0.7, 1.5] family | Convenience around the informal kappa ~ 1 with plateau allowance | The D4 tension lives here | A2/A3 replace window checks with computed kappa; B2 tests the discreteness half |
+| slope fit window | cells with abs(a) <= 0.02 | Convenience: the near-linear regime seen in the pilot | Which cells define "the slope" | A2 sign-split and local windows expose its sensitivity |
+| z one-sided | 1.645 | Convention (5% one-sided) | Verdict boundaries | Not swept; standard |
+| delta_control | 0.005 | Convention from RESEARCH_PLAN 4.3 (preregistered v2) | Consistency verdicts, equivalence margins | Not swept; every verdict reports means and SEs so any margin can be re-read |
+| delta_oracle | 0.005 | Same | Equivalence claims | Same |
+| Bonferroni scope | across levels within one figure (z 2.4573 for 7) | Convention per RESEARCH_PLAN 4.3 | Confirmatory verdict labels | Raw verdicts always reported alongside |
+| APE audit model | logistic on [s, dec, X, dec*X] | Convenience (simplest family passing the decision-conditional insight) | H1 calibration misses localize exactly where it is too weak (registered falsifier) | Cross-env H1 (max miss 0.0063); B3's continuous-score world will stress it differently |
+| APE sample sizes | 60k audit / 50k lambda0 / 200k target | Convenience (generation is cheap; MC SEs reported) | APE MC error, negligible at these sizes | SEs on file per audit |
+| region cuts | per-env bounded feature >= cut, mass 5 to 15% | Convenience constrained by gate G4 | Region-conditional findings only (descriptive since the claims P5 miss) | Registered two-step planned for any future region claim |
+| TOST margin | 0.25 on slope pairs | Theory-anchored: 0.25 x max realistic abs(a) 0.02 = 0.005 = delta_control | Whether slope equivalence is claimable at all | Block A3 (this block) |
+| kappa FD window | h = 0.05, sensitivity {0.03, 0.08} | Convenience: spans several score plateaus in the coarsest environment | kappa_pred bias | A3 reports the sensitivity spread per cell |
+| A3 guards | abs(a) >= 0.003; slope_what >= 0.02 | Convenience: below these, measured kappa is a ratio of noise or a division by near-zero | Which cells enter the kappa regression | Dropped counts reported in a3_analysis |
