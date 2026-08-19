@@ -340,3 +340,40 @@ non-equivalence of correctly specified estimators at extreme tilts is
 driven by the ratio fit's default L2 regularization, a knob that was
 not even in the ledger until B4 found it (wp1clip, full miss with
 corrected diagnosis).
+
+## F19. EVIDENCE TIER: the law is exact in the own-threshold coordinate, and the amplification m does not exist there (wp2p0c, part L)
+
+The A1 boundary is closed by changing coordinate, not by adding terms.
+At each arm's OWN operating threshold, the decomposition excess =
+E_P0[(w - w_hat) L(lam_own)] + (R_what(lam_own) - alpha) is algebraically
+exact in population; measured with both right-hand terms on an
+independent source draw per trial, all 15 recomputed cells, including
+every compliance sweep level where a(lambda*) saturated in Block A,
+reconstruct excess within max(3 SE, 0.0075) (max residual 0.0015), the
+pooled slope is 1.013 +/- 0.005, and the conservatism term is negative
+in every cell (max + 2SE = -0.0007). Consequences: the lambda*-referenced
+affine law is the composition of an exact identity with a threshold
+translation, m is a property of that translation alone, and a
+certificate can be assembled in the coordinate where no m appears. The
+2.6-sigma excess of the slope above exactly 1.0 is noted as a candidate
+trace of crossing-selection bias for the Phase 1 mechanism hunt.
+
+## F20. EVIDENCE TIER: m falls with calibration budget but plateaus ABOVE 1, and the plateau is alpha-dependent (wp2p0b); the B4 regularization diagnosis survives its risky test (wp2p0c, part R)
+
+On claims, m(alpha, n_cal) falls steeply with budget (2.50 to 1.26 at
+alpha 0.05; 2.53 to 1.11 at alpha 0.10) with threshold dispersion
+scaling at measured exponents -0.45/-0.53 (root-n, no evaluation-side
+floor, unlike F16's outcome dispersion), so empirical-crossing noise
+(H2) owns the budget-dependent component of the amplification. But m
+does not fall toward 1: the 4000 and 10000 points agree to 0.001 at
+both alphas at limits of about 1.11 (alpha 0.10) and 1.26 (alpha 0.05).
+A budget-independent, alpha-dependent component remains, assigned by
+registration to the Phase 1 per-covariate-averaging discriminator
+(P-SW4). Separately, the ledgered B4 follow-up confirmed its risky
+prediction: unregularized (and C = 100) logistic ratio fits recover
+oracle-equivalence in all four affected blind-driver cells at an ESS
+cost of at most 21%, so sklearn's silent L2 default was the owner of
+the top-tilt non-equivalence, and the fix is nearly free, unlike clip
+widening. One registered word missed: the pd-vs-C decrease is monotone
+in only two of four cells, with every non-monotone step within 2 SE of
+zero (filed verbatim).
