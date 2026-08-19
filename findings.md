@@ -95,3 +95,37 @@ WP2's target: bound the signed aligned functional, not a weight-error norm.
 The misspec recompute reproduced every archived cell mean with zero drift,
 so the aligned-error diagnostics attach to the archived run without
 touching it.
+
+## F8. The gates work as designed, and the failures were the valuable part (gates_claims_5459d3b5a7b3c1a1)
+
+Environment 1 (claims triage: generated instances, rules induced from
+noisy demonstration logs, rule-level Laplace-consistency evidence, gold
+mechanically recomputed) failed gate 3 twice before passing. First
+failure: with every manifest feature visible to induction, depth-7 rules
+absorbed nearly all covariate dependence of wrongness. Second failure
+found two general lessons: a proxy feature (auto_flag reading the blind
+feature at coefficient 0.5) let the rule system partially reconstruct the
+unlogged attribute, reproducing synth v1's self-correction disease
+through a realistic mechanism; and the unsigned blindness audit cancels
+sign-opposed effects, because a blind feature raises wrongness in
+APPROVE-routed cases and lowers it in INVESTIGATE-routed ones (+0.0049
+unsigned vs +0.0627 decision-conditional on identical data). The audit is
+now decision-conditional. Full trail in docs/gates/claims.md.
+
+## F9. EVIDENCE TIER: the placeholder story survives contact with a real environment (ab56864e6cfb3400)
+
+First real run, 500 trials per level, Bonferroni-adjusted verdicts.
+Unweighted CRC decays strictly monotonically from 0.0975 to 0.1231 across
+chi2 0 to 3.54 (adjusted VIOLATION from beta 1); oracle Proposition 2 is
+consistent at every level (0.0935 to 0.0975); the well-specified
+estimated arm is equivalent to the oracle at every level; ESS stays above
+232 of 1000 under the bounded tilt; the Proposition 3 envelope is vacuous
+by two to three orders of magnitude. Two env-specific results: plateau
+conservatism is real (oracle sits at or below alpha - 0.002 everywhere),
+and the decay is an order milder than the placeholder at matched chi2
+(+0.023 vs +0.174) because rule-visible correlates partially self-correct;
+that attenuation is a finding about real rule-induction systems, not a
+platform weakness. One verbatim miss: region-1 (high provider flag rate)
+risk sits BELOW aggregate at every level; the induced rules already
+handle that region cautiously, so the group-conditional extension needs a
+region defined on the blind feature instead, under a fresh registration.
