@@ -1,0 +1,14 @@
+{
+  "experiment": "wp2_redteam1",
+  "registered": "2026-08-19",
+  "config_hash": "4f824cb58e5a71a8",
+  "evidence_tier": "REAL. Phase 4 round 1: three registered attacks on the frozen certificate (registrations/wp2_certificate.json), each with a predicted breach size stated in advance from disclosed probes or left deliberately risky.",
+  "attacks_and_predicted_breaches": {
+    "R1-1": "Audit-blindness x blind estimator (surfaces i and ii combined): claims, inconsistency beta 6.5, ratio estimator fully deprived of the tilt feature; the audit's model class lacks the severity*inconsistency gold interaction where the moved commit mass lands, and thin source bins weaken CalErr_loc. PREDICTED: SURVIVAL with median breach in [-0.07, -0.02] (probe: excess +0.018 vs bound +0.059), because claims' correlate reconstruction caps the true excess before the audit gaps matter.",
+    "R1-2": "RISKY, genuinely uncertain: per-draw coverage on the highest-variance archived estimator cells (starvation n_fit 50, tickets beta 5.982 and compliance beta 6.607). Each of 200 draws pairs ONE fitted w_hat's certificate with the SAME w_hat's realized excess on a 10000-case window. PREDICTED (the certificate's design intent, at stake): per-draw coverage >= 90% in both cells. The validation smoke's cell-mean misses on exactly these cells make this the round's most likely breach.",
+    "R1-3": "Post-audit drift (surface iii) on the undefended environment: tickets, everything audited at beta 3.589, deployed at {5.982, 7.178, 9.5}. PREDICTED: survival at 5.982 and 7.178 with shrinking slack (median breach in [-0.05, -0.005]; probes -0.023 and -0.018), and at 9.5 a genuine edge: predicted BREACH with median in [0.00, +0.08]. A survival even at 9.5 would mean CalErr_loc's conservatism absorbs a 6-beta drift, and the deployment freshness requirement can be stated generously.",
+    "honesty_note": "The probes show survival comes substantially from CalErr_loc's looseness rather than from detection (the stale bound at R1-3 does not track the drift, it merely exceeds it). If round 1 survives, this covering-by-margin character is filed as the certificate's measured character, not as vindication of its detection power."
+  },
+  "decision_rule": "Breach per attack cell = realized population excess (200 trials, fresh draws) minus the median certificate bound over 30 deployment draws (R1-2: per-draw pairing over 200 draws as stated). Certificate survives an attack if covered in >= 27/30 draws (R1-2: >= 90% per-draw coverage). Any breach triggers the registered revision loop: revise the certificate, commit the revision, and re-attack in round 2.",
+  "amendments": []
+}
