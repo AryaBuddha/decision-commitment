@@ -1,0 +1,14 @@
+{
+  "experiment": "wp2_h4_analysis",
+  "registered": "2026-08-19",
+  "config_hash": "analysis-only: artifacts/wp2p0_ec15383b39b52206 (fresh battery), registered before the restricted fits were computed",
+  "evidence_tier": "EVIDENCE-TIER DATA, analysis registration. H4's discriminator per the handover: if m is not a constant but the local secant of a curved pd-vs-a relation, then m fitted on small-|a| cells falls toward 1; the other mechanisms predict stability.",
+  "predictions": {
+    "P-H4": "STABILITY (H4 dead): per environment at alpha 0.10 and 0.05, m fitted on the lower-|a| half of guarded temper cells agrees with m on the upper-|a| half within 2 combined SE, in at least 6 of the 8 env-alpha blocks with enough cells (>= 3 per half). Basis: the analytic identity is exactly linear in the factorized world; the collapse curvature appears only beyond |a| about 0.015-0.04, and the guarded band starts at 0.003."
+  },
+  "falsifiers": {
+    "P-H4": "Lower-half m closer to 1 by >= 0.10 in most blocks revives H4: m would be a secant artifact, the plateau reading of wp2p0b would be confounded by cell-|a| composition across n_cal, and the quantized-world derivation would need re-examination at matched |a|."
+  },
+  "decision_rule": "Guarded temper cells per env-alpha (registered battery guards), split at the median |aligned_mean|; through-origin regression of measured kappa on kappa_pred per half; comparison at 2 combined SE.",
+  "amendments": []
+}
