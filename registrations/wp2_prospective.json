@@ -1,0 +1,143 @@
+{
+  "experiment": "wp2_prospective",
+  "registered": "2026-08-19",
+  "config_hash": "7644a21fb970d7bd",
+  "evidence_tier": "REAL. WP2 Phase 5, the capstone: the frozen-certificate prospective test on the holdout environment (returns, built after the freeze, gates ALL PASS). Stage A computed the certificate's safe operating envelope from deployment-visible data only (artifacts/wp2env_7644a21fb970d7bd, recipe v2: 20 bins, audit C 1.0 ledgered benign, freshness precondition trivially satisfied because each level is audited against its own mix); THIS registration embeds those numbers as the predictions; stage B sweeps realized risk afterward. Nothing in stage B can change stage A's numbers.",
+  "envelope": {
+    "rows": [
+      {
+        "feature": "serial_rate",
+        "beta": 1.0,
+        "bound_median": 0.04623714152338389,
+        "bound_p10": 0.03595752187476409,
+        "bound_p90": 0.06107563625221241,
+        "a_plugin_median": 0.0008797001330031959,
+        "cal_err_median": 0.04498996660904523,
+        "b_own_median": -0.0037918426409334865
+      },
+      {
+        "feature": "serial_rate",
+        "beta": 2.0,
+        "bound_median": 0.057869740419332724,
+        "bound_p10": 0.03888223727842804,
+        "bound_p90": 0.0801621321141229,
+        "a_plugin_median": 0.0002754779546079514,
+        "cal_err_median": 0.04763568685085402,
+        "b_own_median": 0.005112126456683213
+      },
+      {
+        "feature": "serial_rate",
+        "beta": 3.0,
+        "bound_median": 0.04806644612890218,
+        "bound_p10": 0.03284474471504099,
+        "bound_p90": 0.06497833050657824,
+        "a_plugin_median": 0.0007556988377557805,
+        "cal_err_median": 0.044883410175555416,
+        "b_own_median": -0.0027935538419127243
+      },
+      {
+        "feature": "serial_rate",
+        "beta": 4.0,
+        "bound_median": 0.05949095264454776,
+        "bound_p10": 0.021924305235261964,
+        "bound_p90": 0.08155175855990156,
+        "a_plugin_median": 0.0007821441694905035,
+        "cal_err_median": 0.04512016571326277,
+        "b_own_median": 0.006369976427668385
+      },
+      {
+        "feature": "serial_rate",
+        "beta": 5.0,
+        "bound_median": 0.05546195202306813,
+        "bound_p10": 0.03868352877567734,
+        "bound_p90": 0.09369764428384655,
+        "a_plugin_median": 0.002113179965155823,
+        "cal_err_median": 0.043419023506766914,
+        "b_own_median": 0.0007876064766378166
+      },
+      {
+        "feature": "serial_rate",
+        "beta": 6.0,
+        "bound_median": 0.04087795634600261,
+        "bound_p10": 0.019830579075623158,
+        "bound_p90": 0.0828928057219835,
+        "a_plugin_median": 0.0030490911928423917,
+        "cal_err_median": 0.040413459690272505,
+        "b_own_median": -0.00937747542538092
+      },
+      {
+        "feature": "desc_vagueness",
+        "beta": 1.0,
+        "bound_median": 0.050621346182447804,
+        "bound_p10": 0.04160077590616446,
+        "bound_p90": 0.07299414106447646,
+        "a_plugin_median": -0.0021809734151488624,
+        "cal_err_median": 0.046405920003900994,
+        "b_own_median": 0.0014409198822185904
+      },
+      {
+        "feature": "desc_vagueness",
+        "beta": 2.0,
+        "bound_median": 0.05132873181461681,
+        "bound_p10": 0.03622098647850318,
+        "bound_p90": 0.07305228408108091,
+        "a_plugin_median": 0.0014328803569466225,
+        "cal_err_median": 0.047032151172895206,
+        "b_own_median": 0.0007236776422497055
+      },
+      {
+        "feature": "desc_vagueness",
+        "beta": 3.0,
+        "bound_median": 0.04813411748122687,
+        "bound_p10": 0.020247286430766995,
+        "bound_p90": 0.06710810008756952,
+        "a_plugin_median": 0.0007217496452679578,
+        "cal_err_median": 0.04561020749716263,
+        "b_own_median": -0.0030082927002938217
+      },
+      {
+        "feature": "desc_vagueness",
+        "beta": 4.0,
+        "bound_median": 0.05681505583437928,
+        "bound_p10": 0.025743517298841875,
+        "bound_p90": 0.08159457011784307,
+        "a_plugin_median": 0.00029228228612281776,
+        "cal_err_median": 0.0473368476342804,
+        "b_own_median": 0.004306329241309999
+      },
+      {
+        "feature": "desc_vagueness",
+        "beta": 5.0,
+        "bound_median": 0.04208949853989451,
+        "bound_p10": 0.028593612664513865,
+        "bound_p90": 0.07242235954501042,
+        "a_plugin_median": 0.0020272098726012502,
+        "cal_err_median": 0.04486315892726814,
+        "b_own_median": -0.004840163095069121
+      },
+      {
+        "feature": "desc_vagueness",
+        "beta": 6.0,
+        "bound_median": 0.054065406785257314,
+        "bound_p10": 0.017180865557665174,
+        "bound_p90": 0.07917299879908839,
+        "a_plugin_median": 0.00043939978475961844,
+        "cal_err_median": 0.044623918258495064,
+        "b_own_median": 0.0012029960493111867
+      }
+    ]
+  },
+  "predictions": {
+    "P-P5-1": "COVERAGE, the capstone claim: realized excess of the deployed pipeline (logistic ratio, full view, ledgered defaults) is at or below the registered bound_median at every one of the 12 (feature, beta) cells.",
+    "P-P5-2": "PRICE, reported honestly: mean (bound_median - realized excess) across cells predicted <= 0.07; every cell's price reported.",
+    "P-P5-3": "RISKY, the danger-location claim: the deployed arm's realized excess at serial_rate beta {5, 6} is POSITIVE (the ledgered C = 1.0 ratio shrinkage at exp(6)-scale tilts on a weak-proxy blind driver, the B4 mechanism, should produce real anti-conservatism there of order +0.005 to +0.02). Covering cells where nothing happens is cheap; this clause predicts where something happens.",
+    "P-P5-4": "Oracle safety: the oracle arm is consistent-with-control (never VIOLATION at the one-sided z) at all 12 cells."
+  },
+  "falsifiers": {
+    "P-P5-1": "Any breached cell is the paper's honest headline for the certificate's limits; per Phase 4 discipline it would be reported with its breach size and attack-surface diagnosis, not narrated away.",
+    "P-P5-3": "If excess at the top serial levels is zero or negative, the weak-proxy reconstruction defended more than the B4 shrinkage hurt, and the danger-location model needs that correction on file.",
+    "P-P5-4": "Standing bug-presumption path."
+  },
+  "decision_rule": "300 trials per cell, fresh seed 20260822 (stage B streams disjoint from stage A). Coverage against bound_median per cell as embedded above. Verdicts prediction-by-prediction, misses verbatim.",
+  "amendments": []
+}
