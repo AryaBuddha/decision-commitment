@@ -452,3 +452,23 @@ coverage and price on a deployment where nothing dangerous happened to
 the deployed arm, and the certificate's cover-by-margin character
 stands exactly as the red team filed it. Figure:
 docs/wp2_prospective_envelope.png.
+
+## F24. EVIDENCE TIER: coverage under stress; the capstone now tests the protection, not the workflow (wp2envs/wp2p5s 8e357241960a63b7)
+
+The first prospective run covered a deployment whose excess was
+negative everywhere, which validates the pipeline and nothing else.
+The stressed rerun instantiates the WP1 realistic degradation axes on
+the same holdout: no correction at three tilt levels on both drift
+features, blind-driver deprivation, driver-plus-proxy deprivation, and
+ratio-fit starvation, with the certificate-v3 envelope computed from
+deployment-visible data and registered before the sweep. A disclosed
+probe first found (and filed) that the fit-based degradations are
+heavily defended on this holdout because the manifest's segment
+structure reconstructs the blind driver, F14's lesson operating
+prospectively, so the genuinely dangerous stress is no correction at
+all, which is also the most common deployment reality. Result: 12/12
+covered while the six no-correction deployments genuinely failed
+their certified level (excess +0.014 to +0.036, up to 30 SE above
+zero), the envelope approached and not crossed (max approach ratio
+0.37; minimum price +0.048), and the oracle consistent everywhere.
+Figure: docs/wp2_prospective_stress.png.
