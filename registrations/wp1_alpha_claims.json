@@ -1,0 +1,21 @@
+{
+  "experiment": "wp1_alpha_claims",
+  "registered": "2026-08-19",
+  "config_hash": "c062c016f317d652",
+  "evidence_tier": "REAL. Block B1: alpha in {0.05, 0.20} beside the archived 0.10 on claims; full four-arm shift-response at 500 trials per level plus a temper-family collapse (paired-difference form, per Block A) at 300 trials per cell, per alpha.",
+  "question": "Does alpha matter the way the identity says it should: through where the threshold lands on the loss curve (kappa) and through whether it binds at all?",
+  "predictions": {
+    "PB1-1": "alpha = 0.20 is DEGENERATE on this environment: the certified level exceeds the full-commit risk (0.131 at source), so the unweighted threshold sits at the grid minimum in at least 95% of trials at every level, all four arms realize the same risk within 0.001 pairwise at every level, and no temper slope is estimable (aligned error and paired differences both collapse toward zero). Registered from the disclosed design audit that found zero temper cells passing the kappa slope guard at alpha = 0.20; alpha only matters while it binds, which is the ledger answer for the alpha row.",
+    "PB1-2": "alpha = 0.05 temper paired-difference slope in [1.06, 1.56]. Derivation, registered: measured claims slope 1.249 at alpha = 0.10 scaled by the design-audit kappa ratio 1.101/1.052 gives 1.307; the window is +/- 0.25 around it, the TOST-consistent decision margin.",
+    "PB1-3": "alpha = 0.05 sweep behaves as the identity expects where it binds: oracle consistent-with-control at the adjusted level at all seven levels; unweighted in adjusted VIOLATION from level 1; estimated equivalent to oracle at every level.",
+    "PB1-4": "At alpha = 0.20, the realized risk of every arm at every level equals the environment's target wrong rate at that tilt (within 2 SE), rising from 0.131 toward 0.211 across the grid: with no binding threshold the procedure inherits the raw error rate, and the sweep doubles as a measurement of the tilted wrong-rate curve."
+  },
+  "falsifiers": {
+    "PB1-1/4": "A binding threshold at alpha = 0.20 would mean the design audit mis-measured the loss curve; investigate the audit before the sweep result.",
+    "PB1-2": "A slope outside the window at alpha = 0.05 means the kappa-ratio scaling fails across alpha even within one environment, and Block C's cross-environment slope predictions must carry wider bands or a repaired kappa.",
+    "PB1-3": "Standing paths (bug presumption for oracle; split hygiene for equivalence)."
+  },
+  "decision_rule": "Per-level three-outcome verdicts at each alpha against ITS OWN certified level (bonferroni z 2.4573 across seven levels); temper slope fitted through origin on paired differences vs aligned error over the 16 temper cells per alpha; degeneracy clauses at the stated tolerances.",
+  "notes": "Design-phase audit, disclosed and never citable: mean temper-cell kappa_pred (h = 0.05, guard slope >= 0.02) was 1.101 at alpha 0.05, 1.052 at alpha 0.10, and undefined at alpha 0.20 (no cell passed the guard), which generated PB1-1 and PB1-2. The temper battery records the paired-difference functional adopted after Block A; no through-origin excess fits are registered here.",
+  "amendments": []
+}
