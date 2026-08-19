@@ -1,0 +1,27 @@
+{
+  "experiment": "wp1_shift_response_claims",
+  "registered": "2026-08-18",
+  "config_hash": "ab56864e6cfb3400",
+  "evidence_tier": "REAL. First evidence-tier run of the programme, on the gated claims environment (env_claims.json, gates ALL PASS at 5459d3b5a7b3c1a1). Confirmatory: n_trials = 500, Bonferroni-adjusted verdicts across the seven levels (one-sided alpha 0.05/7, z = 2.4573); raw verdicts also reported, labelled exploratory.",
+  "question": "On a real rule-induction environment with mechanically recomputed gold, how does realized commit-error risk track the certified alpha as evidence-blind covariate shift grows, under the four calibration arms?",
+  "predictions": {
+    "P1": "Unweighted CRC decays monotonically: mean realized risk rises with chi2 and is in VIOLATION at the Bonferroni-adjusted level for every beta >= 2. Design-phase offline checks (30-trial, pre-registration, never citable) put the decay near 0.095 at beta 0 to 0.128 at beta 6.",
+    "P2": "The oracle Proposition 2 arm is consistent-with-control at the adjusted level at every beta. Any apparent failure is treated first as implementation, sampling, dependence, or assumption error.",
+    "P3": "The estimated arm is equivalent to the oracle at every beta (paired-difference CI at the adjusted z inside [-0.005, +0.005]): the tilt is exp(beta * inconsistency), log-linear in a manifest feature, so the logistic ratio estimator is correctly specified and Q1 is not yet exercised on this environment; the misspecification machinery follows in a later registration.",
+    "P4": "ESS of the true-ratio arms falls monotonically with beta but stays bounded away from collapse (the bounded tilt caps w at exp(beta)/Z), ending above 100 of 1000 at beta 6.",
+    "P5": "Region-1 (provider_flag_rate >= 0.45) marginal risk exceeds aggregate marginal risk at every level, including beta 0.",
+    "P6": "Plateaued loss curve conservatism: with 46 distinct rule scores, thresholds land on plateau edges and overshoot, so the ORACLE arm's mean realized risk sits at or below alpha - 0.002 at every level.",
+    "P7": "The environment's decay is an order milder than the placeholder at matched chi2 (placeholder: +0.17 excess at chi2 3.77; here predicted below +0.05 at chi2 near 3.5) because proxy self-correction is partially operative: rule-visible correlates of the blind feature depress evidence scores for part of the shifted mass. Reported as the environment's character, not a weakness.",
+    "P8": "The Proposition 3 TV envelope (MC-estimated) is vacuous (exceeds 1) from beta = 1 onward while realized unweighted risk stays below 0.15: the published robustness bound does not explain the observed mild decay, replicating the placeholder finding at evidence tier."
+  },
+  "falsifiers": {
+    "P1": "If unweighted CRC holds at the adjusted level across the sweep, this environment self-corrects and cannot exhibit the failure; it is redirected per the gate rule and the audit published. The design-phase check makes this unlikely but 30-trial checks have wide error bars.",
+    "P2": "An oracle failure surviving the unit test, the rung-2 fidelity check, and the split-independence audit would contradict a published theorem and is treated with that standard of evidence.",
+    "P3": "Non-equivalence with a correctly specified estimator implicates split hygiene or the fit pipeline, not the theory; investigate before interpreting.",
+    "P5": "If region-1 risk never diverges from aggregate, the region definition is not risk-relevant on this environment and the group-conditional extension needs a different cut.",
+    "P6": "Oracle mean risk within 0.002 of alpha at some level would mean plateau overshoot is negligible at n_cal = 1000; drop the conservatism claim."
+  },
+  "decision_rule": "Per level, on mean realized marginal error mass across 500 trials: VIOLATION if mean - z*SE > alpha; CONSISTENT if mean + z*SE <= alpha + 0.005; else INCONCLUSIVE; confirmatory claims use z = 2.4573 (Bonferroni, 7 levels, one-sided 0.05 family-wise), exploratory raw verdicts use z = 1.645 and are labelled. Equivalence (P3) uses the paired-difference CI at z = 2.4573 inside [-0.005, +0.005] per level. Primary endpoint: marginal error mass P(commit AND wrong); commitment rate is the utility endpoint; selective error is descriptive. Every figure states sampling rung 2 and that divergences are MC estimates with SE.",
+  "notes": "Verdicts will be recorded under a dated verdicts key, prediction by prediction, misses verbatim (first use of the real-run rule). The design-phase offline checks cited in P1/P7 were 30-trial pipeline probes run before this registration during environment design; they are named here for honesty about what was known when predictions were written, and they are never citable as results.",
+  "amendments": []
+}
