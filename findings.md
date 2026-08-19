@@ -74,3 +74,24 @@ chi2 = 0.06) with a smooth monotone decay to 0.315 at chi2 = 8.49, while
 the Proposition 3 TV envelope is vacuous (exceeds 1) from the first nonzero
 tilt at n_cal = 1000. The observed decay is far milder than the published
 bound allows, which is the opening WP2 sharpens.
+
+## F7. The collapse: excess risk is one-dimensional in signed aligned error (fd2279c8f7dc2df6)
+
+Manipulating aligned error directly with synthetic estimators (tempering
+w^gamma from the unweighted endpoint through the oracle into
+over-correction, and directional w*exp(delta*x_2) in both signs) and
+pooling with the 30 recomputed misspecification cells: excess marginal risk
+vs a = E[(w - w_hat) L(lambda*)] collapses onto one monotone curve through
+the origin. Spearman 0.970, 56 of 58 cells within the preregistered
+residual tolerance, six distinct mechanisms and both shift levels on the
+same curve; realistic and synthetic cells at matched aligned error agree to
+the third decimal (deprivation rho=0 vs temper gamma=0 at beta 1.25: excess
+0.174 vs 0.175). Tempering is strictly monotone through zero at gamma=1 and
+the matched-effective-tilt coincidence check passed. The two residual
+failures are symmetric and informative: at the far anti-conservative end
+(aligned error near 0.053) the two shift levels separate and the curve
+steepens, a second-order regime a first-order theory in a will not capture.
+WP2's target: bound the signed aligned functional, not a weight-error norm.
+The misspec recompute reproduced every archived cell mean with zero drift,
+so the aligned-error diagnostics attach to the archived run without
+touching it.
