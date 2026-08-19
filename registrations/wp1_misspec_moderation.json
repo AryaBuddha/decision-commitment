@@ -1,0 +1,23 @@
+{
+  "experiment": "wp1_misspec_moderation",
+  "registered": "2026-08-19",
+  "config_hash": "037ea765a0016581",
+  "evidence_tier": "REAL. Collapse battery on the gated moderation environment; 58 cells, 300 trials per cell; protocol identical to wp1_misspec_claims. Cross-environment claims C1-C5 are registered in cross_environment_hypothesis.json (collapse_extension) and are judged there; this file carries the per-cell claims.",
+  "predictions": {
+    "P1": "Within-environment collapse: Spearman >= 0.9 and residual pass >= 0.9 over the 58 cells; through-origin slope on |a| <= 0.02 cells inside [0.7, 1.5].",
+    "P2": "Cross-registration anchors: temper gamma = 0 matches this environment's wp1f unweighted arm within 3 combined SE at both betas (0.1181 at the lower level, 0.1161 at the higher); gamma = 1 equivalent to oracle; temper monotone up to adjacent inversions within 2 combined SE; coincidence pair (gamma = 0.8 vs delta = -1 at the higher beta... note delta = -1 gives effective tilt beta-1, gamma = 0.8 gives 0.8*beta; these coincide only when beta = 5, which no family grid hits, so the coincidence check is NOT registered here and the two cells are ordinary points).",
+    "P3": "Reconstruction spectrum, this environment's clause: gap strictly between the environment's zero and its unweighted endpoint; descriptive.",
+    "P4": "Clip reach: baseline full-view cells at the higher beta show positive aligned error consistent with the wp1f P3 paired differences (near +0.006 to +0.009 for tickets and compliance, near zero for fraud and moderation), and the (0.2, 0.8) clip cells sit further out on the anti-conservative branch than the default-clip cells at the same beta.",
+    "P5": "Arithmetic and envelope: |a| <= L1 in all 58 cells; B*L1 envelope valid in all 58 cells.",
+    "P6": "Oracle consistent in all 58 cells."
+  },
+  "falsifiers": {
+    "P1": "Failure names the environment's residual structure as WP2 boundary data; plateau geometry is the registered suspect for the coarse-rule environments.",
+    "P2": "A gamma = 0 endpoint away from the wp1f anchor breaks cross-registration consistency and implicates the harness before any scientific reading.",
+    "P3": "See collapse_extension C4 falsifiers: a tickets gap above 0.005 is the bug path; a fraud gap below 0.010 requalifies the correlated-logging claim.",
+    "P4": "Tight clip failing to extend the anti-conservative branch would mean the clip mechanism seen in the sweeps does not transfer to the battery's split sizes."
+  },
+  "decision_rule": "Collapse criteria as in the config; per-cell three-outcome verdicts at raw z = 1.645, labelled exploratory; named anchors at 3 combined SE; equivalence at the 90% paired CI inside [-0.005, +0.005]. Aligned error uses per-sample mean-1 normalisation of the exact unnormalised rung-2 ratio.",
+  "notes": "No new design-phase probes were run for these registrations; the quantitative anchors come from the already-filed wp1f verdicts and the claims battery. The delta = -1 / gamma = 0.8 coincidence identity does not hold on these grids and is explicitly not claimed.",
+  "amendments": []
+}
