@@ -42,13 +42,22 @@ Proposition 2 existed; this is the platform's verification of it, pilot
 tier. The unit test (exact reduction to unweighted CRC at w == 1) and the
 importance-weighted-moment exactness check gate every run.
 
-## F3. The minority-region failure needs no shift (ef4e524e83fd3cd4)
+## F3. A risk-relevant region CAN fail silently at zero shift (ef4e524e83fd3cd4; scope narrowed 2026-08-19)
 
-Region 1 (minority, defined on the hidden driver) marginal risk sits near
-0.42 at zero shift while the aggregate is exactly controlled at 0.10.
-Marginal guarantees do not transfer to subgroups; shift aggravates an
-existing failure rather than causing it. This motivates the
-group-conditional calibration extension.
+An existence result, placeholder tier: region 1 (defined on the hidden
+driver) marginal risk sat near 0.42 at zero shift while the aggregate was
+exactly controlled at 0.10, so marginal guarantees do not automatically
+transfer to subgroups and shift aggravates rather than causes the
+failure. SCOPE NOTE: this did NOT transfer to the claims environment
+under the provider-flag-rate region cut; the first evidence-tier run
+(F9, P5 miss) found region-1 risk BELOW aggregate at every level, because
+the induced rules already treat that region cautiously. Whether a region
+fails silently depends on the region definition's relation to what the
+rules can see, which is itself a finding. The group-conditional extension
+remains motivated by the existence result, but the claims region hunt is
+a registered two-step: exploratory identification on a dedicated design
+split, then a fresh registered confirmatory run on new draws. Nothing
+from ab56864e6cfb3400 may be reused to pick the cut.
 
 ## F4. B*L1 is a valid but expensive envelope (fa8459eb3cb50722)
 
