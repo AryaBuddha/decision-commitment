@@ -139,5 +139,14 @@
     "P-P5-4": "Standing bug-presumption path."
   },
   "decision_rule": "300 trials per cell, fresh seed 20260822 (stage B streams disjoint from stage A). Coverage against bound_median per cell as embedded above. Verdicts prediction-by-prediction, misses verbatim.",
-  "amendments": []
+  "amendments": [],
+  "verdicts": {
+    "date": "2026-08-19",
+    "run": "artifacts/wp2p5_7644a21fb970d7bd, EVIDENCE TIER, 300 trials/cell, the capstone",
+    "P-P5-1": "CONFIRMED: 12/12 cells covered. The certificate, frozen and twice red-teamed before this environment existed, covers realized risk at every registered envelope point on data it had never seen.",
+    "P-P5-2": "CONFIRMED and reported: mean price +0.0562 (per-cell prices +0.041 to +0.066 against realized excesses of -0.003 to -0.008); alpha_cert around 0.15 against realized risk around 0.095.",
+    "P-P5-3": "MISS (RISKY), filed verbatim: realized excess at serial_rate beta 5 and 6 is NEGATIVE (-0.0033 +/- 0.0012 and -0.0056 +/- 0.0013), not positive. The deployed estimator tracks the oracle within 0.003 at every cell: the weak-proxy reconstruction and this environment's geometry defended more than the ledgered C = 1.0 shrinkage hurt. The danger-location model was wrong here, and with it the strong form of the coverage claim: the capstone certifies coverage AND price on a deployment where, it turned out, nothing dangerous happened to the deployed arm. The certificate's measured character stands as round 1 filed it: it covers by honest margin, not by tracking danger.",
+    "P-P5-4": "CONFIRMED: the oracle arm is consistent at all 12 cells (means -0.004 to -0.009, all + 2 SE below alpha + delta).",
+    "capstone_statement": "The one-authorial-hand objection is answered to the extent a generated-world program can answer it: environment 7 was designed after the certificate froze, its envelope was registered from deployment-visible data before any realized-risk sweep existed, and the sweep then landed inside the envelope at every point, at a price the record states plainly."
+  }
 }
