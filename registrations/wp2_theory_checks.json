@@ -1,0 +1,16 @@
+{
+  "experiment": "wp2_theory_checks",
+  "registered": "2026-08-19",
+  "config_hash": "c18693c9bb6ff0d1",
+  "evidence_tier": "PILOT (deterministic quadrature). Numerical verification battery for wp2_theory.md; a theory result is not believed until its check passes here.",
+  "predictions": {
+    "P-T1": "Lemma 2 (intercept bound) holds at every (alpha, K) grid point: 24/24.",
+    "P-T2": "Proposition 3's remainder bound holds at every rank-2 cell with a computable interval: 0 failures, worst lhs/rhs <= 1.",
+    "P-T3": "Lemma 4's effective-level formula reproduces the deterministic grid crossing within one grid step at every (alpha, n_cal, gamma): 18/18."
+  },
+  "falsifiers": {
+    "any": "A single failure blocks the corresponding theory result from entering the certificate at PROVED grade; the proof or its conditions must be repaired first, and the repair is an amendment here."
+  },
+  "decision_rule": "Deterministic; the runner exits nonzero on any failure.",
+  "amendments": []
+}
