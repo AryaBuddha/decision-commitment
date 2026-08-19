@@ -1,0 +1,13 @@
+{
+  "experiment": "wp2_redteam2",
+  "registered": "2026-08-19",
+  "config_hash": "575dbfb434d904f9",
+  "evidence_tier": "REAL. Phase 4 round 2, attacking the certificate as revised by round 1 (freshness precondition) plus the certificate pipeline's own silent defaults, per the B4 lesson generalized.",
+  "attacks_and_predicted_breaches": {
+    "R2-1": "Freshness window re-attack: tickets audited at 3.589, deployed at +1.2, +2.4, +3.6 beta-units. PREDICTED: (a) the drift monitor orders the three deployments strictly, with monitor(+3.6) >= 2x monitor(+1.2); (b) with the tolerance set at the +2.4 point's measured monitor value, the inside-window deployment (+1.2) stays covered >= 27/30, and the +3.6 deployment's monitor exceeds the tolerance in >= 27/30 draws: round 1's silent failure becomes a detected one. The +2.4 edge itself is expected marginal (round 1: 28/30 at the same drift on fresh seeds).",
+    "R2-2": "RISKY (the B4 lesson inside the certificate): the audit model's sklearn L2 default (C = 1.0), a knob absent from the ledger until this registration. PREDICTED: |median bound at unregularized minus at C = 1| <= 0.01 at both cells. If it moves more, the certificate recipe must pin the audit C and every validation number gains a caveat, exactly as B4 forced for the ratio fit.",
+    "R2-3": "Binning default: n_bins in {5, 10, 20}. PREDICTED: median bound spread across bin counts <= 0.01 at both cells; the decile choice is not load-bearing."
+  },
+  "decision_rule": "R2-1 coverage and detection at 27/30; R2-2/R2-3 on median bounds over 15 draws. Any breach revises and re-attacks; a full-survival round closes Phase 4 with the certificate's character stated (including round 1's honesty note that survival inside the window rests on CalErr_loc margin, not drift tracking).",
+  "amendments": []
+}
