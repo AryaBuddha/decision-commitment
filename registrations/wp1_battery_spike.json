@@ -1,0 +1,21 @@
+{
+  "experiment": "wp1_battery_spike",
+  "registered": "2026-08-19",
+  "config_hash": "28637c2991f2de27",
+  "evidence_tier": "REAL. Block C: temper collapse on the gated adversarial-kappa environment (gates ALL PASS at 4bab082db8eba24c), 300 trials per cell, paired-difference form throughout.",
+  "question": "Does the repaired identity predict the collapse slope in a world built to break it? Design-audit kappa_pred spans 0.78 to 2.42 across the temper cells (mean 1.304), far outside the 0.85 to 1.25 range of the five prior environments.",
+  "predictions": {
+    "PC-1": "Pooled temper paired-difference slope in [1.22, 1.82]. Derivation, registered: the Block A cross-cell regression coefficient 1.167 applied to the audit mean kappa_pred 1.304 gives 1.522; the window is +/- 0.30, widened from the TOST margin by the B2-measured gap spread (0.19 to 0.29).",
+    "PC-2": "THE SHARP ONE: within this single environment (so the environment-label confound of Block A A3 vanishes), the through-origin regression of per-cell measured kappa (paired difference / aligned error) on per-cell kappa_pred over the guarded cells has slope in [0.9, 1.4] and R2 >= 0.5. If this holds, kappa is computable per cell from calibration draws and the constancy claim's replacement survives its adversarial test; the cross-environment residue of A3 then reads as a between-family effect, not a failure of the local formula.",
+    "PC-3": "Oracle consistent in all 16 cells, with large conservatism (audit: -0.0133) consistent with the F17 intercept mechanism on a coarse impure band.",
+    "PC-4": "The gamma = 0 endpoint at the top beta realizes excess near the design probe's unweighted decay (+0.109 at 30 trials, disclosed), confirming the environment does what it was built to do."
+  },
+  "falsifiers": {
+    "PC-1/2": "Registered outcome logic per NEXT_BLOCK.md: prediction hits, then constancy was five similar worlds and the correct claim is kappa computable, slope predicted; prediction misses, then the identity's kappa is incomplete and the miss localizes what it omits (the candidate omissions, in order: threshold-distance saturation from A1, between-family structure from B2/B3, finite-difference window bias). There is no outcome in which the experiment is wasted, and no version of the old constancy claim survives it.",
+    "PC-3": "Standing bug-presumption path.",
+    "PC-4": "A tame gamma = 0 endpoint means the design audit overstated the band mechanism; re-audit before interpreting the slopes."
+  },
+  "decision_rule": "Pooled slope through origin on paired differences over the 16 cells; per-cell regression restricted to the registered guards (abs(a) >= 0.003, slope_what >= 0.02); kappa_pred computed inside the battery itself at the registered h = 0.05, so prediction and measurement share draws trial-by-trial.",
+  "notes": "Design-phase audits, disclosed and never citable: two rejected designs (kappa_pred 1.022 with no decay; 1.066 with linear band error) preceded the frozen threshold-gated design (kappa_pred cells 0.78 to 2.42, G3 lift +0.048, wrong 0.115, unweighted 0.209 at the top beta, 30 to 60 trial probes). The design iterations are part of the record: making kappa adversarial required exactly the band-concentration mechanism the identity names, which is itself weak evidence the identity has the right variables.",
+  "amendments": []
+}
