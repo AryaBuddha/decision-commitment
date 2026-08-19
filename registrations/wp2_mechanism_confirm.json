@@ -1,0 +1,19 @@
+{
+  "experiment": "wp2_mechanism_confirm",
+  "registered": "2026-08-19",
+  "config_hash": "4f15d0310ff68a3f",
+  "evidence_tier": "REAL. Phase 1 gated-tier confirmation of the discrete-crossing mechanism on all four environments, temper family, alpha {0.05, 0.10}, fresh seed 20260821, 300 trials/cell. Per cell the identity pd = a(lam_e) + b_e - b_o is measured on an independent 4000-point source draw (no evaluation windows involved), giving m_derived = pd_identity / (kappa_pred * a(lam*)); measured m_cell uses the evaluation windows as usual.",
+  "predictions": {
+    "P-MC1": "Per env-alpha, the through-origin regression of measured per-cell m on derived per-cell m over guarded temper cells has slope in [0.90, 1.10] and R2 >= 0.7 in at least 6 of 8 blocks. The amplification is fully accounted for by the identity's own terms measured at the arms' crossing points; nothing else is needed.",
+    "P-MC2": "RISKY (the ordering): mean m_derived at alpha 0.05 reproduces the fresh battery's environment ordering claims_logit < claims < tickets, and tickets' 0.05 value exceeds its 0.10 value by at least 0.3, i.e. the tickets anomaly (P0-5 miss) is plateau geometry, not noise.",
+    "P-MC3": "The identity-implied pd agrees with the evaluation-window pd within 2 combined SE in >= 90% of all 128 cells (Identity 1 at gated tier, per cell; extends F19 from the unweighted arm to tempered arms)."
+  },
+  "falsifiers": {
+    "P-MC1": "Slope or R2 failures mean the crossing arithmetic misses a term on real geometries (candidate: selection effects of noisy crossings on plateaus); m then enters Phase 2 as BOUNDED, not derived, and the certificate keeps only the own-threshold form.",
+    "P-MC2": "An ordering miss sends the tickets anomaly back to unexplained; registered follow-up required before any narration.",
+    "P-MC3": "Identity failures at tempered arms would contradict F19's coordinate exactness and implicate the independent-draw estimator itself; bug presumption first."
+  },
+  "decision_rule": "Guards as in the battery (|a*| >= 0.003, slope_what >= 0.02, kappa_pred computable). Verdicts prediction-by-prediction, misses verbatim.",
+  "notes": "Registered while the quantized-world derivation test (wp2qsw) runs, before its verdicts; the two experiments test the same mechanism on the two tiers, per the Phase 1 exit criterion. The seed 20260821 is fresh (not shared with any Phase 0 run).",
+  "amendments": []
+}
