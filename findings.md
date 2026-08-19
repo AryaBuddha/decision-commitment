@@ -274,3 +274,43 @@ what n_cal buys at large shift is conservatism margin and about a 2.4x
 dispersion reduction against a floor. Deployment reading: past roughly
 n_cal = 1000, spend the next label budget on monitoring windows, not on
 calibration.
+
+## F13 correction (2026-08-19, Block A). The slope-constancy claim is retracted
+
+F13's statement that kappa is "universal within noise" was
+failure-to-reject dressed as equivalence, and the through-origin fits
+behind it were misspecified. TOST at the preregistered margin 0.25
+establishes equivalence for 0 of 10 environment pairs, and after the
+affine correction (F17) the slopes are genuinely unequal (1.005 to
+1.734). The within-environment collapse results in F13 stand (the
+isotonic yardstick absorbed the intercept); the constancy sentence does
+not. Retraction filed as an amendment in
+cross_environment_hypothesis.json.
+
+## F17. EVIDENCE TIER: the collapse relation is affine, its intercept is the plateau conservatism, and the corrected functional is the paired difference (blockA_e58d1bc4b8627b0d)
+
+Three archived-data recomputations converge on one correction. The
+sign-split slope anatomy (A2) inverted both its registered predictions:
+positive branches sit below pooled fits and negative branches are
+steeper, the signature of a missing negative intercept, and the fitted
+intercepts match each environment's measured oracle conservatism to the
+third decimal in five of five environments. The registered per-cell
+kappa test (A3) failed on the contaminated y-variable exactly as the
+affine model predicts, and the corrected form, paired difference
+(estimated minus oracle) regressed through the origin on aligned error,
+collapses at R2 0.939 to 0.987 per environment. This resolves critique
+defect D4 entirely: the below-1 pooled slopes and the pilot-vs-evidence
+slope tension were fit-model artifacts. It also sharpens D3 beyond the
+critique: the de-contaminated slopes are genuinely unequal across
+environments (fraud 1.005 to compliance 1.734), the local-slope-ratio
+kappa_pred explains less of that variation than the environment label
+does (R2 0.22 vs 0.46), and the coarsest-score environment has the
+steepest slope, naming plateau discreteness as the missing term (Block
+B2's target). Separately, the unification test (A1) put 38 of 42
+archived unweighted cells on the existing curves, including tilt
+directions the batteries never tilted, and localized where the
+coordinate degrades: not by tilt direction but by threshold distance,
+since a(lambda*) saturates once the evaluated arm's threshold sits far
+from the oracle's (compliance sweep: a flat at 0.017 while excess climbs
+to 0.038). One coordinate, one affine law, two measured boundaries:
+threshold distance and plateau coarseness.
