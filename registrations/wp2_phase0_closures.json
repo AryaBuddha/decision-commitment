@@ -19,5 +19,15 @@
   },
   "decision_rule": "Part L: per-cell residual test and pooled through-origin slope as stated; the independent-sample estimates make excess = a_own + b_own an algebraic identity in population, so the test is of finite-sample reconstruction, not of the algebra. Part R: equivalence by the registered TOST-style band |pd| + z*SE <= delta_oracle = 0.005 at z = 1.645. Verdicts prediction-by-prediction, misses verbatim.",
   "notes": "Part L design note: the decomposition E_Q[L] - alpha = E_P0[(w-1)L] + (E_P0[L] - alpha) holds for ANY threshold; its content here is that both right-hand terms are measured at the arm's OWN realized threshold on data independent of the calibration draw, which is what the A1 coordinate failed to do. Part R design audit (disclosed): B4's mechanism (L2 shrinkage of extreme log-odds) predicts the effect concentrates where true log-odds are largest, i.e. the top tilt levels of the blind-driver environments; C = 10 is predicted to remove most but not all of the gap (shrinkage scales as 1/C at fixed data); no numeric probe was run.",
-  "amendments": []
+  "amendments": [],
+  "verdicts": {
+    "date": "2026-08-19",
+    "run": "artifacts/wp2p0c_a801f76c2d55fb4d, EVIDENCE TIER, 300 trials/cell",
+    "P0C-L1": "CONFIRMED 15/15: every locality cell, including all six compliance sweep levels where a(lambda*) saturated in A1, reconstructs excess = a_own + b_own within tolerance; max |residual| 0.0015 against tolerance 0.0075.",
+    "P0C-L2": "CONFIRMED (RISKY): own-threshold slope 1.013 +/- 0.005, inside [0.90, 1.15]. There is NO m amplification in the own-threshold coordinate; m is a property of referencing a at the oracle threshold lambda*, and the certificate can be assembled in the coordinate where the identity is exact. The 2.6-sigma excess above exactly 1.0 is noted as a candidate trace of crossing-selection bias for Phase 1.",
+    "P0C-L3": "CONFIRMED: b_own + 2SE < 0 in all 15 cells (max -0.0007); plateau conservatism dominates selection bias at alpha 0.10, n_cal 1000.",
+    "P0C-R1": "PARTIAL MISS, filed verbatim: pd at C = 1 is positive in all four cells (+0.0053 to +0.0068, replicating the wp1f misses on fresh seeds), and pd decreases monotonically in C in tickets beta 7.178 and compliance beta 6.607, but NOT strictly in the other two cells (tickets 5.982: -0.0004 at C=100 rising to +0.0011 at unregularized; compliance 5.506: -0.0001 to +0.0004). Every non-monotone step is within 2 SE of zero; the miss is at noise level, but the registered word was 'monotonically' and the sequences are not.",
+    "P0C-R2": "CONFIRMED (RISKY): oracle-equivalence recovered at C = 100 AND unregularized in all four cells. The B4 corrected diagnosis stands: sklearn's default L2 was the owner of the top-tilt non-equivalence.",
+    "P0C-R3": "CONFIRMED: ESS at unregularized within 25% of C = 1 in all cells (drops of 14% to 21%); the fix costs little, unlike clip widening."
+  }
 }
