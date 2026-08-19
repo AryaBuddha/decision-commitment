@@ -1,0 +1,52 @@
+{
+  "experiment": "wp1_shift_response",
+  "registered": "2026-08-18",
+  "config_hash": "ef4e524e83fd3cd4",
+  "question": "How does realized commit-error risk track the certified level alpha as covariate shift magnitude grows, under three calibration procedures?",
+  "predictions": {
+    "P1": "Unweighted CRC mean realized risk rises above alpha as chi2 divergence grows, exceeding alpha by a margin that increases monotonically with chi2.",
+    "P2": "Oracle arm now implements Angelopoulos et al. Proposition 2 literally (per-test-covariate threshold, true ratio) and is theorem-backed. Predict it holds at every shift level. Any apparent failure is treated first as implementation, sampling, dependence, or assumption error.",
+    "P3": "Estimated-weight CRC tracks the oracle closely at small shift and separates from it as shift grows, with the separation tracking log-ratio RMSE.",
+    "P4": "Effective sample size falls monotonically with shift for both weighted arms, and is the main driver of increased trial-to-trial dispersion.",
+    "P5": "Region 1 marginal risk exceeds aggregate marginal risk at every shift level, and exceeds alpha for at least one arm at which the aggregate does not."
+  },
+  "falsifiers": {
+    "P1": "If unweighted CRC holds coverage across the sweep, either the tilt does not move the case mix or the loss is not sensitive to the shifted dimensions. Fix the environment before proceeding.",
+    "P2": "An oracle-arm failure that survives the unit test (reduction to unweighted at w==1), the exact-sampling audit, and the independence audit would contradict a published theorem and requires that level of evidence before being reported as anything but a bug.",
+    "P5": "If region-conditional risk never diverges from aggregate, the planted failure mode is not being surfaced and the metrics are wrong."
+  },
+  "decision_rule": "Three outcomes per sweep point on mean realized marginal risk across trials: VIOLATION if mean - 1.645*SE > alpha; CONSISTENT WITH CONTROL if mean + 1.645*SE <= alpha + delta_control (delta_control = 0.005, preregistered); INCONCLUSIVE otherwise. Failure to establish violation is never reported as evidence of control. Confirmatory claims on real environments apply Bonferroni across shift levels within a figure. Oracle-tracking for the estimated arm is an equivalence claim: the 90% CI of the paired difference must lie inside [-delta_oracle, +delta_oracle] with delta_oracle = 0.005. Primary endpoint: marginal error mass P(commit AND wrong). Utility endpoint: commitment rate. Selective error P(wrong | commit) is reported descriptively; certifying it requires a separate Learn-then-Test procedure and is out of scope for this run.",
+  "notes": "Environment is the synthetic placeholder, not the generated family. No claim in the eventual paper rests on this run. Its purpose is to fix the pipeline and the metric definitions before generation cost is incurred.",
+  "amendments": [
+    {
+      "date": "2026-08-18",
+      "what": "Corrected decision rule from violation_rate to mean risk.",
+      "why": "Pilot run showed ~0.48 violation rate at zero shift, which is the expected behaviour of an in-expectation bound, not a failure."
+    },
+    {
+      "date": "2026-08-18",
+      "what": "Changed tilt_direction from (-1,0,0,0,1) to (1,0,0,0,0.5).",
+      "why": "The airfoil tilt direction was copied without checking its sign against the difficulty function, which made the evaluation set easier rather than harder and inverted the experiment."
+    },
+    {
+      "date": "2026-08-18",
+      "what": "Replaced synth with synth2, separating a visible from an evidence-blind difficulty driver, and moved the tilt onto the blind one.",
+      "why": "In v1 the evidence score was a read of the same variable driving correctness, so the commitment rule self-corrected under shift and unweighted CRC barely broke. The failure WP1 measures requires shift on features the evidence signal cannot see."
+    },
+    {
+      "date": "2026-08-18",
+      "what": "Oracle and estimated arms rewritten to implement Angelopoulos et al. (2022) Proposition 2 literally, with per-test-covariate thresholds and the w(x)B pseudo-loss term; the prior single-global-threshold procedure is retained only as the glob_oracle ablation arm.",
+      "why": "External review correctly identified that Section 4.1 / Proposition 2 already proves weighted conformal risk control under covariate shift for any monotone bounded loss. The prior plan mislabelled this a conjecture, and the prior code did not implement the proven procedure."
+    },
+    {
+      "date": "2026-08-18",
+      "what": "Finite-pool tilted resampling replaced by exact analytic tilting (source N(0,I), target N(b,I), closed-form ratio, chi2, and TV). Four mutually independent splits per trial: labelled calibration, ratio-fit source covariates, ratio-fit target covariates, labelled evaluation.",
+      "why": "Review correctly noted pool resampling yields an empirical approximation to the tilted population, contradicting the exactness claim, and that fitting the ratio on the same covariates used for calibration and evaluation lets estimator overfitting masquerade as robustness."
+    },
+    {
+      "date": "2026-08-18",
+      "what": "Decision rules corrected to a three-outcome scheme with one-sided z=1.645 and preregistered tolerances; oracle-tracking redefined as an equivalence test; endpoint renamed excess marginal risk; Barber-style decaying-weights arm removed from WP1 scope (moved to a future gradual-drift experiment).",
+      "why": "Review correctly identified that 'mean - 1.96 SE <= alpha' is failure to establish violation rather than evidence of control, that 1.96 is a two-sided critical value, that 'within 2 SE' is not an equivalence criterion, and that index-decaying weights have no principled role when all calibration points are identically distributed."
+    }
+  ]
+}
