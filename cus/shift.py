@@ -173,7 +173,8 @@ def fit_ratio(X_src: np.ndarray,
               X_tgt: np.ndarray,
               method: str = "logistic",
               clip: tuple[float, float] = (0.01, 0.99),
-              seed: int = 0):
+              seed: int = 0,
+              C: float | None = 1.0):
     """Fit the classifier-odds ratio estimator on DEDICATED covariate splits
     and return a callable w_hat(X).
 
@@ -183,11 +184,19 @@ def fit_ratio(X_src: np.ndarray,
     (induction / labelled calibration / ratio-fit covariates / fresh
     evaluation) keeps the estimator blind to both the calibration and the
     evaluation draws.
+
+    C is sklearn's inverse L2 regularization strength. The default 1.0 is
+    the ledgered knob Block B4 unmasked (it shrinks extreme log-odds and
+    drives top-tilt non-equivalence of correctly specified estimators);
+    C=None fits unregularized. Every registered run states its C.
     """
     X = np.vstack([X_src, X_tgt])
     y = np.concatenate([np.zeros(len(X_src)), np.ones(len(X_tgt))])
     if method == "logistic":
-        clf = LogisticRegression(max_iter=2000)
+        if C is None:
+            clf = LogisticRegression(max_iter=5000, penalty=None)
+        else:
+            clf = LogisticRegression(max_iter=2000, C=C)
     elif method == "rf":
         clf = RandomForestClassifier(n_estimators=200, min_samples_leaf=5,
                                      random_state=seed, n_jobs=1)

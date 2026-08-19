@@ -1,0 +1,22 @@
+{
+  "experiment": "wp2_phase0_budget",
+  "registered": "2026-08-19",
+  "config_hash": "16996ec167284e46",
+  "evidence_tier": "REAL. WP2 Phase 0: m(alpha, n_cal) on claims, temper family, fresh seed 20260820. alpha {0.05, 0.10} x n_cal {100, 250, 1000, 4000, 10000}; the 100 and 10000 endpoints are the mandated extremes, both outside every previously tested budget.",
+  "question": "Does the amplification factor m depend on the calibration budget? The leading Phase 1 mechanism (H2: the threshold solves a NOISY empirical estimating equation, and threshold noise against a convex loss curve Jensen-amplifies excess) requires m to fall toward a limit as n_cal grows. This registration commits to that mechanism's signature BEFORE the mechanism hunt begins.",
+  "predictions": {
+    "P0B-1": "RISKY, mechanism-committal: m is strictly decreasing in n_cal at both alphas (Spearman(m, n_cal) = -1 over the five-point grid at each alpha), and the total drop at alpha 0.05 is large: m(0.05, 100) - m(0.05, 10000) >= 0.15.",
+    "P0B-2": "The alpha-dependence survives budget crossing: m(0.05, n_cal) > m(0.10, n_cal) at every n_cal where both are measurable.",
+    "P0B-3": "Mean control is budget-insensitive (replicating F16's mean rows on fresh seeds): the oracle aggregate margin b is <= 0 + 2 SE at all 10 (alpha, n_cal) grid points, including n_cal = 100 where the B/(n+1) charge is 25 to 50 times larger relative to alpha.",
+    "P0B-4": "The H2 ingredient measured directly: sd(lambda_hat) scales with n_cal at a power in [-0.6, -0.35] (log-log regression across the grid, per alpha). Unlike F16's realized-risk dispersion (floored by the evaluation window at exponent 0.32), threshold dispersion has no evaluation-side floor and should track root-n."
+  },
+  "falsifiers": {
+    "P0B-1": "If the total decrease is < 0.08 at BOTH alphas, H2 is dead on arrival: empirical-crossing noise cannot be the main owner of m, and Phase 1 starts with H2 demoted and H1/H3/H4 promoted. This is the registration's reason to exist; a flat m is the single most informative miss available this phase.",
+    "P0B-2": "An inversion (m(0.05) <= m(0.10) at some budget) would tie the alpha-dependence to a budget interaction no current mechanism predicts; register a follow-up before narrating.",
+    "P0B-3": "Standing bug-presumption path; a violation at n_cal = 100 specifically implicates the finite-sample term handling.",
+    "P0B-4": "An exponent shallower than -0.35 means threshold noise is floored by something other than calibration count (score discreteness is the named suspect: on a plateau, the threshold cannot move by less than one plateau step, capping the resolution); that reading feeds H1 rather than H2 and is stated here in advance."
+  },
+  "decision_rule": "m per (alpha, n_cal): through-origin regression of measured kappa on kappa_pred over guarded temper cells, guards as registered in the battery (|a| >= 0.003, slope_what >= 0.02, ratio-of-trial-means kappa_pred at h = 0.05). sd(lambda_hat) recorded per cell as the across-trial standard deviation of the estimated arm's mean per-test threshold; grid exponent by OLS on log-log means per alpha. Verdicts prediction-by-prediction, misses verbatim.",
+  "notes": "No disclosed probe of the m(n_cal) direction exists; the 20-trial budget probe in the design audit failed its own guards (per-trial ratio instability) and was not re-run, deliberately: P0B-1's direction and size come from the H2 mechanism alone, which is what makes it risky rather than fitted. n_cal = 10000 cells cost about 10x the standard cells; 300 trials are kept anyway.",
+  "amendments": []
+}

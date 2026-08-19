@@ -1,0 +1,23 @@
+{
+  "experiment": "wp2_phase0_closures",
+  "registered": "2026-08-19",
+  "config_hash": "a801f76c2d55fb4d",
+  "evidence_tier": "REAL. WP2 Phase 0's two cheap closures, fresh seed 20260820, alpha 0.10, 300 trials per cell. Part L: the A1 locality boundary, re-expressed at each arm's own operating threshold on the cell classes A1 found off-curve (the full compliance sweep; the claims severity and moderation toxicity/sarcasm tilt-location levels). Part R: the ledgered B4 follow-up, ratio-fit regularization C in {1, 10, 100, unregularized} at the four affected blind-driver cells (tickets and compliance, top two tilt levels).",
+  "predictions": {
+    "P0C-L1": "Own-threshold reconstruction: in >= 90% of the 15 locality cells, |excess - (a_own + b_own)| <= max(3*SE_excess, 0.0075), where a_own = E_P0[(w-1) L(lambda_own)] and b_own = rho0(lambda_own) - alpha are measured per trial on an independent 4000-point source draw. This includes every compliance cell where a(lambda*) saturated in A1.",
+    "P0C-L2": "RISKY: the through-origin slope of (excess - b_own) on a_own across the 15 cells lies in [0.90, 1.15]. NO m amplification in the own-threshold coordinate. If amplification appears here too, m is not an artifact of lambda*-referencing, and both H2 and H3 need rework before Phase 1 runs them.",
+    "P0C-L3": "b_own <= 0 + 2 SE in every cell: at alpha 0.10 and n_cal 1000, plateau conservatism dominates the selection bias of choosing the threshold on the same sample that crossed it.",
+    "P0C-R1": "The paired difference (estimated minus oracle) is positive at C = 1 in all four cells (replicating the wp1f misses on fresh seeds) and decreases monotonically in C toward zero in each cell.",
+    "P0C-R2": "RISKY (the B4 diagnosis on the line): oracle-equivalence (|pd| + 1.645 SE <= 0.005) is recovered at C = 100 AND at unregularized in all four cells. If unregularized logistic still fails equivalence, B4's corrected diagnosis is refuted verbatim and the top-tilt non-equivalence needs a third owner.",
+    "P0C-R3": "The fix is nearly free, unlike clip widening: ESS of the calibration weights at unregularized stays within 25% of its C = 1 value in every cell."
+  },
+  "falsifiers": {
+    "P0C-L1/L2": "Failure localizes the certificate's backbone: Phase 3's alpha_cert is assembled from exactly this decomposition (an aligned term plus a conservatism term at the operating threshold), so a miss here revises the certificate's form before it is ever built.",
+    "P0C-L3": "A positive b_own is the selection-bias (Jensen) signature appearing at the unweighted arm at alpha 0.10; it would move H2 from candidate to directly observed and require the certificate's margin term to cover it.",
+    "P0C-R1/R2": "As stated in P0C-R2; additionally a non-monotone pd in C would mean regularization interacts with the clip, and the pair must be swept jointly before either is ledgered as understood.",
+    "P0C-R3": "An ESS collapse at unregularized means the fix trades bias for variance and the ledger row must say so."
+  },
+  "decision_rule": "Part L: per-cell residual test and pooled through-origin slope as stated; the independent-sample estimates make excess = a_own + b_own an algebraic identity in population, so the test is of finite-sample reconstruction, not of the algebra. Part R: equivalence by the registered TOST-style band |pd| + z*SE <= delta_oracle = 0.005 at z = 1.645. Verdicts prediction-by-prediction, misses verbatim.",
+  "notes": "Part L design note: the decomposition E_Q[L] - alpha = E_P0[(w-1)L] + (E_P0[L] - alpha) holds for ANY threshold; its content here is that both right-hand terms are measured at the arm's OWN realized threshold on data independent of the calibration draw, which is what the A1 coordinate failed to do. Part R design audit (disclosed): B4's mechanism (L2 shrinkage of extreme log-odds) predicts the effect concentrates where true log-odds are largest, i.e. the top tilt levels of the blind-driver environments; C = 10 is predicted to remove most but not all of the gap (shrinkage scales as 1/C at fixed data); no numeric probe was run.",
+  "amendments": []
+}

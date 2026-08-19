@@ -1,0 +1,27 @@
+{
+  "experiment": "wp2_phase0_battery",
+  "registered": "2026-08-19",
+  "config_hash": "ec15383b39b52206",
+  "evidence_tier": "REAL. WP2 Phase 0 confirmatory synthesis: the affine law, per-cell kappa_pred, and m(alpha) were discovered through inverted predictions and exploratory analysis (Blocks A-C); this battery is their first test on fresh seeds (seed 20260820) and on an alpha the law has never seen (0.02). Four environments (claims, claims-logit, spike, tickets: one blind-driver-with-defense, one continuous-score, one adversarial-kappa, one high-damage world), alpha grid {0.02, 0.05, 0.10, 0.15}, temper family plus two realistic axes (deprivation, starvation) per environment, 300 trials per cell, paired-difference form throughout.",
+  "law_under_test": "paired_diff = m(alpha) * kappa_pred * a per cell, with b(env) the oracle plateau margin as the affine intercept of the raw-excess form (F17/F18). m fitted through the origin on guarded temper cells per env-alpha; residuals tested on ALL cells including the realistic axes the fit never saw.",
+  "predictions": {
+    "P0-1": "b anchors transfer to fresh seeds: mean oracle margin over the alpha = 0.10 temper cells lands within +/- 0.004 of the archived values: claims -0.0042, claims_logit -0.0015, spike -0.0132, tickets -0.0063.",
+    "P0-2": "Oracle safety: the oracle arm's mean risk never exceeds alpha by more than 2 SE in any of the 384 cells, at every alpha including 0.02.",
+    "P0-3": "RISKY (extreme-alpha structure): in the two wide-kappa environments (spike, tickets), at EVERY alpha including 0.02, the through-origin regression of measured kappa on kappa_pred over guarded temper cells has R2 >= 0.5 with n_guarded >= 5. Wrong-mass near threshold is scarce at 0.02 and the law has never seen it; if the FD instrument or the law fails there, that boundary is the finding.",
+    "P0-4": "m windows from B1/B3/C, widened honestly for fresh seeds and temper-only fits: m(0.10) in [1.00, 1.35] in each of the four environments; m(0.05) on claims in [1.35, 1.90].",
+    "P0-5": "Alpha-dependence replicates out of family: m(0.05) > m(0.10) in every environment where both are measurable, and within each environment m is weakly increasing as alpha falls across all measurable alphas (measurable = n_guarded >= 4 and degenerate cells excluded by the registered pin rule).",
+    "P0-6": "Family invariance at fixed alpha: max pairwise |m_i(0.10) - m_j(0.10)| across the four environments <= 0.25 (the TOST margin re-used).",
+    "P0-7": "The collapse survives fresh data at every alpha: per env-alpha, >= 90% of all cells (temper AND realistic) sit within max(3*SE_pd, 0.0075) of m * kappa_pred * a, and Spearman(pd, a) >= 0.9 over cells with |a| >= 2*SE_a (noise-floor exclusion registered per the F13 lesson)."
+  },
+  "falsifiers": {
+    "P0-1": "A miss beyond 0.004 in any environment means the intercept is not a stable environment constant and Phase 3's b_bound term must be measured per deployment rather than per environment.",
+    "P0-2": "Standing bug-presumption path; an oracle violation at 0.02 specifically would implicate the B/(n+1) handling at extreme alpha.",
+    "P0-3": "R2 < 0.5 or guard starvation at alpha 0.02 in either wide-kappa world means the law's computable part does not extend to extreme alpha; Phase 1 then requires an alpha-extreme mechanism cell and the certificate's stated alpha domain shrinks accordingly.",
+    "P0-4/5": "m outside the windows or non-monotone in alpha kills the 'single amplification factor m(alpha)' reading; H4 (m as local secant of a curved relation) gains weight and Phase 1's H4 discriminator becomes primary.",
+    "P0-6": "Family variance beyond 0.25 at fixed alpha means m is not a clean function of (alpha, n_cal) and H3 (per-covariate threshold averaging) gains weight.",
+    "P0-7": "Residual failures concentrated on the realistic axes (which the temper fit never saw) would mean the temper family does not span realistic estimator error at the new alphas, and the battery's transfer claim fails exactly there."
+  },
+  "decision_rule": "m per env-alpha: through-origin regression of (paired_diff / a) on kappa_pred over temper cells passing the registered guards (|a| >= 0.003, slope_what >= 0.02, kappa_pred computable as ratio of trial-mean FD slopes at h = 0.05, pin fraction <= 0.5 at both grid ends). Cells with pin fraction > 0.5 are labelled degenerate and excluded from m fits per the B1 lesson (alpha matters only while it binds); they still appear in the cell table. Residual and rank tests as stated in P0-7. Verdicts prediction-by-prediction, misses verbatim.",
+  "notes": "Design-phase audit, disclosed and never citable: 30-trial probes (scratchpad phase0_audit.py) found no threshold pinning anywhere except claims_logit at alpha 0.15 (pin_lo 0.20 of trials), kappa_pred ranges wide on spike (0.79-2.55) and tickets (0.77-2.23) and narrow on claims/claims_logit (about 1.0-1.26), which is why P0-3's R2 clause names only spike and tickets. The probe's per-trial ratio-of-ratios m estimates were unstable; the battery uses the archived ratio-of-trial-means machinery. Archived anchors: m(0.10) = 1.159 +/- 0.020 claims, 1.070 +/- 0.017 tickets (recomputed from archived batteries joined to Block A kappa_pred), 1.243 +/- 0.054 spike (PC-2), about 1.18 claims_logit (B3); m(0.05) = 1.61-1.77 claims (B1). Windows widened beyond these because fresh seeds, temper-only fits, and battery-internal kappa_pred all move the point estimate.",
+  "amendments": []
+}
