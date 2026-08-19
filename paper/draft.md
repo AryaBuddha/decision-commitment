@@ -148,8 +148,19 @@ research. That sentence is the paper's question.]
   environments; the default ratio clip binds at extreme bounded tilts,
   breaking oracle-equivalence (not absolute control) for correctly
   specified estimators in the two blind-driver environments.
-- TODO: collapse batteries on environments 2-5; tilt-location where an
-  environment has both feature types.
+- Collapse batteries, all four environments: within-env collapse 4/4
+  (Spearman 0.903-0.961, 231/232 cells on-curve), slopes 0.74-0.96
+  statistically indistinguishable: kappa is empirically one constant
+  across tree-induced environments. Reconstruction lands anywhere on the
+  curve (fraud sign inversion; compliance overshoot; tickets identity;
+  moderation defense), and only aligned error predicts the landing
+  point. Five-environment figure: docs/wp1_all_env_collapse.png.
+- Tilt-location on moderation: the crossover (gold-relevance wins at
+  small matched chi2, the defense wins at large, blindness never
+  defends), completing both branches of the F10 law.
+- Budget table (Ablation C): mean control at every budget-shift cell;
+  dispersion floored by evaluation-window noise (measured exponent 0.32
+  vs sqrt); past n_cal ~ 1000 the label budget belongs in monitoring.
 
 ## 5. What WP2 must now supply
 

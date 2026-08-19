@@ -18,5 +18,13 @@
   },
   "decision_rule": "Per-cell three-outcome rule; named comparisons at z = 2.128; cross-feature comparisons use difference of independent cell means with combined SE. Matched sarcasm betas (2.483, 4.800, 6.581) computed by MC bisection against the toxicity grid chi2 values during design; each cell re-reports its own MC chi2. Sampling rung 2 stated on every figure.",
   "notes": "Disclosed design-phase probe, never citable: 30-trial unweighted sarcasm probes gave 0.1094, 0.1271, 0.1311 at the matched levels with deferral 0.066 to 0.087; the toxicity comparators at 500 trials exist in wp1f_moderation but this experiment re-runs both features under its own seeds so both sides of every comparison share a registration.",
-  "amendments": []
+  "amendments": [],
+  "verdicts": {
+    "date": "2026-08-19",
+    "run": "artifacts/wp1tlm_bf521b1f263f8cc8, n_trials=500, EVIDENCE TIER",
+    "PB1": "CONFIRMED, the crossover is real: at chi2 0.233 toxicity exceeds sarcasm (0.1126 vs 0.1098, 2.8 combined SE); at chi2 3.470 sarcasm exceeds toxicity by 0.0215 (registered floor 0.010, z ~ 20). Gold-relevance dominates at small shift, the defense dominates at large shift, blindness never defends.",
+    "PB2": "CONFIRMED. Sarcasm monotone (0.1098, 0.1227, 0.1318); toxicity non-monotone with top below mid (0.1126, 0.1189, 0.1103), replicating the wp1f shape under fresh seeds.",
+    "PB3": "PARTIAL MISS by 0.002 at one cell, verbatim: registered deferral ceiling was 0.058 + 0.03 in every cell; the sarcasm top cell reached 0.090 (+0.032). The mechanism contrast with claims stands in substance: toxicity's working defense moved deferral by at most +0.016 (routing accuracy, silent), sarcasm's non-defense drifted deferral by up to +0.032, and claims' failing defense moved it +0.078. The registered constant was 0.002 too tight.",
+    "PB4": "CONFIRMED. Oracle consistent at all six cells (0.0943 to 0.0976)."
+  }
 }

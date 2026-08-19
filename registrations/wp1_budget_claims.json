@@ -19,5 +19,15 @@
   },
   "decision_rule": "Per-cell three-outcome rule at raw z = 1.645 (nine cells, exploratory labels) with named claims PC1-PC5 judged at the stated tolerances; equivalence at the 90% paired CI. Endpoints and rung labelling as standard.",
   "notes": "No design-phase probe was run; the PC3 bounds are derived from wp1c's measured trial dispersion at n_cal = 1000 scaled by the square-root law that PC2 itself tests, so a PC2 failure automatically requalifies PC3's derivation (this coupling is registered deliberately).",
-  "amendments": []
+  "amendments": [],
+  "verdicts": {
+    "date": "2026-08-19",
+    "run": "artifacts/wp1b_a473b915381bcb1e, n_trials=500, EVIDENCE TIER",
+    "PC1": "PARTIAL. Oracle consistent 9/9. The conservatism gap between n_cal 250 and 4000 meets the registered 0.005 floor only at beta 6 (0.0081); at beta 0 and 3 the direction is right but the magnitude is 0.0015 and 0.0031. Verbatim: the B/(n+1)-plus-plateau charge grows with shift (weighted plateaus coarsen faster than unweighted ones), which the flat-floor prediction missed.",
+    "PC2": "MISS, verbatim and diagnostic: the 90% spread ratio between budgets 250 and 4000 is 1.75 / 2.06 / 2.42 at beta 0 / 3 / 6, all far below the registered [2.8, 5.7] square-root window; measured scaling exponent ~0.32 at beta 6 and lower at smaller shift. Cause identified: realized risk per trial is measured on a 1000-case evaluation window whose binomial noise (90% spread ~0.031) does not scale with n_cal and floors the dispersion. Calibration budget buys threshold precision; it cannot buy away deployment-window noise. This is the budget table's true headline.",
+    "PC3": "AUTO-REQUALIFIED per the registered coupling with PC2, and split: p95 at n_cal 250, beta 6 is 0.1440 (>= 0.125 as registered); at 4000 it is 0.1190 (> the registered 0.115 ceiling, by the same evaluation-noise floor PC2 identified).",
+    "PC4": "CONFIRMED, stronger than registered: equivalence holds at ALL nine cells including n_cal = 250 (largest paired diff +0.0037).",
+    "PC5": "CONFIRMED: unweighted at beta 6 spans 0.1212 to 0.1241 across budgets (max spread 0.0029 <= 0.005).",
+    "table_note": "The certifiable-shift-vs-budget table (definition of done, item 5) reads: mean control holds at every budget-shift cell for the weighted arms; what the budget buys at large shift is the conservatism margin (mean 0.088 at 250 vs 0.096 at 4000, beta 6) and roughly a 2.4x reduction in trial dispersion, floored by evaluation-window noise that no calibration budget removes."
+  }
 }

@@ -19,5 +19,15 @@
   },
   "decision_rule": "Collapse criteria as in the config; per-cell three-outcome verdicts at raw z = 1.645, labelled exploratory; named anchors at 3 combined SE; equivalence at the 90% paired CI inside [-0.005, +0.005]. Aligned error uses per-sample mean-1 normalisation of the exact unnormalised rung-2 ratio.",
   "notes": "No new design-phase probes were run for these registrations; the quantitative anchors come from the already-filed wp1f verdicts and the claims battery. The delta = -1 / gamma = 0.8 coincidence identity does not hold on these grids and is explicitly not claimed.",
-  "amendments": []
+  "amendments": [],
+  "verdicts": {
+    "date": "2026-08-19",
+    "run": "artifacts/wp1mf_compliance_c3609a222408ec0f, n_trials=300, EVIDENCE TIER",
+    "P1": "CONFIRMED. COLLAPSE: Spearman 0.903, residual pass 57/58 = 0.98, slope 0.798 +/- 0.192.",
+    "P2": "CONFIRMED. gamma=0 anchors within 1.5 combined SE of the wp1f unweighted cells at both betas; gamma=1 equivalent to oracle; temper monotone within the allowance.",
+    "P3": "Descriptive clause MISSED in the anti-conservative direction: rho0 (a=+0.0274, excess +0.0357) OVERSHOOTS the gamma0 endpoint (a=+0.0179, excess +0.0286); gap -0.0071. Weak-correlate reconstruction produced weights worse than no correction, again exactly on the curve.",
+    "P4": "Partial: baseline +0.0029 (registered 'near +0.006 to +0.009', low); tight clip flat (+0.0030) rather than further out. Verbatim.",
+    "P5": "CONFIRMED. |a| <= L1 and the B*L1 envelope hold in all 58 cells.",
+    "P6": "CONFIRMED. No oracle violation in any cell."
+  }
 }

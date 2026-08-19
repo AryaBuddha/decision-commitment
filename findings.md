@@ -214,3 +214,63 @@ bounded tilts, driving even a correctly specified estimator out of
 oracle-equivalence in the two blind-driver environments (tickets,
 compliance) while absolute control survived on plateau conservatism.
 Figure: docs/wp1_ape_forecast.png.
+
+## F13. EVIDENCE TIER: the collapse holds in five environments and kappa is universal within noise (four wp1mf runs + 56704982681d6960)
+
+Within-environment collapse in all five environments (Spearman 0.903 to
+0.961; 289 of 290 evidence-tier cells inside the residual tolerance),
+with through-origin slopes 0.74 to 0.96 that no pair separates beyond 2
+combined SE. The registered prediction that slopes would differ (kappa
+tracking loss-curve geometry) MISSED on its good branch: across
+tree-induced environments kappa is empirically a constant near 0.85, and
+WP2's first-order theorem can carry one constant instead of an
+environment functional. The registered pooled-rank claim also missed
+(Spearman 0.843 vs 0.9) for an instructive reason: rank statistics on
+cells whose |a| sits inside the trial noise floor are uninformative by
+construction; the curve is monotone, the near-origin ranks are noise.
+Figure: docs/wp1_all_env_collapse.png.
+
+## F14. EVIDENCE TIER: partial reconstruction lands anywhere on the curve; the coordinate predicts, the narrative does not (wp1mf batteries)
+
+The reconstruction spectrum registered from the claims experience was
+half wrong, with a sign inversion as the best datum: on the
+self-correcting fraud environment, NO correction is already safe (the
+gamma = 0 endpoint has NEGATIVE aligned error, because the loss mass
+sits where the true ratio is low), and partially reconstructed weights
+FLIP aligned error positive, re-importing risk the score composition
+had neutralized (excess +0.0078 vs -0.0027). Compliance's weak-correlate
+reconstruction likewise overshot the no-correction endpoint; tickets'
+independent driver reproduced no-correction to the fourth decimal;
+moderation's reconstruction genuinely defended. Every such cell sits on
+its environment's collapse curve. The claims-era sentence 'correlated
+logging partially protects you' is requalified: correlated logging
+moves you ALONG the curve, and which direction depends on where the
+loss mass sits relative to what the correlates rebuild. Only the signed
+aligned error predicts the landing point.
+
+## F15. EVIDENCE TIER: the tilt-location crossover completes the F10 law (bf521b1f263f8cc8)
+
+On moderation, at matched chi2, the gold-heavy visible tilt does more
+damage at small shift (0.1126 vs 0.1098) and the blind tilt does more at
+large shift (0.1318 vs 0.1103, z near 20), because the visible feature's
+defense saturates the damage while blindness never defends: sarcasm's
+decay is monotone, toxicity's bends back. Combined with claims (defense
+mounted and lost) the law now has both branches measured: damage equals
+gold-relevance NET of self-correction, and the defense can be silent
+(moderation routes correctly, deferral moves at most +0.016) or loud and
+failing (claims deferral +0.078). One registered constant was 0.002 too
+tight (sarcasm top-cell deferral drift +0.032 vs the 0.03 ceiling),
+filed verbatim.
+
+## F16. EVIDENCE TIER: the calibration budget cannot buy away deployment-window noise (a473b915381bcb1e)
+
+The budget table's registered square-root dispersion scaling MISSED:
+the 90% spread of realized risk shrinks with calibration budget at a
+measured exponent near 0.32, not 0.5, because per-window binomial noise
+on the 1000-case evaluation sample floors the dispersion and no
+calibration budget removes it. Mean control holds at every budget-shift
+cell (oracle consistent 9/9; estimated equivalent even at n_cal = 250);
+what n_cal buys at large shift is conservatism margin and about a 2.4x
+dispersion reduction against a floor. Deployment reading: past roughly
+n_cal = 1000, spend the next label budget on monitoring windows, not on
+calibration.
