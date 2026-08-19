@@ -136,8 +136,18 @@ research. That sentence is the paper's question.]
   +0.016 > fraud -0.005, with non-monotone decay curves forecast for the
   two defended environments. The forecast already contradicts H0 on the
   fraud/moderation pair; both were left standing to be judged.
-- TODO: realized sweep verdicts per environment (P1 shape claims);
-  H0-H3 verdicts; the APE-vs-realized figure (the practitioner figure).
+- Realized (all four sweeps, 500 trials/level): H1 CONFIRMED (max
+  |realized excess - APE| 0.0063 across 28 preregistered level-cells);
+  H2 CONFIRMED (exact rank agreement, all pairs >> 2 SE); H3 CONFIRMED
+  (commit-rate forecasts within 0.02); H0 MISSED on the fraud/moderation
+  pair exactly as the pre-sweep audits forecast (reconstruction beats
+  fine-split visibility as a defense). Fraud's non-monotone decay ending
+  back inside alpha, and moderation's mid-sweep peak, were both called
+  before the sweeps ran. Figure: docs/wp1_ape_forecast.png.
+- Boundary findings: forecast residuals err toward caution on defended
+  environments; the default ratio clip binds at extreme bounded tilts,
+  breaking oracle-equivalence (not absolute control) for correctly
+  specified estimators in the two blind-driver environments.
 - TODO: collapse batteries on environments 2-5; tilt-location where an
   environment has both feature types.
 

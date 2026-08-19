@@ -190,3 +190,27 @@ two evidence-tier experiments together. The quantity WP2 must bound is
 confirmed on real data: signed aligned error, with the first-order
 theory covering the entire realistically reachable range on this
 environment.
+
+## F12. EVIDENCE TIER: a deployment-computable number predicts guarantee decay across five environments (cross_environment_hypothesis)
+
+APE, the audit-predicted excess at the frozen threshold, uses only what
+deployments have (labelled source data plus unlabelled target
+covariates) and was registered, recipe and thresholds included, BEFORE
+environments 2-5 existed. Built, gated, audited, then swept, the four
+environments realized decay within 0.0063 of the forecast at every one
+of 28 preregistered level-cells and in the exact forecast order
+(tickets +0.0875 > compliance +0.0378 > moderation +0.0098 > fraud
+-0.0103 at matched top chi2), with claims slotting into the same
+ordering descriptively. The audits called two qualitative shapes before
+the sweeps ran: fraud's decay is non-monotone and ends back inside the
+certified level (full defense by correlate reconstruction), and
+moderation's peaks mid-sweep. The registered design-intent ordering H0
+missed on exactly the pair the audits flagged: reconstruction (fraud)
+turned out to be a stronger defense than fine-split visibility
+(moderation), and the statistic tracked reality while intuition did not.
+Two boundary findings for WP2: forecast residuals err toward caution on
+the defended environments, and the default ratio clip binds at extreme
+bounded tilts, driving even a correctly specified estimator out of
+oracle-equivalence in the two blind-driver environments (tickets,
+compliance) while absolute control survived on plateau conservatism.
+Figure: docs/wp1_ape_forecast.png.

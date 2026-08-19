@@ -20,5 +20,15 @@
   },
   "decision_rule": "Per level three-outcome rule on mean marginal error mass; confirmatory z = 2.4573, raw z = 1.645 labelled exploratory. P1 and P4 tolerances as stated, judged per level. Region-conditional risk is reported DESCRIPTIVELY with no registered claim (lesson of the claims P5 miss). Sampling rung 2; divergences MC-estimated with SE.",
   "notes": "APE/CFR were filed after gates and before this registration; design-phase 30-trial decay probes during generator tuning are disclosed (tickets 0.188, fraud 0.087, moderation 0.111, compliance 0.140 excess+alpha at the top level) and never citable. The realized-vs-APE comparison is the per-environment half of the cross-environment hypothesis; the cross-environment verdicts (H0-H3) are judged only in cross_environment_hypothesis.json after all four sweeps.",
-  "amendments": []
+  "amendments": [],
+  "verdicts": {
+    "date": "2026-08-19",
+    "run": "artifacts/wp1f_compliance_99e91888f277db19, n_trials=500, EVIDENCE TIER",
+    "P1": "CONFIRMED: monotone to 0.1378, adjusted violation from level 2 and not at level 1, max |realized - forecast| = 0.0023.",
+    "P3": "PARTIAL MISS, verbatim: equivalence fails at the top two levels (paired diff +0.0052, +0.0085, anti-conservative side) with the estimated arm still absolutely consistent (0.0889, 0.0870). Same clip-binding mechanism as tickets; the two blind-driver environments both show it, the correlated and visible-tilt environments do not.",
+    "P2": "CONFIRMED. Oracle consistent at the adjusted level at all seven levels.",
+    "P4": "CONFIRMED. Max |realized commit rate - CFR| per environment: tickets 0.0141, fraud 0.0195, moderation 0.0137, compliance 0.0078, all within 0.02 (fraud snug).",
+    "P5": "CONFIRMED. Oracle ESS at the top level: 229 / 225 / 225 / 231 of 1000.",
+    "P6": "CONFIRMED. MC Proposition 3 envelopes 466 to 569 at the top level, vacuous from the first nonzero level; max realized unweighted risk 0.1875 < 0.20."
+  }
 }

@@ -268,5 +268,16 @@
       "status": "filed BEFORE any sweep of this environment"
     }
   ],
-  "amendments": []
+  "amendments": [],
+  "verdicts": {
+    "date": "2026-08-19",
+    "runs": "wp1f_tickets_d8b48cff3ab2e336, wp1f_fraud_2f83073cb88bea1e, wp1f_moderation_bc612e3b59311f78, wp1f_compliance_99e91888f277db19; all four environments were built, gated, audited, and swept AFTER this registration, in that order, per environment",
+    "H0": "MISS on one pair, verbatim: design intent said tickets > compliance > fraud > moderation; realized top-level excess is tickets +0.0875 > compliance +0.0378 > moderation +0.0098 > fraud -0.0103. The fraud/moderation inversion is exactly what the APE audits forecast before the sweeps, so the falsifier's good branch fired: design intuition was wrong about which defense is stronger (reconstruction beat fine-split visibility), and the audit statistic tracked reality anyway.",
+    "H1": "CONFIRMED, all four: |realized excess - APE(top)| = 0.0012 (tickets), 0.0052 (fraud), 0.0063 (moderation), 0.0012 (compliance), all within the registered 0.0075. Stronger than registered: the per-level version holds at all 28 level-cells (max miss 0.0063, at the moderation top level).",
+    "H2": "CONFIRMED. Realized ordering matches the APE ordering exactly; every adjacent pair is separated by far more than 2 combined SE; Spearman 1.0 over the four environments.",
+    "H3": "CONFIRMED, all four: max |realized commit rate - CFR| = 0.0141 / 0.0195 / 0.0137 / 0.0078, within 0.02 (fraud at 0.0195 is the snug one). The self-correction component is separately forecastable, including the non-monotone CFR dip-and-recover shape moderation realized.",
+    "H2b": "CONFIRMED descriptively: claims APE(top) computed post-hoc is +0.0249 vs realized +0.0231 (the audit logistic hit its iteration cap on claims, noted), inserting claims between compliance and moderation in both orderings; five environments, one ordering.",
+    "practitioner_claim": "H1 AND H2 both hold, so the registered claim stands at evidence tier: APE, computed from labelled source data plus unlabelled target covariates only (what a deployment actually has), calibrated realized CRC decay within 0.0063 worst-case across 28 preregistered level-cells and ranked five environments exactly, including forecasting BEFORE the sweeps that one environment's decay would be non-monotone and end back inside the certified level while another would lose control from the first tilt notch. Figure: docs/wp1_ape_forecast.png.",
+    "boundary_note": "The forecast residuals are small but systematically negative for the defended environments at strong tilt (realized slightly safer than forecast, up to 0.0063): the plug-in audit slightly overestimates committed-wrong mass where deferral responds. On the arm no deployment should use without weights, APE errs toward caution; noted for the WP2 certificate's sign analysis."
+  }
 }
