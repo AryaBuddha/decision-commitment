@@ -159,3 +159,26 @@ depending on where they fall. The oracle pays for this honestly, deferring
 the case mix drifted (any divergence monitor gives that) says little
 about guarantee damage without knowing WHERE the drift falls relative to
 what the rules can see and what drives correctness.
+
+## F11. EVIDENCE TIER: the collapse holds on a real environment, and the paper has its central figure (56704982681d6960)
+
+Fifty-eight cells on the gated claims environment (four realistic
+degradation axes and two synthetic families at two shift levels): excess
+marginal risk vs signed aligned error collapses onto one monotone curve
+with Spearman 0.956, all 58 cells within the preregistered residual
+tolerance, and through-origin slope 0.862, inside the registered [0.8,
+1.5] window for the kappa ~ 1 first-order identity. The oracle is
+consistent in all 58 cells. Two evidence-tier refinements over the
+placeholder. First, realistic failures on a real manifest live entirely
+in the near-linear regime (|a| <= 0.02): even dropping the blind feature
+from the ratio fit outright leaves a logistic classifier able to
+partially reconstruct the tilt from correlated, rule-visible features,
+cutting aligned error by a third relative to total blindness (the P2
+sub-clause miss, filed verbatim). Correlated logging partially protects
+deployments; the placeholder's orthogonal-Gaussian geometry was the
+worst case. Second, the temper gamma = 0 endpoint reproduces the wp1c
+unweighted arm across registrations (0.6 and 0.9 combined SE), tying the
+two evidence-tier experiments together. The quantity WP2 must bound is
+confirmed on real data: signed aligned error, with the first-order
+theory covering the entire realistically reachable range on this
+environment.

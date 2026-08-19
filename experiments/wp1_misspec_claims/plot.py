@@ -51,11 +51,10 @@ def main(run_dir: str) -> None:
     ax.set_xlabel("signed aligned weight error,  "
                   r"$a = \mathrm{E}[(w - \hat{w})\,L(\lambda^{*})]$")
     ax.set_ylabel(r"excess marginal risk,  realized $-\ \alpha$")
-    ax.set_title("EVIDENCE TIER: the collapse on a real environment\n"
-                 f"claims env; {ana['n_cells']} cells; "
-                 f"Spearman {ana['spearman']:.3f}, residual pass "
-                 f"{ana['residual_pass_fraction']:.0%}, origin slope "
-                 f"{ana['origin_slope']:.2f}: {v}")
+    ax.set_title("EVIDENCE TIER: the collapse on a real environment (claims)\n"
+                 f"{ana['n_cells']} cells; Spearman {ana['spearman']:.3f}; "
+                 f"pass {ana['residual_pass_fraction']:.0%}; "
+                 f"slope {ana['origin_slope']:.2f}: {v}")
     from matplotlib.lines import Line2D
     handles, labels = ax.get_legend_handles_labels()
     handles += [Line2D([], [], color="gray", marker="o", ls="", label=r"$\beta$ = 3"),
