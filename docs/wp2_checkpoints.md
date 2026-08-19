@@ -57,3 +57,35 @@ DERIVED quantity and Phase 3 builds the certificate in the own-threshold
 coordinate where no m appears (F19), using the plateau arithmetic only
 as a cross-check. Reversible: no prose has been written, no certificate
 frozen; every verdict and miss is in the registrations.
+
+### Checkpoint 2: theory and empirics in tension (2026-08-19)
+
+Tension found while drafting wp2_theory.md: the WP1 pilot characterized
+the second-order remainder as universally sign-asymmetric ("convex
+dangerous side, saturating safe side"). The rank-2 quadrature world is
+a counterexample: its population secant sits BELOW kappa on the far
+anti-conservative side (0.85 at the gamma = 0 cell, alpha 0.05), i.e.
+compression where the pilot saw steepening. Resolution taken: the
+remainder bound |R| <= Lip (1 + |kappa|) / c^2 * a^2 is proved and
+verified (wp2thk 16/16); the SIGN claim is downgraded in wp2_theory.md
+to an instance-level observation, and the fresh battery's P0-7 misses
+(negative residuals at far cells on spike/tickets) side with the
+compression instances. No registered claim depended on the universal
+sign; the downgrade is a documentation correction, not a retraction.
+
+### Checkpoint 3: before freezing the certificate (2026-08-19)
+
+Decision packet. The certificate form was frozen by the commit carrying
+registrations/wp2_certificate.json BEFORE its validation ran, in the
+own-rule coordinate (no kappa, no m, no lambda* in the bound), on the
+strength of: Identity 1 (algebraic), closure L (slope 1.013 +/- 0.005,
+15/15 reconstruction), and P-MC3 (identity within 2 SE in 122/128
+tempered-arm cells). The alternative (the handover's m_max * kappa_pred
+* A_hat shape) was rejected because m is now understood as a
+lambda*-coordinate artifact with derivable geometry (Phase 1), and a
+bound that never references lambda* cannot inherit that artifact. Known
+weaknesses deliberately left in for Phase 4 to attack: source-empty
+audit bins contribute zero to CalErr_loc while carrying target mass;
+within-bin cancellation; the audit model's own regularization default;
+post-audit mix drift. Reversible: Phase 4's registered loop may revise
+and re-attack.
