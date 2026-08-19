@@ -1,0 +1,60 @@
+{
+  "environment": "fraud",
+  "frozen": "2026-08-19",
+  "gate_config_hash": "6ffb8bc558189cf2",
+  "design_intent": "blind, gold-heavy drift driver with strongly correlated logged features: reconstruction defends",
+  "contract": {
+    "sampling_unit": "one routed decision per generated instance; instances are i.i.d. seeded-generator draws",
+    "covariates": [
+      "amount_log",
+      "merchant_risk",
+      "geo_mismatch",
+      "velocity_1h",
+      "velocity_24h",
+      "device_novelty",
+      "account_age_m",
+      "device_count",
+      "night",
+      "cross_border",
+      "avg_txn_log",
+      "chargeback_hist",
+      "txn_entropy"
+    ],
+    "bounded_features": [
+      "merchant_risk",
+      "device_novelty",
+      "txn_entropy"
+    ],
+    "induction_hidden": [
+      "device_novelty"
+    ],
+    "evidence_score": "s(rule) = (n_majority + 1) / (n_leaf + 2), Laplace-shrunk consistency of the induced tree leaf on the induction sample; frozen at induction",
+    "gold": "executable policy gold_fraud(X, u) in cus/envs/family.py, deterministic in the instance; u stored, never a covariate",
+    "region": "region 1 iff merchant_risk >= 0.55",
+    "induction": "n_demo = 6000 from SeedSequence [20260819, crc32('fraud'), 0]; expert flip 0.06; DecisionTreeClassifier(max_depth=7, min_samples_leaf=40, random_state=0) on the induction view; never touched again",
+    "shift": "rung 2 rejection on registered bounded features; unnormalised ratio exact; chi2 MC-estimated with SE",
+    "tilt_features": [
+      "device_novelty",
+      "merchant_risk"
+    ],
+    "primary_tilt": "device_novelty",
+    "beta_grid": [
+      0.0,
+      0.786,
+      1.572,
+      2.358,
+      3.144,
+      3.93,
+      4.716
+    ]
+  },
+  "gate_thresholds": {
+    "G1": ">= 0.98 deterministic and well-defined gold on 50000 instances",
+    "G2": "rejection matches importance-weighted moments within 5 MC SE at beta_max, every tilt feature",
+    "G3": "decision-conditional AUC lift >= 0.02 on >= 1 registered tilt feature; audit published either way",
+    "G4": "region-1 share >= 0.05 at every grid beta on the primary tilt",
+    "G5": ">= 20 distinct lambda-grid cells"
+  },
+  "notes": "Design-phase generator tuning preceded this freeze (difficulty, region cuts, blind-candidate weights); the cross-environment design intents were registered in cross_environment_hypothesis.json BEFORE the family module was written. Post-freeze changes to generator, gold, induction, contract, or thresholds require an appended amendment.",
+  "amendments": []
+}

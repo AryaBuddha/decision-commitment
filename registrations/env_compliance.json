@@ -1,0 +1,59 @@
+{
+  "environment": "compliance",
+  "frozen": "2026-08-19",
+  "gate_config_hash": "4c9a6357ccc91274",
+  "design_intent": "blind, moderate-weight drift driver with weak correlates, noisy experts, coarse rules: weak defense, plateau-heavy loss curve",
+  "contract": {
+    "sampling_unit": "one routed decision per generated instance; instances are i.i.d. seeded-generator draws",
+    "covariates": [
+      "doc_len_log",
+      "num_parties",
+      "jurisdiction_risk",
+      "amendment_count",
+      "age_days",
+      "redline_density",
+      "counterparty_hist",
+      "template_match",
+      "urgency",
+      "manual_edits",
+      "value_log"
+    ],
+    "bounded_features": [
+      "jurisdiction_risk",
+      "redline_density",
+      "template_match",
+      "urgency"
+    ],
+    "induction_hidden": [
+      "redline_density"
+    ],
+    "evidence_score": "s(rule) = (n_majority + 1) / (n_leaf + 2), Laplace-shrunk consistency of the induced tree leaf on the induction sample; frozen at induction",
+    "gold": "executable policy gold_compliance(X, u) in cus/envs/family.py, deterministic in the instance; u stored, never a covariate",
+    "region": "region 1 iff jurisdiction_risk >= 0.5",
+    "induction": "n_demo = 6000 from SeedSequence [20260819, crc32('compliance'), 0]; expert flip 0.12; DecisionTreeClassifier(max_depth=5, min_samples_leaf=48, random_state=0) on the induction view; never touched again",
+    "shift": "rung 2 rejection on registered bounded features; unnormalised ratio exact; chi2 MC-estimated with SE",
+    "tilt_features": [
+      "redline_density",
+      "jurisdiction_risk"
+    ],
+    "primary_tilt": "redline_density",
+    "beta_grid": [
+      0.0,
+      1.101,
+      2.202,
+      3.304,
+      4.405,
+      5.506,
+      6.607
+    ]
+  },
+  "gate_thresholds": {
+    "G1": ">= 0.98 deterministic and well-defined gold on 50000 instances",
+    "G2": "rejection matches importance-weighted moments within 5 MC SE at beta_max, every tilt feature",
+    "G3": "decision-conditional AUC lift >= 0.02 on >= 1 registered tilt feature; audit published either way",
+    "G4": "region-1 share >= 0.05 at every grid beta on the primary tilt",
+    "G5": ">= 20 distinct lambda-grid cells"
+  },
+  "notes": "Design-phase generator tuning preceded this freeze (difficulty, region cuts, blind-candidate weights); the cross-environment design intents were registered in cross_environment_hypothesis.json BEFORE the family module was written. Post-freeze changes to generator, gold, induction, contract, or thresholds require an appended amendment.",
+  "amendments": []
+}

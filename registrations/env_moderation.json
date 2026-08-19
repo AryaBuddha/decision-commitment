@@ -1,0 +1,61 @@
+{
+  "environment": "moderation",
+  "frozen": "2026-08-19",
+  "gate_config_hash": "adde7a9bda8ebef4",
+  "design_intent": "visible, gold-dominant primary tilt with fine rule splits: score-side defense at full strength; sarcasm is the blind gate-3 candidate",
+  "contract": {
+    "sampling_unit": "one routed decision per generated instance; instances are i.i.d. seeded-generator draws",
+    "covariates": [
+      "toxicity",
+      "report_count",
+      "account_age_m",
+      "follower_log",
+      "prior_strikes",
+      "media_flag",
+      "context_score",
+      "sarcasm",
+      "virality",
+      "language_conf",
+      "time_of_day",
+      "thread_depth"
+    ],
+    "bounded_features": [
+      "toxicity",
+      "context_score",
+      "sarcasm",
+      "virality",
+      "language_conf"
+    ],
+    "induction_hidden": [
+      "sarcasm"
+    ],
+    "evidence_score": "s(rule) = (n_majority + 1) / (n_leaf + 2), Laplace-shrunk consistency of the induced tree leaf on the induction sample; frozen at induction",
+    "gold": "executable policy gold_moderation(X, u) in cus/envs/family.py, deterministic in the instance; u stored, never a covariate",
+    "region": "region 1 iff virality >= 0.6",
+    "induction": "n_demo = 6000 from SeedSequence [20260819, crc32('moderation'), 0]; expert flip 0.06; DecisionTreeClassifier(max_depth=8, min_samples_leaf=40, random_state=0) on the induction view; never touched again",
+    "shift": "rung 2 rejection on registered bounded features; unnormalised ratio exact; chi2 MC-estimated with SE",
+    "tilt_features": [
+      "toxicity",
+      "sarcasm"
+    ],
+    "primary_tilt": "toxicity",
+    "beta_grid": [
+      0.0,
+      0.821,
+      1.641,
+      2.462,
+      3.283,
+      4.103,
+      4.924
+    ]
+  },
+  "gate_thresholds": {
+    "G1": ">= 0.98 deterministic and well-defined gold on 50000 instances",
+    "G2": "rejection matches importance-weighted moments within 5 MC SE at beta_max, every tilt feature",
+    "G3": "decision-conditional AUC lift >= 0.02 on >= 1 registered tilt feature; audit published either way",
+    "G4": "region-1 share >= 0.05 at every grid beta on the primary tilt",
+    "G5": ">= 20 distinct lambda-grid cells"
+  },
+  "notes": "Design-phase generator tuning preceded this freeze (difficulty, region cuts, blind-candidate weights); the cross-environment design intents were registered in cross_environment_hypothesis.json BEFORE the family module was written. Post-freeze changes to generator, gold, induction, contract, or thresholds require an appended amendment.",
+  "amendments": []
+}
