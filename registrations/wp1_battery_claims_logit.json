@@ -17,5 +17,13 @@
   },
   "decision_rule": "Sweep verdicts at bonferroni z 2.4573 against alpha 0.10; temper slope through origin on paired differences; tolerances as stated. All comparisons to tree-claims cite archived hashes.",
   "notes": "Design audit, disclosed and never citable: wrong rate 0.125; 200 distinct-score grid cells; G3 lifts inconsistency +0.0518, severity -0.0003; kappa_pred 1.056; oracle excess -0.0013; unweighted 0.1212 +/- 0.0033 at beta 5 (30 trials).",
-  "amendments": []
+  "amendments": [],
+  "verdicts": {
+    "date": "2026-08-19",
+    "run": "artifacts/wp1bl_b5806ff79e969839, EVIDENCE TIER",
+    "PB3-1": "CONFIRMED: oracle consistent at all seven levels, unweighted in adjusted VIOLATION from level 1 with monotone decay to 0.1204 (design probe 0.1212 at beta 5 disclosed), estimated equivalent at every level.",
+    "PB3-2": "CONFIRMED: temper oracle excess -0.0015, inside [-0.003, 0], against -0.0040 on tree-claims. Third and cleanest confirmation of the F17 intercept mechanism: remove the plateaus and the intercept collapses to the bare finite-sample charge.",
+    "PB3-3": "MISS by 0.037: slope 1.243 +/- 0.026, gap to kappa_pred 0.187 (threshold 0.15). The decisive part is HOW it missed: the continuous-score slope equals the tree-family slope (1.243 vs 1.249) and so does the gap (0.187 vs 0.191). Joint with B2's non-monotone gaps, discreteness is fully exonerated for the SLOPE gap: the roughly 1.19x amplification at alpha = 0.10 is family-invariant on this generator, and B1 shows it grows as alpha falls. The missing term in kappa_pred rides on threshold location, not score discreteness.",
+    "PB3-4": "Registered as a note, not tested here; the nil severity lift (-0.0002) stands in the gate report for any future tilt-location run on this variant."
+  }
 }

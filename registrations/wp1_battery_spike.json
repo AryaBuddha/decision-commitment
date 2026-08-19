@@ -17,5 +17,13 @@
   },
   "decision_rule": "Pooled slope through origin on paired differences over the 16 cells; per-cell regression restricted to the registered guards (abs(a) >= 0.003, slope_what >= 0.02); kappa_pred computed inside the battery itself at the registered h = 0.05, so prediction and measurement share draws trial-by-trial.",
   "notes": "Design-phase audits, disclosed and never citable: two rejected designs (kappa_pred 1.022 with no decay; 1.066 with linear band error) preceded the frozen threshold-gated design (kappa_pred cells 0.78 to 2.42, G3 lift +0.048, wrong 0.115, unweighted 0.209 at the top beta, 30 to 60 trial probes). The design iterations are part of the record: making kappa adversarial required exactly the band-concentration mechanism the identity names, which is itself weak evidence the identity has the right variables.",
-  "amendments": []
+  "amendments": [],
+  "verdicts": {
+    "date": "2026-08-19",
+    "run": "artifacts/wp1sp_28637c2991f2de27, EVIDENCE TIER",
+    "PC-1": "MISS: pooled slope 2.032 +/- 0.181, above [1.22, 1.82]. The cross-environment coefficient 1.167 does not transfer as a universal amplification; the pooled fit is also dominated by the extreme gamma = 0 cell (a = +0.043, pd = +0.121, measured kappa 2.81 vs kappa_pred 2.49).",
+    "PC-2": "CONFIRMED, and it is the block's central positive result: within the adversarial environment, per-cell measured kappa regressed on per-cell kappa_pred gives slope 1.243 +/- 0.054 with R2 = 0.780 over a 3x kappa_pred range (0.75 to 2.49). kappa IS computable per cell from calibration draws up to a multiplicative amplification, and the computable part carried the within-world variation in a world built to maximize it. Per the registered outcome logic, the constancy claim's replacement survives its adversarial test in the per-cell form and fails in the pooled-transfer form; the residual is the amplification factor m, measured family-invariant at fixed alpha (1.24 spike, 1.19 tree-claims, 1.18 logit-claims) and alpha-dependent (1.61 at alpha 0.05), which is the block's named open problem.",
+    "PC-3": "CONFIRMED with an instrumentation caveat filed honestly: the runner stored per-cell oracle means but not per-cell oracle SEs; every cell's mean oracle excess is at most -0.0081 (most negative -0.0167), which at 300-trial SEs near 0.002 puts mean + 1.645 SE below alpha + 0.005 in every cell by a wide margin. Conservatism is large, as registered for a coarse impure band.",
+    "PC-4": "CONFIRMED: the gamma = 0 top endpoint realized pd = +0.1208 against the disclosed +0.109 probe; the environment does what it was built to do."
+  }
 }

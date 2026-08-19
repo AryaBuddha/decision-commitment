@@ -314,3 +314,29 @@ since a(lambda*) saturates once the evaluated arm's threshold sits far
 from the oracle's (compliance sweep: a flat at 0.017 while excess climbs
 to 0.038). One coordinate, one affine law, two measured boundaries:
 threshold distance and plateau coarseness.
+
+## F18. EVIDENCE TIER: kappa is computable per cell up to an alpha-dependent amplification, and the intercept and slope of the affine law have different owners (Blocks B and C)
+
+Six registered experiments close the loop the critique opened. The
+INTERCEPT of the affine law belongs to score discreteness, confirmed
+three independent ways: it orders with granularity (B2: -0.0090 to
+-0.0031), collapses to the bare finite-sample charge when a continuous
+scorer removes the plateaus (B3: -0.0015), and sits large on the
+deliberately coarse adversarial band (C: -0.013). The SLOPE gap between
+measured kappa and the local-slope-ratio kappa_pred belongs to neither
+granularity nor family: it is non-monotone across granularity variants
+(B2), identical across tree and logistic families (B3: 1.243 vs 1.249,
+gaps 0.187 vs 0.191), and grows as alpha falls (B1: amplification 1.19
+at alpha 0.10, 1.61 at alpha 0.05). Within the adversarial spike world,
+built after the Block A verdicts to spread kappa_pred across a 3x range,
+per-cell kappa_pred predicts per-cell measured kappa at slope 1.243 with
+R2 0.780 (C, PC-2 registered and confirmed), so the computable part of
+kappa carries the structure and the residual is one multiplicative
+factor m(alpha), family-invariant at fixed alpha, unexplained, and now
+the block's named open problem for WP2. Two side findings: alpha = 0.20
+is degenerate on claims because it never binds (B1, registered from the
+design audit), and the wp1f clip-binding diagnosis was wrong: the
+non-equivalence of correctly specified estimators at extreme tilts is
+driven by the ratio fit's default L2 regularization, a knob that was
+not even in the ledger until B4 found it (wp1clip, full miss with
+corrected diagnosis).

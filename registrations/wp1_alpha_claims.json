@@ -17,5 +17,13 @@
   },
   "decision_rule": "Per-level three-outcome verdicts at each alpha against ITS OWN certified level (bonferroni z 2.4573 across seven levels); temper slope fitted through origin on paired differences vs aligned error over the 16 temper cells per alpha; degeneracy clauses at the stated tolerances.",
   "notes": "Design-phase audit, disclosed and never citable: mean temper-cell kappa_pred (h = 0.05, guard slope >= 0.02) was 1.101 at alpha 0.05, 1.052 at alpha 0.10, and undefined at alpha 0.20 (no cell passed the guard), which generated PB1-1 and PB1-2. The temper battery records the paired-difference functional adopted after Block A; no through-origin excess fits are registered here.",
-  "amendments": []
+  "amendments": [],
+  "verdicts": {
+    "date": "2026-08-19",
+    "run": "artifacts/wp1a_c062c016f317d652, EVIDENCE TIER",
+    "PB1-1": "CONFIRMED in full: at alpha = 0.20 the unweighted threshold is pinned at the grid minimum in 100% of trials at every level and all four arms coincide to the fourth decimal. Alpha only matters while it binds.",
+    "PB1-2": "MISS: temper paired-difference slope 1.770 +/- 0.110, above the [1.06, 1.56] window. The kappa-ratio scaling badly under-predicts: kappa_pred moved 1.052 to 1.101 while the measured slope moved 1.249 to 1.770. Localization: alpha = 0.05 pushes the threshold into the sparse upper score region, so the amplification factor between measured kappa and the local-slope-ratio kappa_pred is ALPHA-DEPENDENT (about 1.19 at alpha 0.10 and 1.61 at alpha 0.05 on this environment).",
+    "PB1-3": "PARTIAL: oracle consistent at all seven alpha = 0.05 levels and estimated equivalent at every level (no non-equivalent cell); but unweighted enters adjusted VIOLATION from level 2, not level 1 as registered (level 1: 0.0510, consistent).",
+    "PB1-4": "PARTIAL: the structural clause holds (each arm's realized risk at alpha = 0.20 equals the tilted full-commit wrong rate, so the sweep doubles as the wrong-rate curve, 0.1386 rising to 0.1657), but the registered endpoint number 0.211 was WRONG because it was quoted from a superseded pre-freeze design probe. Ledger lesson recorded: cite design-probe numbers only from the frozen configuration."
+  }
 }
