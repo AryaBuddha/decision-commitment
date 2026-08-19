@@ -34,6 +34,239 @@
   },
   "decision_rule": "Confirmation of the practitioner claim requires H1 AND H2. Verdicts filed here prediction-by-prediction after all four sweeps complete, misses verbatim. Each environment's own sweep runs under its own registration with its own predictions; this file only governs the cross-environment claims. Protocol order per environment, enforced by the trail: gates pass -> APE/CFR audit filed here (dated) -> sweep registration committed -> sweep runs. Any audit filed after its environment's sweep is void for H1/H2 and must be labelled so.",
   "notes": "The predictor was chosen from the claims tilt-location result (3879b17b6fa4ae6f): decay is governed by gold-relevance net of self-correction, and APE operationalizes exactly that composite (the audit model carries the gold-relevance the score misses; the frozen-threshold commit indicator carries the defense). Claims numbers used in choosing the predictor: that is why claims is excluded from confirmatory H1/H2 and relegated to descriptive H2b.",
-  "audits": [],
+  "audits": [
+    {
+      "date": "2026-08-19",
+      "environment": "tickets",
+      "lambda0": 0.694235588972431,
+      "gate_report": "see registrations/env_tickets.json gates key",
+      "levels": [
+        {
+          "beta": 0.0,
+          "APE": -0.0031530622743163456,
+          "APE_se": 0.00030703398063198047,
+          "CFR": 0.653665,
+          "CFR_se": 0.0010639244986722508
+        },
+        {
+          "beta": 1.196,
+          "APE": 0.008505098385708815,
+          "APE_se": 0.0003311266613197959,
+          "CFR": 0.65383,
+          "CFR_se": 0.0010638052714195395
+        },
+        {
+          "beta": 2.393,
+          "APE": 0.02157360460203392,
+          "APE_se": 0.000355746540851682,
+          "CFR": 0.65405,
+          "CFR_se": 0.0010636460818806226
+        },
+        {
+          "beta": 3.589,
+          "APE": 0.03700885796518802,
+          "APE_se": 0.00038432680894955734,
+          "CFR": 0.65369,
+          "CFR_se": 0.00106390644302025
+        },
+        {
+          "beta": 4.785,
+          "APE": 0.05340963123049147,
+          "APE_se": 0.00041586518922177564,
+          "CFR": 0.65313,
+          "CFR_se": 0.0010643101124672265
+        },
+        {
+          "beta": 5.982,
+          "APE": 0.07042413783587337,
+          "APE_se": 0.000444688166526355,
+          "CFR": 0.65489,
+          "CFR_se": 0.0010630359540015567
+        },
+        {
+          "beta": 7.178,
+          "APE": 0.0886608961787074,
+          "APE_se": 0.0004739939735158938,
+          "CFR": 0.65584,
+          "CFR_se": 0.001062341504413717
+        }
+      ],
+      "status": "filed BEFORE any sweep of this environment"
+    },
+    {
+      "date": "2026-08-19",
+      "environment": "fraud",
+      "lambda0": 0.631578947368421,
+      "gate_report": "see registrations/env_fraud.json gates key",
+      "levels": [
+        {
+          "beta": 0.0,
+          "APE": -0.0008546879826701187,
+          "APE_se": 0.00021401969300273029,
+          "CFR": 0.94193,
+          "CFR_se": 0.0005229621166968023
+        },
+        {
+          "beta": 0.786,
+          "APE": 0.00201008926633979,
+          "APE_se": 0.000227846266425216,
+          "CFR": 0.933675,
+          "CFR_se": 0.0005564440419979352
+        },
+        {
+          "beta": 1.572,
+          "APE": 0.003719745877372796,
+          "APE_se": 0.0002418314273153802,
+          "CFR": 0.92539,
+          "CFR_se": 0.0005875514781702111
+        },
+        {
+          "beta": 2.358,
+          "APE": 0.004609950387595263,
+          "APE_se": 0.00025925445838483106,
+          "CFR": 0.915965,
+          "CFR_se": 0.0006203753653031365
+        },
+        {
+          "beta": 3.144,
+          "APE": 0.0034901673149045076,
+          "APE_se": 0.0002748701017557436,
+          "CFR": 0.9059,
+          "CFR_se": 0.0006528598241582951
+        },
+        {
+          "beta": 3.93,
+          "APE": -0.00031465016185176775,
+          "APE_se": 0.00028450258133447704,
+          "CFR": 0.897765,
+          "CFR_se": 0.0006774326711009737
+        },
+        {
+          "beta": 4.716,
+          "APE": -0.0051417220032096145,
+          "APE_se": 0.00029555448977460326,
+          "CFR": 0.890225,
+          "CFR_se": 0.0006990151978855682
+        }
+      ],
+      "status": "filed BEFORE any sweep of this environment"
+    },
+    {
+      "date": "2026-08-19",
+      "environment": "moderation",
+      "lambda0": 0.5463659147869674,
+      "gate_report": "see registrations/env_moderation.json gates key",
+      "levels": [
+        {
+          "beta": 0.0,
+          "APE": 4.262037943762731e-05,
+          "APE_se": 0.00026533641598450256,
+          "CFR": 0.950845,
+          "CFR_se": 0.00048341900032477006
+        },
+        {
+          "beta": 0.821,
+          "APE": 0.008825746410117241,
+          "APE_se": 0.00027943583824191037,
+          "CFR": 0.944015,
+          "CFR_se": 0.0005140558324491612
+        },
+        {
+          "beta": 1.641,
+          "APE": 0.01533664257203278,
+          "APE_se": 0.00028897691548143527,
+          "CFR": 0.938105,
+          "CFR_se": 0.0005388135529800637
+        },
+        {
+          "beta": 2.462,
+          "APE": 0.0200330948578617,
+          "APE_se": 0.0002937025159590668,
+          "CFR": 0.934175,
+          "CFR_se": 0.0005544910701490151
+        },
+        {
+          "beta": 3.283,
+          "APE": 0.022635965527917662,
+          "APE_se": 0.0002961821304617247,
+          "CFR": 0.934655,
+          "CFR_se": 0.0005526075957449372
+        },
+        {
+          "beta": 4.103,
+          "APE": 0.021148127128458552,
+          "APE_se": 0.00029010120951968347,
+          "CFR": 0.936985,
+          "CFR_se": 0.0005433420183227136
+        },
+        {
+          "beta": 4.924,
+          "APE": 0.01612944680734492,
+          "APE_se": 0.0002783976390481172,
+          "CFR": 0.944705,
+          "CFR_se": 0.0005110648832340175
+        }
+      ],
+      "status": "filed BEFORE any sweep of this environment"
+    },
+    {
+      "date": "2026-08-19",
+      "environment": "compliance",
+      "lambda0": 0.7243107769423558,
+      "gate_report": "see registrations/env_compliance.json gates key",
+      "levels": [
+        {
+          "beta": 0.0,
+          "APE": -0.007300888699897243,
+          "APE_se": 0.00021902354168651196,
+          "CFR": 0.71013,
+          "CFR_se": 0.0010145082136187957
+        },
+        {
+          "beta": 1.101,
+          "APE": -0.0011521155559594543,
+          "APE_se": 0.0002409553669611199,
+          "CFR": 0.691515,
+          "CFR_se": 0.001032768136550988
+        },
+        {
+          "beta": 2.202,
+          "APE": 0.005895723607879336,
+          "APE_se": 0.00026895622644049704,
+          "CFR": 0.667275,
+          "CFR_se": 0.001053610635801955
+        },
+        {
+          "beta": 3.304,
+          "APE": 0.013623848233087932,
+          "APE_se": 0.00029682371820177365,
+          "CFR": 0.642565,
+          "CFR_se": 0.001071623116526981
+        },
+        {
+          "beta": 4.405,
+          "APE": 0.02100233047809852,
+          "APE_se": 0.0003271058615721216,
+          "CFR": 0.610925,
+          "CFR_se": 0.0010901734824673547
+        },
+        {
+          "beta": 5.506,
+          "APE": 0.029180270463450786,
+          "APE_se": 0.00035742050897167975,
+          "CFR": 0.581875,
+          "CFR_se": 0.00110294261948435
+        },
+        {
+          "beta": 6.607,
+          "APE": 0.036631746097000706,
+          "APE_se": 0.00038779981677733693,
+          "CFR": 0.549435,
+          "CFR_se": 0.001112556022802897
+        }
+      ],
+      "status": "filed BEFORE any sweep of this environment"
+    }
+  ],
   "amendments": []
 }

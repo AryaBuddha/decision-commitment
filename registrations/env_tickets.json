@@ -56,5 +56,25 @@
     "G5": ">= 20 distinct lambda-grid cells"
   },
   "notes": "Design-phase generator tuning preceded this freeze (difficulty, region cuts, blind-candidate weights); the cross-environment design intents were registered in cross_environment_hypothesis.json BEFORE the family module was written. Post-freeze changes to generator, gold, induction, contract, or thresholds require an appended amendment.",
-  "amendments": []
+  "amendments": [],
+  "gates": {
+    "date": "2026-08-19",
+    "verdict": "ALL PASS (first formal run)",
+    "run": "artifacts/gates_tickets_e28d48d7ccde9277",
+    "G1": {
+      "deterministic": 1.0,
+      "well_defined": 1.0
+    },
+    "G2": "all tilt features pass at beta_max",
+    "G3_lifts": {
+      "frustration": 0.0861,
+      "sentiment": 0.0104
+    },
+    "G4_share_range": [
+      0.154,
+      0.151
+    ],
+    "G5_cells": 50,
+    "n_rules": 63
+  }
 }
