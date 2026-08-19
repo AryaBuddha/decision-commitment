@@ -1,0 +1,20 @@
+{
+  "experiment": "wp1_granularity_claims",
+  "registered": "2026-08-19",
+  "config_hash": "fdb89335b33b04de",
+  "evidence_tier": "REAL. Block B2: score-granularity variants of claims, temper collapse in the Block A paired-difference form, 300 trials per cell. The discreteness half of critique defect D4.",
+  "question": "Does score granularity carry the gap between measured paired-difference slopes and the local-slope-ratio kappa_pred that Block A found (coarsest environment steepest)?",
+  "predictions": {
+    "PB2-1": "Gates, from the disclosed audit: variant (4, 80) FAILS G5 with 13 distinct scores (floor 20) and its battery is an out-of-gate boundary probe, excluded from within-gate claims; variant (10, 20) passes G5 (74 cells) and G3 (+0.090).",
+    "PB2-2": "Measured temper paired-difference slope decreases with granularity: slope(4, 80) > 1.249 (the archived 7, 40 value) > slope(10, 20).",
+    "PB2-3": "The amplification gap, slope minus the variant's audit kappa_pred (disclosed: 1.040 / 1.058 / 1.077 for coarse / base / fine), shrinks monotonically with granularity. This is the direct discreteness test: if plateau coarseness is what kappa_pred misses, the gap must close as plateaus vanish.",
+    "PB2-4": "Battery-measured oracle conservatism follows the audit ordering: |oracle excess| (4, 80) > (7, 40; archived -0.0039) > (10, 20)."
+  },
+  "falsifiers": {
+    "PB2-2/3": "Slope or gap NOT falling with granularity exonerates plateau discreteness, and the environment-label residue in Block A A3 needs another suspect; Block B3's induction-family probe becomes the carrier of that question.",
+    "PB2-4": "Conservatism not shrinking with granularity would break the intercept-equals-plateau-overshoot account of F17 and reopen it."
+  },
+  "decision_rule": "Slopes fitted through origin on paired differences vs aligned error over the 16 temper cells per variant (gamma = 1 cells carry zero weight in the fit); monotonicity claims on point estimates with adjacent inversions within 2 combined SE tolerated; the out-of-gate variant is reported in full and labelled in every artifact.",
+  "notes": "Design-phase audit, disclosed and never citable: variant inductions gave rules/cells 13/13, 50/46, 127/74; G3 lifts +0.084 to +0.090; kappa_pred 1.040, 1.058, 1.077; oracle excess -0.0093, -0.0039, -0.0033 (60-trial probes). The audit numbers appear in PB2-3/4 as inputs, not as evidence.",
+  "amendments": []
+}
