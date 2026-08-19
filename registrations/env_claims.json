@@ -1,0 +1,27 @@
+{
+  "environment": "claims",
+  "frozen": "2026-08-18",
+  "gate_config_hash": "36bc9577ed644af7",
+  "contract": {
+    "sampling_unit": "one routed decision per generated instance; instances are i.i.d. draws of the seeded generator, so units are exchangeable by construction",
+    "covariates": ["amount_log", "item_count", "days_to_file", "prior_claims", "provider_tenure_m", "provider_flag_rate", "doc_completeness", "severity", "inconsistency", "weekend", "customer_tenure_m", "adjuster_load", "auto_flag"],
+    "bounded_features": ["provider_flag_rate", "doc_completeness", "severity", "inconsistency", "adjuster_load"],
+    "evidence_score": "s(rule) = (n_majority + 1) / (n_leaf + 2), Laplace-shrunk consistency of the induced rule (decision-tree leaf) on the induction sample; a property of the rule that fired, constant within a rule, monotone in support and consistency; never recomputed after induction",
+    "routing": "the single tree leaf the instance falls in; committed output is the leaf majority expert label",
+    "gold": "executable policy gold(X, u) in cus/envs/claims.py, deterministic in the instance (manifest X plus latent u); u is stored with the instance so gold is mechanically recomputable, and u is never a covariate",
+    "region": "region 1 iff provider_flag_rate >= 0.45",
+    "induction": "n_demo = 6000 demonstrations drawn once from SeedSequence [20260818, 0]; expert labels are gold flipped with probability 0.06; DecisionTreeClassifier(max_depth=7, min_samples_leaf=40, random_state=0); induction data are split 1 of the four-way protocol and are never touched again",
+    "shift": "rung 2: exponential tilt exp(beta * phi(x)) on a registered bounded feature, sampled exactly by rejection from fresh generator draws; unnormalised ratio exact by construction; chi2 estimated by Monte Carlo with reported SE",
+    "tilt_features": ["severity", "inconsistency", "doc_completeness"],
+    "primary_tilt_feature": "severity"
+  },
+  "gate_thresholds": {
+    "G1_solvability": ">= 0.98 deterministic and well-defined gold on 50000 fresh instances",
+    "G2_fidelity": "rejection draws match importance-weighted source moments within 5 combined MC SE for every tilt feature at beta = 5",
+    "G3_blindness": "held-out AUC lift of wrong ~ (s, x_j) over wrong ~ s of at least 0.02 for at least one registered tilt feature; audit published either way",
+    "G4_region_mass": "region-1 share >= 0.05 at every beta in {0, 1, 2, 3, 4, 5} on the primary tilt feature",
+    "G5_spread": "induced rule scores occupy >= 20 cells of the 400-point lambda grid"
+  },
+  "notes": "Environment design was iterated on generator parameters BEFORE this freeze (difficulty, region cut, expert noise); the freeze marks the point after which any change to cus/envs/claims.py generator, gold, induction parameters, contract fields, or gate thresholds requires an appended amendment here. Gate outcomes are appended under a dated gates key after the gate run.",
+  "amendments": []
+}
