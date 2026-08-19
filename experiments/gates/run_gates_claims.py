@@ -46,10 +46,11 @@ GATE_CONFIG = {
     "expert_noise": 0.06,
     "tilt_features": ["severity", "inconsistency", "doc_completeness"],
     "primary_tilt_feature": "inconsistency",
-    "beta_grid": [0.0, 1.0, 2.0, 3.0, 4.0, 5.0],
+    "beta_grid": [0.0, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0],
     "g1_n": 50000, "g1_min_solvable": 0.98,
     "g2_n": 200000, "g2_n_sigma": 5.0,
     "g3_n": 60000, "g3_min_auc_lift": 0.02,
+    "g3_audit": "decision-conditional: wrong ~ (s, dec) vs + (x_j, dec*x_j)",
     "g4_n": 40000, "g4_min_region_share": 0.05,
     "g5_n_lambda": 400, "g5_min_cells": 20,
     "seed": 20260818,
@@ -120,6 +121,7 @@ def main() -> None:
     from sklearn.linear_model import LogisticRegression
     from sklearn.metrics import roc_auc_score
     ct = env.case_table(rng, cfg["g3_n"])
+    dec, _ = env.route(ct.X)
     half = cfg["g3_n"] // 2
     tr, te = slice(0, half), slice(half, None)
     y_tr, y_te = ct.wrong[tr], ct.wrong[te]
@@ -129,15 +131,20 @@ def main() -> None:
         clf = LogisticRegression(max_iter=2000).fit(Z[tr], y_tr)
         return float(roc_auc_score(y_te, clf.predict_proba(Z[te])[:, 1]))
 
-    auc_s = auc([ct.s])
+    # Decision-conditional audit (amendment 2): the routed decision is known
+    # before commitment, and the effect of a blind feature on wrongness has
+    # opposite signs in APPROVE- vs INVESTIGATE-labelled rules, so the
+    # unsigned form cancels exactly the structure it is meant to detect.
+    auc_s = auc([ct.s, dec])
     g3, best = {}, 0.0
     for feat in cfg["tilt_features"]:
         j = claims.BOUNDED[feat]
-        lift = auc([ct.s, ct.X[:, j]]) - auc_s
+        x = ct.X[:, j]
+        lift = auc([ct.s, dec, x, dec * x]) - auc_s
         g3[feat] = {"auc_lift": lift}
         best = max(best, lift)
-        print(f"[G3] wrong ~ (s, {feat}) AUC lift over wrong ~ s: {lift:+.4f}")
-    auc_full = auc([ct.s] + [ct.X[:, k] for k in range(ct.X.shape[1])])
+        print(f"[G3] wrong ~ (s, dec) + ({feat}, dec*{feat}): lift {lift:+.4f}")
+    auc_full = auc([ct.s, dec] + [ct.X[:, k] for k in range(ct.X.shape[1])])
     g3_pass = best >= cfg["g3_min_auc_lift"]
     report["G3"] = {"auc_s_only": auc_s, "auc_full_X": auc_full,
                     "per_feature": g3, "best_lift": best, "pass": bool(g3_pass)}

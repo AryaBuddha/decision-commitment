@@ -91,11 +91,11 @@ def generate(rng: np.random.Generator, n: int):
     X[:, 5] = rng.beta(by([1.0, 1.5, 4.0]), by([12.0, 8.0, 4.0]))
     X[:, 6] = rng.beta(by([8.0, 5.0, 2.5]), by([2.0, 3.0, 4.0]))
     X[:, 7] = rng.beta(by([2.0, 4.0, 5.0]), by([6.0, 3.0, 2.5]))
-    X[:, 8] = rng.beta(by([1.5, 2.0, 6.0]), by([10.0, 6.0, 3.0]))
+    X[:, 8] = rng.beta(by([1.8, 2.2, 3.5]), by([8.0, 6.0, 4.0]))
     X[:, 9] = (rng.random(n) < 0.28).astype(float)
     X[:, 10] = rng.gamma(2.0, by([30.0, 22.0, 10.0]))
     X[:, 11] = rng.beta(3.0, 3.0, size=n)
-    X[:, 12] = (rng.random(n) < 0.10 + 0.50 * X[:, 8]).astype(float)
+    X[:, 12] = (rng.random(n) < 0.10 + 0.35 * X[:, 7]).astype(float)
 
     u = rng.standard_normal(n)
     return X, u
@@ -111,15 +111,15 @@ def gold(X: np.ndarray, u: np.ndarray) -> np.ndarray:
     recorded in the manifest (irreducible noise GIVEN the manifest, zero
     noise given the instance)."""
     risk = (1.8 * X[:, 7]
-            + 1.6 * X[:, 8]
+            + 2.6 * X[:, 8]
             + 0.9 * X[:, 5]
             + 0.35 * np.minimum(X[:, 3], 4.0)
             + 0.5 * np.maximum(X[:, 0] - 3.5, 0.0)
-            + 1.2 * X[:, 7] * X[:, 8]
+            + 2.0 * X[:, 7] * X[:, 8]
             - 1.1 * X[:, 6]
             - 0.3 * np.tanh(X[:, 10] / 24.0)
             + 0.95 * u
-            - 1.45)
+            - 1.85)
     return (risk > 0.0).astype(bool)
 
 
