@@ -1,0 +1,22 @@
+{
+  "experiment": "wp2_certificate",
+  "registered": "2026-08-19",
+  "config_hash": "8098257736fc71f5",
+  "evidence_tier": "REAL. Phase 3: registered in-sample validation of the observable certificate over ALL archived evidence-tier estimated-arm cells: the five WP1 collapse batteries (5 x 58 = 290) plus the WP2 Phase 0 battery (384), total 674 cells, of which 219 have archived excess >= 0.005. Thirty independent deployment draws per cell, each computing the certificate from deployment-visible inputs only (labelled held-out source, the cell's ratio estimator, the calibration draw, unlabelled target covariates).",
+  "certificate_form": "Own-rule coordinate, justified by F19 and Identity 1 of wp2_theory.md: for the deployed commit function C(x), excess = E_P0[(w - w_hat) K C] + (E_P0[w_hat K C] - alpha). alpha_cert = alpha + a_plugin + CalErr_loc + b_own_ucb + z se(a_plugin), with a_plugin the audit-model plug-in (APE's per-rule cousin), CalErr_loc the commit-region-localized reliability bound (decile bins, gap + z binomial SE, masses transferred through the unlabelled target sample and the w_hat-reweighted source), and b_own_ucb the held-out crossing margin's upper confidence bound. The handover's m_max * kappa_pred * A_hat shape is NOT used: closure L measured no amplification in this coordinate (slope 1.013 +/- 0.005), so kappa and m stay explanatory. No lambda*, no oracle reference anywhere in the bound.",
+  "predictions": {
+    "P-C1": "COVERAGE: all 674 cells are covered (excess_bound >= archived cell excess in at least 27 of 30 draws, the z = 1.645 one-sided design). This is the certificate's reason to exist; any uncovered cell triggers revision and re-attack in Phase 4, not narration.",
+    "P-C2": "RISKY, the anti-vacuity claim (F4 is the cautionary tale): among the 219 cells with archived excess >= 0.005, the median-draw bound is within 2x of the realized excess in at least 40% of cells.",
+    "P-C3": "PRICE: mean conservatism (mean-draw bound minus archived excess) across all 674 cells is at most 0.05.",
+    "P-C4": "The crossing-margin term stays small: b_own_ucb <= 0.005 in at least 95% of all draws pooled (the plateau credit never becomes a hidden liability)."
+  },
+  "falsifiers": {
+    "P-C1": "Uncovered cells localize where the localization fails: expected attack surfaces are within-bin cancellation and commit-region composition shift, exactly Phase 4's registered rounds (i) and (ii). Coverage failures here shortcut Phase 4's search.",
+    "P-C2": "Below 40% means the certificate covers by being loose and the localization dividend over B*L1 (5x-32x loose, F4) is smaller than claimed; report the measured looseness distribution verbatim.",
+    "P-C3": "A price above 0.05 makes the certificate impractical at alpha 0.10 (half the budget consumed); the honest conclusion would be that observable certification at these audit sizes costs more than the F4 envelope saves.",
+    "P-C4": "A fat b_own tail implicates held-out-vs-calibration selection effects that closure L's 300-trial resolution missed."
+  },
+  "decision_rule": "As stated; 30 draws/cell; coverage rule 27/30; audit model logistic on [s, dec, X, dec*X] per the B0 ledger, one audit per environment at n_audit 60000; n_src = n_tgt = 10000 per draw; ratio C = 1.0 (the deployed default, matching every archived cell). Verdicts prediction-by-prediction, misses verbatim.",
+  "notes": "Disclosed design probe (5 draws, 3 cells, never citable): claims temper gamma 0.5 beta 5 bound +0.047 vs archived +0.02; claims deprivation rho 0 beta 5 bound +0.060 vs +0.05; tickets gamma 0 top-beta bound +0.124. CalErr_loc dominates the price. The certificate is frozen by the commit that carries this registration; Phase 4 attacks the frozen form.",
+  "amendments": []
+}
