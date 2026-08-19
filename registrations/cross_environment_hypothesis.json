@@ -268,7 +268,13 @@
       "status": "filed BEFORE any sweep of this environment"
     }
   ],
-  "amendments": [],
+  "amendments": [
+    {
+      "date": "2026-08-19",
+      "what": "RETRACTION of the C3-verdict language 'kappa is empirically universal-within-noise across tree-induced environments' and of every 'statistically indistinguishable' slope statement. Replaced by Block A A3 (blockA_e58d1bc4b8627b0d): TOST at the preregistered margin 0.25 establishes equivalence for 0 of 10 slope pairs (powers 0.43 to 0.95), and after correcting for the oracle-conservatism intercept the per-environment paired-difference slopes are genuinely unequal (1.005 to 1.734). The through-origin slope numbers in the C1-C3 verdicts and the five-environment figure caption are superseded; the C1 residual-pass results stand (the isotonic yardstick is not through-origin and absorbed the intercept).",
+      "why": "Failure-to-reject was dressed as equivalence, violating the project's own decision-rule standard (critique defect D3), and the through-origin fit model was misspecified (Block A A2/A3: the relation is affine with intercept equal to plateau conservatism). Filed as an amendment, not a silent edit, per NEXT_BLOCK.md."
+    }
+  ],
   "verdicts": {
     "date": "2026-08-19",
     "runs": "wp1f_tickets_d8b48cff3ab2e336, wp1f_fraud_2f83073cb88bea1e, wp1f_moderation_bc612e3b59311f78, wp1f_compliance_99e91888f277db19; all four environments were built, gated, audited, and swept AFTER this registration, in that order, per environment",

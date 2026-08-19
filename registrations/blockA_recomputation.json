@@ -25,5 +25,39 @@
   },
   "decision_rule": "Guards, all registered here: A3 regression restricted to cells with |a| >= 0.003 (below that, measured kappa is a ratio of noise) and mean estimated-weighting slope >= 0.02 (below that, kappa_pred is a division by near-zero); dropped counts reported. Finite-difference window h = 0.05 primary with {0.03, 0.08} sensitivity reported descriptively. Replays assert reproduction of the archived arm means at drift <= 1e-9 or abort. The archived isotonic fits are the A1 yardstick and are NOT refit.",
   "notes": "All inputs are archived evidence-tier artifacts; the only randomness is the deterministic replay of their own seeds. NEXT_BLOCK.md (committed 56b451f, before this registration) is the block's source. Block B and C registrations will cite A3 outputs and may not be written until A verdicts are filed.",
-  "amendments": []
+  "amendments": [],
+  "verdicts": {
+    "date": "2026-08-19",
+    "runs": "artifacts/blockA_e58d1bc4b8627b0d; all replay drift assertions passed at 1e-9",
+    "P-A1a": "CONFIRMED at the wire: 38 of 42 in-range cells on-curve (90.5%, threshold 90%).",
+    "P-A1b": "MISS, verbatim: extension cells 3 of 5 (60%, threshold 80%); both failures ABOVE the linear extension (underpriced convexity).",
+    "P-A1c": "MISS, verbatim: 9 of 12 tilt-location cells (threshold 10), cross-direction 3 of 6. The registered per-direction falsifier is NOT what the data show: the failure pattern is per-DISTANCE (claims severity level 1 on-curve, levels 2-3 far above; every off cell in all of A1 lies ABOVE its prediction, none below). Diagnosis: a is evaluated at the oracle threshold lambda*, and when the evaluated arm's threshold sits far from lambda* (severity tilts push oracle deferral to 0.25-0.31 while unweighted stays at source levels), a(lambda*) SATURATES while realized excess keeps growing (compliance sweep: a flat at 0.017 while excess climbs 0.031 to 0.038). The unification claim narrows along the threshold-distance axis, not the direction axis.",
+    "P-A1d": {
+      "summary": "Descriptive as registered: APE tracks kappa_pooled * a_unw tightly in correlation but outruns it exactly at the saturation boundary; APE forecasts the risk integral directly and does not saturate, which is now the measured reason it beat the identity at large shift.",
+      "per_env": {
+        "tickets": {
+          "corr": 0.9587924679184762,
+          "max_gap": 0.04447280176861991
+        },
+        "fraud": {
+          "corr": 0.9513208037822748,
+          "max_gap": 0.0024064116861428615
+        },
+        "moderation": {
+          "corr": 0.9715900879749503,
+          "max_gap": 0.00996969241727123
+        },
+        "compliance": {
+          "corr": 0.8982218361541372,
+          "max_gap": 0.023389947923267256
+        }
+      }
+    },
+    "P-A2a": "MISS, INVERTED: positive-branch slope below pooled in all five environments (0/5 vs predicted 4/5).",
+    "P-A2b": "CONFIRMED numerically (mean positive-branch slope 0.904) but for the wrong registered reason; see A2c.",
+    "P-A2c": "MISS, INVERTED: the negative branch is STEEPER in all five environments (1.40 to 3.62 vs predicted 0.5 to 0.9). Joint diagnosis with A3, exploratory and labelled: the relation is AFFINE, excess = kappa * a + c_env, with fitted intercepts matching each environment's measured oracle plateau conservatism to the third decimal (claims -0.0040 vs -0.0042; tickets -0.0054 vs -0.0066; fraud -0.0031 vs -0.0036; moderation -0.0035 vs -0.0036; compliance -0.0124 vs -0.0127). Every through-origin fit in the project inherited this: positive branches depressed, negative inflated, the below-1 pooled range manufactured. D4 is resolved as fit-model misspecification, not physics.",
+    "P-A3a": "MISS: regression slope 0.702 +/- 0.095, outside [0.8, 1.25]; the y-variable inherits c/a contamination spanning +/- 1.5 among guarded cells.",
+    "P-A3b": "MISS, doubly: R2(kappa_pred) = -0.02 and R2(env label) = 0.001, both nil on the registered y-variable, exactly as the affine model predicts. EXPLORATORY corrected form (paired difference estimated minus oracle, through origin): per-environment R2 0.939 to 0.987 with slopes fraud 1.005, claims 1.249, moderation 1.361, tickets 1.499, compliance 1.734; cross-cell regression on kappa_pred: slope 1.167 +/- 0.022, R2(kappa_pred) 0.220 vs R2(env label) 0.455. Verdict per the registered outcome logic: the constancy claim is retired AND its registered replacement failed; slopes are genuinely unequal, kappa_pred as a local slope ratio is incomplete, and the coarsest-score environment is the steepest, naming plateau discreteness (Block B2's target). Block C must target the repaired affine paired-difference functional.",
+    "P-A3c": "EXECUTED: TOST at margin 0.25 finds 0/10 pairs equivalent (powers 0.43 to 0.95). The retraction goes further than planned: several de-contaminated pairs are demonstrably UNEQUAL. Amendment filed in cross_environment_hypothesis.json; findings F13 corrected."
+  }
 }
