@@ -74,8 +74,13 @@ def _quad(f, lo=-_CUT, hi=_CUT):
     return float(v)
 
 
+from functools import lru_cache
+
+
+@lru_cache(maxsize=200_000)
 def G_int(lam):
-    """E_P0[ 1{Phi(x0) >= lam} g(x0) ], exact tail integral."""
+    """E_P0[ 1{Phi(x0) >= lam} g(x0) ], exact tail integral. Pure in its
+    float argument, so memoization is result-identical."""
     if lam >= 1.0:
         return 0.0
     t = max(norm.ppf(max(lam, 1e-300)), -_CUT)
@@ -88,8 +93,10 @@ def dG_dlam(lam):
     return -g_fn(t)
 
 
+@lru_cache(maxsize=10_000)
 def H_int(c):
-    """E_P0[ e^{c x1 - c^2/2} h(x1) ] = E_{N(c,1)}[ h(x1) ], exact."""
+    """E_P0[ e^{c x1 - c^2/2} h(x1) ] = E_{N(c,1)}[ h(x1) ], exact.
+    Pure in its float argument; memoization is result-identical."""
     return _quad(lambda u: h_fn(u) * norm.pdf(u, loc=c),
                  c - _CUT, c + _CUT)
 
