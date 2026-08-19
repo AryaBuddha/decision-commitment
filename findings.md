@@ -11,7 +11,7 @@ second machine (2026-08-18) and reproduce to the fourth decimal, including
 the single non-deprivation violation cell, the conservative d=100 cell, and
 the clip-ordering inversion.
 
-## F1. Signed aligned weight error, not error magnitude, breaks estimated-shift risk control (fa8459eb3cb50722)
+## F1. Signed aligned weight error, not error magnitude, breaks estimated-shift risk control (fa8459eb3cb50722; PROMOTED to evidence tier by F11; refined by F10, 2026-08-19)
 
 The misspecification sweep degraded the ratio estimator along four axes at
 two fixed shift levels. One curve does not map L1(P0) weight error to excess
@@ -29,7 +29,13 @@ The quantity WP2 should bound is therefore not a norm of the weight error
 but its signed alignment with the loss on the shifted direction, roughly
 E[(w - w_hat) L]. Caveat, filed in the registration: the mismatch axis is
 not at matched chi2 (0.21/0.52 vs 0.76/3.77 on the linear axes), so
-cross-axis level comparisons carry an annotation.
+cross-axis level comparisons carry an annotation. REFINEMENT (F10,
+evidence tier): "blindness is what is dangerous" was the placeholder's
+version of this finding and it does not survive contact with a real
+environment unqualified. Gold-relevance net of self-correction decides
+the damage; visibility only determines whether a score-side defense is
+mounted, and the defense can lose. The signed-aligned-error statement
+itself is the part that generalized (F11).
 
 ## F2. Proposition 2 verified empirically, on both sampling rungs (ef4e524e83fd3cd4, fa8459eb3cb50722)
 
@@ -40,7 +46,9 @@ including the rung-2 cells where the target is drawn by exact rejection
 sampling from a bounded tanh tilt. No published empirical evaluation of
 Proposition 2 existed; this is the platform's verification of it, pilot
 tier. The unit test (exact reduction to unweighted CRC at w == 1) and the
-importance-weighted-moment exactness check gate every run.
+importance-weighted-moment exactness check gate every run. PROMOTED:
+oracle consistent in all 7 wp1c levels, all 6 tilt-location cells, and
+all 58 collapse cells on the claims environment.
 
 ## F3. A risk-relevant region CAN fail silently at zero shift (ef4e524e83fd3cd4; scope narrowed 2026-08-19)
 
@@ -59,7 +67,7 @@ a registered two-step: exploratory identification on a dedicated design
 split, then a fresh registered confirmatory run on new draws. Nothing
 from ab56864e6cfb3400 may be reused to pick the cut.
 
-## F4. B*L1 is a valid but expensive envelope (fa8459eb3cb50722)
+## F4. B*L1 is a valid but expensive envelope (fa8459eb3cb50722; PROMOTED: 58/58 on claims at factor up to 32, see 56704982681d6960)
 
 In all 30 misspecification cells, mean excess risk minus 1.645 SE stays
 below mean L1(P0) error, so the bound |E[w_hat L] - E[w L]| <= B E|w_hat - w|
@@ -84,7 +92,7 @@ the Proposition 3 TV envelope is vacuous (exceeds 1) from the first nonzero
 tilt at n_cal = 1000. The observed decay is far milder than the published
 bound allows, which is the opening WP2 sharpens.
 
-## F7. The collapse: excess risk is one-dimensional in signed aligned error (fd2279c8f7dc2df6)
+## F7. The collapse: excess risk is one-dimensional in signed aligned error (fd2279c8f7dc2df6; PROMOTED to evidence tier by F11)
 
 Manipulating aligned error directly with synthetic estimators (tempering
 w^gamma from the unweighted endpoint through the oracle into
