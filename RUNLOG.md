@@ -1,0 +1,10 @@
+# RUNLOG
+
+One line per run, append-only. Format:
+`date | config_hash | pilot|real | purpose | outcome`
+
+2026-08-18 | 670cbb33b9ffbef9 | pilot | first end-to-end pipeline run, synth v1 | exposed two design errors: violation_rate wrongly registered as headline (in-expectation bounds sit near alpha by design), tilt direction inverted vs difficulty. Amendments 1-2 filed. Artifacts not shipped in repo zip.
+2026-08-18 | 4b111d756d70c805 | pilot | corrected tilt, synth v1 | effect too small (peak 0.104 vs alpha 0.10); environment self-corrects because evidence score reads the same variable driving correctness. Led to synth2 with evidence-blind shift dimension.
+2026-08-18 | a02b9378ca2125c0 | pilot | synth2, evidence-blind tilt, 3 arms | clean decay curve (unweighted to 0.31), weighted arms hold, region-1 failure at zero shift. Pre-review: weighted arms used global threshold, ratio fitted with leakage. Superseded.
+2026-08-18 | ef4e524e83fd3cd4 | pilot | post-review protocol: Prop 2 literal, exact tilt, 4-way splits, 4 arms, 3-outcome verdicts | oracle CONSISTENT at all levels; unweighted VIOLATION from chi2=0.06; estimated tracks oracle (logistic well-specified, so Q1 not yet exercised); global shortcut holds, less conservative at large shift. Amendments 3-5 filed. REPRODUCE THIS LOCALLY as setup validation.
+2026-08-18 | ef4e524e83fd3cd4 | pilot | local reproduction of registered pilot as setup validation on new machine | verdicts match handover exactly: unweighted VIOLATION from chi2=0.06 (0.128) rising to 0.315 at chi2=8.49; oracle consistent at all levels; estimated tracks oracle to third decimal (L1 0.075 to 0.099); glob_oracle holds, less conservative at large shift (0.098 vs 0.093 at chi2=8.49); region-1 risk 0.416 at zero shift. plot.py fixed for v3 key rename (chi2_analytic).

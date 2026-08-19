@@ -26,7 +26,7 @@ def main(run_dir: str) -> None:
 
     for arm in ARMS:
         r = [x for x in rows if x["arm"] == arm]
-        x = [v["chi2_divergence"] for v in r]
+        x = [v["chi2_analytic"] for v in r]
         c, m, lab = STYLE[arm]
 
         ax[0].plot(x, [v["marginal_risk_mean"] for v in r], marker=m, color=c, label=lab)

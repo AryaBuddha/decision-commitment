@@ -2,3 +2,5 @@ __pycache__/
 *.pyc
 artifacts/
 cus-wp1-repo.zip
+CLAUDE.md
+.venv/
