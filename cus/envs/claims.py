@@ -65,6 +65,12 @@ FEATURES = [
 ]
 BOUNDED = {"provider_flag_rate": 5, "doc_completeness": 6, "severity": 7,
            "inconsistency": 8, "adjuster_load": 11}
+# The induction system sees the demonstration LOG, not the full manifest:
+# inconsistency (a property of the documents the expert read) was never
+# logged, so no induced rule can condition on it. Wrongness still depends
+# on it through gold; that gap is the evidence-blind direction the
+# programme studies, explicit here rather than emergent. Frozen.
+INDUCTION_VIEW = [j for j in range(len(FEATURES)) if j != 8]
 REGION_CUT = 0.45
 SEGMENT_P = (0.70, 0.22, 0.08)      # routine, complex, adversarial
 
@@ -142,9 +148,9 @@ class ClaimsEnv:
         tree = DecisionTreeClassifier(max_depth=max_depth,
                                       min_samples_leaf=min_samples_leaf,
                                       random_state=0)
-        tree.fit(X, y_expert)
+        tree.fit(X[:, INDUCTION_VIEW], y_expert)
 
-        leaves = tree.apply(X)
+        leaves = tree.apply(X[:, INDUCTION_VIEW])
         leaf_label, leaf_score = {}, {}
         for leaf in np.unique(leaves):
             m = leaves == leaf
@@ -159,7 +165,7 @@ class ClaimsEnv:
     # -- routing ----------------------------------------------------------
     def route(self, X: np.ndarray):
         """One routed decision per instance: the leaf that fires."""
-        leaves = self.tree.apply(X)
+        leaves = self.tree.apply(X[:, INDUCTION_VIEW])
         dec = np.array([self.leaf_label[int(l)] for l in leaves])
         s = np.array([self.leaf_score[int(l)] for l in leaves])
         return dec, s

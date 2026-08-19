@@ -45,7 +45,7 @@ GATE_CONFIG = {
     "n_demo": 6000,
     "expert_noise": 0.06,
     "tilt_features": ["severity", "inconsistency", "doc_completeness"],
-    "primary_tilt_feature": "severity",
+    "primary_tilt_feature": "inconsistency",
     "beta_grid": [0.0, 1.0, 2.0, 3.0, 4.0, 5.0],
     "g1_n": 50000, "g1_min_solvable": 0.98,
     "g2_n": 200000, "g2_n_sigma": 5.0,

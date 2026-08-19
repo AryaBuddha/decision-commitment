@@ -1,19 +1,43 @@
 {
   "environment": "claims",
   "frozen": "2026-08-18",
-  "gate_config_hash": "36bc9577ed644af7",
+  "gate_config_hash": "2ce3e00aea6b6b19",
   "contract": {
     "sampling_unit": "one routed decision per generated instance; instances are i.i.d. draws of the seeded generator, so units are exchangeable by construction",
-    "covariates": ["amount_log", "item_count", "days_to_file", "prior_claims", "provider_tenure_m", "provider_flag_rate", "doc_completeness", "severity", "inconsistency", "weekend", "customer_tenure_m", "adjuster_load", "auto_flag"],
-    "bounded_features": ["provider_flag_rate", "doc_completeness", "severity", "inconsistency", "adjuster_load"],
+    "covariates": [
+      "amount_log",
+      "item_count",
+      "days_to_file",
+      "prior_claims",
+      "provider_tenure_m",
+      "provider_flag_rate",
+      "doc_completeness",
+      "severity",
+      "inconsistency",
+      "weekend",
+      "customer_tenure_m",
+      "adjuster_load",
+      "auto_flag"
+    ],
+    "bounded_features": [
+      "provider_flag_rate",
+      "doc_completeness",
+      "severity",
+      "inconsistency",
+      "adjuster_load"
+    ],
     "evidence_score": "s(rule) = (n_majority + 1) / (n_leaf + 2), Laplace-shrunk consistency of the induced rule (decision-tree leaf) on the induction sample; a property of the rule that fired, constant within a rule, monotone in support and consistency; never recomputed after induction",
     "routing": "the single tree leaf the instance falls in; committed output is the leaf majority expert label",
     "gold": "executable policy gold(X, u) in cus/envs/claims.py, deterministic in the instance (manifest X plus latent u); u is stored with the instance so gold is mechanically recomputable, and u is never a covariate",
     "region": "region 1 iff provider_flag_rate >= 0.45",
-    "induction": "n_demo = 6000 demonstrations drawn once from SeedSequence [20260818, 0]; expert labels are gold flipped with probability 0.06; DecisionTreeClassifier(max_depth=7, min_samples_leaf=40, random_state=0); induction data are split 1 of the four-way protocol and are never touched again",
+    "induction": "n_demo = 6000 demonstrations drawn once from SeedSequence [20260818, 0]; expert labels are gold flipped with probability 0.06; DecisionTreeClassifier(max_depth=7, min_samples_leaf=40, random_state=0) fitted on the INDUCTION VIEW, the 12 manifest features excluding inconsistency (the demonstration log never recorded it); induction data are split 1 of the four-way protocol and are never touched again",
     "shift": "rung 2: exponential tilt exp(beta * phi(x)) on a registered bounded feature, sampled exactly by rejection from fresh generator draws; unnormalised ratio exact by construction; chi2 estimated by Monte Carlo with reported SE",
-    "tilt_features": ["severity", "inconsistency", "doc_completeness"],
-    "primary_tilt_feature": "severity"
+    "tilt_features": [
+      "severity",
+      "inconsistency",
+      "doc_completeness"
+    ],
+    "primary_tilt_feature": "inconsistency"
   },
   "gate_thresholds": {
     "G1_solvability": ">= 0.98 deterministic and well-defined gold on 50000 fresh instances",
@@ -23,5 +47,11 @@
     "G5_spread": "induced rule scores occupy >= 20 cells of the 400-point lambda grid"
   },
   "notes": "Environment design was iterated on generator parameters BEFORE this freeze (difficulty, region cut, expert noise); the freeze marks the point after which any change to cus/envs/claims.py generator, gold, induction parameters, contract fields, or gate thresholds requires an appended amendment here. Gate outcomes are appended under a dated gates key after the gate run.",
-  "amendments": []
+  "amendments": [
+    {
+      "date": "2026-08-18",
+      "what": "Gate 3 FAILED at first freeze (best held-out AUC lift +0.0072 vs threshold 0.02; audit archived at artifacts/gates_claims_36bc9577ed644af7 and published in docs/gates/claims.md). Redesign: the induction view excludes inconsistency, so no induced rule and hence no evidence score can condition on it, while gold still depends on it; primary tilt feature moved from severity to inconsistency; severity retained as the evidence-visible candidate for the tilt-location ablation. New gate config hash 2ce3e00aea6b6b19.",
+      "why": "With all manifest features visible to induction, depth-7 rules absorbed nearly all the X-dependence of wrongness, so the environment could not exhibit the evidence-blind failure WP1 measures. The redesign is the programme's own stated phenomenon (evidence is a property of the rule; some case features are invisible to it, e.g. attributes the demonstration log never recorded), made explicit in the environment rather than left to emergence."
+    }
+  ]
 }
