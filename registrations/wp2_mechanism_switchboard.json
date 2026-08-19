@@ -1,0 +1,24 @@
+{
+  "experiment": "wp2_mechanism_switchboard",
+  "registered": "2026-08-19",
+  "config_hash": "532eecd6e078f48b",
+  "evidence_tier": "PILOT (analytic world, rung 1). Mechanism identification only; whatever survives gets a registered confirmation on gated environments. The analytic world's factorized design makes the population secant identity excess = kappa * a EXACT at all magnitudes (H4 absent by construction) and every baseline quadrature-exact, so the measured amplification decomposes into machinery terms: level 1 adds the grid and pseudo-loss charge (H1), level 2 adds calibration noise with quadrature-exact risk evaluation (H2), level 3 adds literal per-test-covariate thresholds (H3). The rung-1 exactness selftest gates the run.",
+  "question": "Which machinery term owns m(alpha), and which owns the budget-independent plateau above 1 that the Phase 0 budget grid found (m -> 1.106 at alpha 0.10, 1.256 at 0.05 on claims as n_cal grows)?",
+  "predictions": {
+    "P-SW1": "Instrument check: m_pop = 1 within 1e-6 at every cell with |a| > 1e-6. The identity is exact here; any deviation is a bug in the instrument, not a finding.",
+    "P-SW2": "H1 is a minor, alpha-flat term: |m_grid - 1| <= 0.05 at n_cal >= 1000 at every alpha, and the range of m_grid across alphas at n_cal 1000 is <= 0.05. The grid and B-term shift both arms conservatively and mostly cancel in the paired difference.",
+    "P-SW3": "H2 owns the budget-dependent component: m_noise decreases in n_cal at every alpha, increases as alpha falls at fixed n_cal, and at n_cal = 100000 lands within 0.05 of m_grid at every alpha >= 0.05 (the noise term dies with budget; it has no plateau of its own).",
+    "P-SW4": "RISKY, the plateau ownership test: the per-covariate gap m_percov - m_noise is positive, persists at n_cal = 100000, and grows as alpha falls: at n_cal >= 10000 the gap is >= 0.10 at alpha 0.05 and >= 0.05 at alpha 0.10. Mechanism: under a positive tilt the per-covariate thresholds rise exactly where the blind-driver conditional wrongness is high, and the oracle's weight spread exceeds the tempered arm's, so per-covariate averaging helps the oracle more, inflating the paired difference multiplicatively.",
+    "P-SW5": "Tier tie: the full-machinery m_percov at (alpha 0.10, n_cal 1000) lies in [1.05, 1.35] and at (alpha 0.05, n_cal 1000) in [1.25, 1.75], reproducing the gated-tier m scale inside the analytic world."
+  },
+  "falsifiers": {
+    "P-SW1": "Any violation stops the phase until the instrument is fixed.",
+    "P-SW2": "m_grid carrying an alpha trend > 0.05 means H1 owns part of m(alpha) and the grid-refinement discriminator must run on the gated environments before anything else.",
+    "P-SW3": "m_noise plateauing above m_grid at 100000 means the noise term itself has a budget-independent floor, which no current mechanism story predicts; loud checkpoint.",
+    "P-SW4": "A gap under 0.03 at large n_cal kills H3 as the plateau owner. With H4 structurally absent here and H1/H2 measured separately, all four candidates would then be dead for the plateau, which per the handover is the most interesting outcome and goes straight to the human checkpoint, stated loudly.",
+    "P-SW5": "A pilot-tier m far from the gated-tier scale means the analytic world is missing an ingredient the real environments have, and its mechanism verdicts transfer only qualitatively."
+  },
+  "decision_rule": "m per level per cell = paired difference at that level divided by (kappa_exact * a_exact), both quadrature-exact. Cell grid: alpha {0.02, 0.05, 0.10, 0.15} x n_cal {250, 1000, 10000, 100000} x gamma {0.0, 0.4, 0.7, 1.3, 1.6} at b = 0.8. Aggregates per (alpha, n_cal) average over gamma cells with |a_exact| > 1e-6. 300 trials (60 at n_cal 100000, where SEs stay adequate because quadrature evaluation removes the evaluation-window noise). Verdicts prediction-by-prediction, misses verbatim.",
+  "notes": "Registered after the Phase 0 budget verdicts and before any full switchboard run; the P-SW4 gap thresholds are chosen so that the claims plateau (0.10 to 0.26 above 1) would be attributed to H3 only if the analytic world reproduces a same-order gap. No probe of the switchboard levels was run before registration; the smoke run is pipeline debugging only and is labelled pilot in RUNLOG.",
+  "amendments": []
+}
