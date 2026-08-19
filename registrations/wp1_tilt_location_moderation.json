@@ -1,0 +1,22 @@
+{
+  "experiment": "wp1_tilt_location_moderation",
+  "registered": "2026-08-19",
+  "config_hash": "bf521b1f263f8cc8",
+  "evidence_tier": "REAL. Ablation A, second environment: tilt location at matched chi2 on moderation, 500 trials per cell, six tilted cells.",
+  "question": "Does the F10 law (damage = gold-relevance of the tilted feature NET of the rules' self-correction) predict a crossover when the visible feature is heavily defended and the blind feature carries modest gold weight?",
+  "predictions": {
+    "PB1": "CROSSOVER, registered from a disclosed probe: at the lowest matched level (chi2 0.233) the toxicity tilt's unweighted risk is greater than or statistically indistinguishable from the sarcasm tilt's; at the top matched level (chi2 3.470) the sarcasm tilt exceeds the toxicity tilt by at least 0.010 (one-sided z = 2.128 per comparison, 0.05/3 across levels; probe values 0.1311 vs 0.1098).",
+    "PB2": "Shape: sarcasm decay is monotone increasing across the three matched levels (no defense exists for a blind feature); toxicity decay is non-monotone with its top-level value below its mid-level value (the defense winning at large shift, replicating the wp1f moderation shape under this experiment's seeds).",
+    "PB3": "Mechanism contrast with claims: moderation's toxicity defense operates through routing accuracy, not deferral. Unweighted deferral stays within 0.03 absolute of the beta = 0 value (0.058) in EVERY cell, both tilts, unlike claims severity where deferral rose by +0.078. The defense that works (moderation) is invisible in the deferral rate; the defense that failed (claims) was loud in it.",
+    "PB4": "Oracle consistent at all six tilted cells (exact rung-2 ratios, both features gate-2 verified)."
+  },
+  "falsifiers": {
+    "PB1": "No crossover with sarcasm dominant everywhere would mean gold-relevance is irrelevant once a feature is defended at all; toxicity dominant everywhere would mean the probe was noise and the claims ordering is universal. Either way the F10 law needs restating.",
+    "PB2": "A monotone toxicity curve here (contradicting wp1f under different seeds) would implicate seed sensitivity of the non-monotone shape.",
+    "PB3": "Deferral moving more than 0.03 identifies a deferral component in moderation's defense after all; decompose by leaf before quoting the routing-accuracy story.",
+    "PB4": "Standing bug-presumption path."
+  },
+  "decision_rule": "Per-cell three-outcome rule; named comparisons at z = 2.128; cross-feature comparisons use difference of independent cell means with combined SE. Matched sarcasm betas (2.483, 4.800, 6.581) computed by MC bisection against the toxicity grid chi2 values during design; each cell re-reports its own MC chi2. Sampling rung 2 stated on every figure.",
+  "notes": "Disclosed design-phase probe, never citable: 30-trial unweighted sarcasm probes gave 0.1094, 0.1271, 0.1311 at the matched levels with deferral 0.066 to 0.087; the toxicity comparators at 500 trials exist in wp1f_moderation but this experiment re-runs both features under its own seeds so both sides of every comparison share a registration.",
+  "amendments": []
+}
