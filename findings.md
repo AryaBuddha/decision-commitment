@@ -406,3 +406,49 @@ in the large-budget limit; at intermediate budgets crossing noise
 softens it from below, so m is bounded, not pointwise derived, between
 the regimes. In the own-threshold coordinate (F19) none of this
 exists, which is why the certificate lives there.
+
+## F22. EVIDENCE TIER: the observable certificate covers every dangerous archived cell and survives two red-team rounds, with its price and its character stated plainly (wp2cert, wp2rt1, wp2rt2)
+
+The certificate is assembled in the own-rule coordinate (F19; Identity
+1 of wp2_theory.md): alpha_cert = alpha + a_plugin + CalErr_loc +
+b_own_ucb + z se, with no kappa, no m, and no oracle reference in the
+bound. Validated over all 674 archived evidence-tier estimated-arm
+cells at 30 deployment draws each: zero of the 219 dangerous cells
+(excess >= 0.005) have a median bound below their realized excess;
+mean conservatism +0.0464; the 29 formal coverage misses at the 27/30
+rule are 26 safe cells (bound occasionally dips below an
+already-negative excess, no risk content) and three draw-tail events
+with median bounds 2.6x to 7.5x above their excesses. The registered
+anti-vacuity clause MISSED: median looseness on dangerous cells is
+4.1x against the hoped-for 2x, better than the F4 envelope (5x to
+32x) but plainly a cover-by-margin instrument, dominated by
+CalErr_loc. Two registered red-team rounds: an audit-blindness x
+blind-estimator attack and per-draw coverage on the highest-variance
+estimator cells survived (breach -0.035; per-draw coverage 95.5% and
+91%); post-audit drift BREACHED at +5.9 beta-units exactly inside the
+registered window and forced Revision 1 (a deployment-visible drift
+monitor with tolerance 0.10, verified to separate surviving from
+breaching drifts 9.2x and to detect the breaching one 30/30); the
+audit model's own regularization default proved benign (<= 0.0092)
+while the reliability bin count did NOT (within-bin cancellation hides
+up to 0.031), forcing Revision 2 (bins pinned at 20). Final form v2 is
+frozen in wp2_redteam2's phase4_exit.
+
+## F23. EVIDENCE TIER, THE CAPSTONE: the frozen certificate's envelope, registered from deployment-visible data before the holdout sweep existed, covers realized risk at every point (wp2env, wp2p5)
+
+Environment 7 (returns) was designed after the certificate freeze,
+passed all five gates on its frozen design, and deliberately stresses
+the certificate's audited weak points (a gold interaction outside the
+audit model's class; a blind driver with a weak proxy). Stage A
+computed the certificate envelope from deployment-visible data only
+(alpha_cert 0.141 to 0.160 across 12 feature-beta cells); the envelope
+went into the registration verbatim; stage B then swept realized risk
+on fresh streams: 12/12 cells covered, mean price +0.0562, oracle
+consistent everywhere. The registered RISKY danger-location clause
+missed verbatim: the deployed estimator tracked the oracle within
+0.003 at every cell (the weak-proxy reconstruction defended more than
+the ledgered C = 1.0 shrinkage hurt), so the capstone certifies
+coverage and price on a deployment where nothing dangerous happened to
+the deployed arm, and the certificate's cover-by-margin character
+stands exactly as the red team filed it. Figure:
+docs/wp2_prospective_envelope.png.
