@@ -15,5 +15,13 @@
   },
   "decision_rule": "Equivalence at the 90% paired CI inside [-0.005, +0.005]; monotonicity on paired-difference point estimates with adjacent inversions within 2 combined SE tolerated; ESS ratios on estimated-arm means. Raw three-outcome verdicts reported per cell, labelled exploratory.",
   "notes": "Predictions derive from the wp1f P3 miss diagnosis (clip binding at exp(beta) > odds cap) and arithmetic on the caps; no design-phase probe was run.",
-  "amendments": []
+  "amendments": [],
+  "verdicts": {
+    "date": "2026-08-19",
+    "run": "artifacts/wp1clip_29c648c1dd48b078, n_trials=500, EVIDENCE TIER",
+    "PB4-1": "MISS IN FULL, and the registered falsifier fires with a corrected diagnosis: widening the clip recovers nothing. Paired differences are flat across all three clips at every env-level (tickets top: +0.0077, +0.0081, +0.0078; compliance top: +0.0077, +0.0080, +0.0073) and no cell reaches equivalence. The wp1f P3 diagnosis ('the clip binds because exp(beta) exceeds the odds cap') is hereby REOPENED and replaced: the fitted logistic's probabilities never reach the clip bounds at n_fit = 1000, because sklearn LogisticRegression carries default L2 regularization (C = 1.0) that shrinks extreme log-odds. The under-correction at extreme bounded tilts is REGULARIZATION-driven, not clip-driven. A previously unlisted knob enters the design ledger.",
+    "PB4-2": "MISS, same cause: ESS is flat across clips (the cap admits nothing that the regularized fit ever produces), so there was no recovery to pay for.",
+    "PB4-3": "CONFIRMED: oracle consistent in all twelve cells and stable across the clip replicates.",
+    "corrected_diagnosis": "The non-equivalence of a correctly specified estimator at extreme bounded tilts is caused by regularization shrinkage of the ratio fit, not by probability clipping. Candidate registered follow-up (not run in this block): sweep C in {1, 10, 100, unregularized} at the same cells; prediction to be written from a design audit before any such run."
+  }
 }

@@ -16,5 +16,14 @@
   },
   "decision_rule": "Slopes fitted through origin on paired differences vs aligned error over the 16 temper cells per variant (gamma = 1 cells carry zero weight in the fit); monotonicity claims on point estimates with adjacent inversions within 2 combined SE tolerated; the out-of-gate variant is reported in full and labelled in every artifact.",
   "notes": "Design-phase audit, disclosed and never citable: variant inductions gave rules/cells 13/13, 50/46, 127/74; G3 lifts +0.084 to +0.090; kappa_pred 1.040, 1.058, 1.077; oracle excess -0.0093, -0.0039, -0.0033 (60-trial probes). The audit numbers appear in PB2-3/4 as inputs, not as evidence.",
-  "amendments": []
+  "amendments": [],
+  "verdicts": {
+    "date": "2026-08-19",
+    "run": "artifacts/wp1g_fdb89335b33b04de, n_trials=300, EVIDENCE TIER",
+    "PB2-1": "CONFIRMED as disclosed: (4, 80) fails G5 with 13 cells and is labelled out-of-gate throughout; (10, 20) passes (74 cells).",
+    "PB2-2": "MISS: slopes are 1.304 (coarse, out-of-gate), 1.249 (archived base), 1.367 (fine): non-monotone, with the FINE variant steepest. Coarseness does not drive the paired-difference slope.",
+    "PB2-3": "MISS: gaps to audit kappa_pred are 0.264, 0.191, 0.290: non-monotone, largest on the finest variant. Plateau discreteness is EXONERATED as the cause of the kappa_pred gap, per the registered falsifier; the environment-label residue in Block A A3 still lacks a carrier, and B3's induction-family result becomes the live probe.",
+    "PB2-4": "CONFIRMED: oracle conservatism orders exactly with coarseness (-0.0090, -0.0039, -0.0031), which is the second independent confirmation of F17's intercept mechanism (plateau overshoot).",
+    "headline": "Granularity splits cleanly: it owns the INTERCEPT of the affine law and does not own the SLOPE gap."
+  }
 }
