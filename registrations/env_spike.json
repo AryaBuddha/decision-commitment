@@ -1,0 +1,8 @@
+{
+  "environment": "spike",
+  "frozen": "2026-08-19",
+  "gate_config_hash": "4bab082db8eba24c",
+  "purpose": "Block C: the adversarial-kappa environment, designed AFTER the Block A verdicts to place per-cell kappa_pred far outside the 0.85 to 1.25 range of the first five environments. Wrong-mass is concentrated in a narrow visible-score band just above the alpha = 0.10 threshold, gated by a steep threshold in the BLIND, independent feature b, so tempering collapses the band's weight much faster than the true tilt does. Design-audit kappa_pred spans 0.78 to 2.42 across temper cells (mean 1.30). This is NOT the WP2 certificate holdout, which must be a different environment.",
+  "contract": "claims-shaped: tree induction (depth 7, min leaf 40, expert noise 0.03) on the view excluding b; Laplace leaf-consistency scores; gold(X, u) in cus/envs/spike.py; region r >= 0.45; rung-2 tilts on b (primary) and v; beta grid linspace to the chi2 ~ 3.47 matched top (7.008)",
+  "amendments": []
+}
