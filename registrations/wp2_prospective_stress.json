@@ -548,5 +548,13 @@
     "P-ST3": "Max approach below 0.30 means even the stressed capstone certifies mostly margin; the paper's claim must then be stated as coverage with a measured (large) price, nothing stronger."
   },
   "decision_rule": "300 trials per cell, fresh streams (seed 20260823, stage-B stream ids disjoint from stage A). Coverage against the embedded bound_median. Verdicts prediction-by-prediction, misses verbatim.",
-  "amendments": []
+  "amendments": [],
+  "verdicts": {
+    "date": "2026-08-19",
+    "run": "artifacts/wp2p5s_8e357241960a63b7, EVIDENCE TIER, 300 trials/cell",
+    "P-ST1": "CONFIRMED, the protection claim: 12/12 stressed cells covered, including all six no-correction cells with genuinely positive excess (+0.0138 to +0.0362, each at 14 to 30 SEs above zero). The certificate protected deployments that were actually failing their certified level.",
+    "P-ST2": "CONFIRMED: all six no-correction cells realize excess >= +0.005 at far beyond 2 SE, and five of six exceed +0.015 (the sixth, serial beta 2, sits at +0.0138). The stress was real.",
+    "P-ST3": "CONFIRMED (RISKY): maximum approach ratio 0.37 (no-correction, serial beta 6: +0.0305 against a bound of +0.0819), with 0.33 at both top desc cells; minimum price +0.0476. The envelope was approached and not crossed. Honest reading unchanged from the v2 record: roughly two thirds of the bound is margin even at the closest approach, and the slack attribution (wp2_slack_attribution) says where it lives.",
+    "P-ST4": "CONFIRMED: zero oracle violations at the one-sided z; worst oracle mean excess -0.0042."
+  }
 }
