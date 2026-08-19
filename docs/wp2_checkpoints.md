@@ -106,3 +106,44 @@ protocol is two-stage: stage A computes the certificate envelope from
 deployment-visible data only and the envelope numbers are registered
 as predictions; stage B sweeps realized risk. Reversible: nothing about
 stage B can retroactively change stage A's registered numbers.
+
+### Checkpoint 5: after Phase 5 verdicts (2026-08-19)
+
+WP2 is complete against its definition of done.
+
+1. Phase 0 fresh-data verdicts: filed (wp2_phase0_battery, _budget,
+   _closures). The law's confirmed form: excess = a_own + b_own exactly
+   at the arm's own threshold; in lambda* coordinates excess =
+   m(alpha; env, n_cal) * kappa_pred * a + b(env), with every anchor
+   and window hit and the structural misses (m non-monotone in alpha on
+   tickets; family invariance an alpha-0.10 phenomenon) resolved by the
+   Phase 1 mechanism.
+2. The m(alpha) mechanism: identified as a stated combination on both
+   tiers (B/(n+1) charge asymmetry, derived; crossing noise, dies at
+   root-n and softens; discrete-crossing plateau arithmetic, owns the
+   budget-independent plateau and the environment ordering). H3 and H4
+   dead by registered discriminators. The analytic-world decomposition
+   is on file (wp2sw, wp2qsw artifacts).
+3. wp2_theory.md: graded results, all numerically verified
+   (wp2_theory_checks: 24/24, 16/16, 18/18).
+4. The certificate: frozen, validated over 674 archived cells (zero
+   dangerous-cell median failures; mean conservatism +0.0464; the
+   registered anti-vacuity clause missed at 4.1x median looseness,
+   filed verbatim), survived two registered red-team rounds with one
+   breach converted to a monitored freshness window and one silent
+   default pinned (final form v2).
+5. The capstone: holdout environment built after the freeze, envelope
+   registered from deployment-visible data before the sweep, 12/12
+   covered at mean price +0.0562, the danger-location risky clause
+   missed verbatim.
+6. Registrations, verdicts, misses verbatim, RUNLOG current, ledger
+   rows for every new knob.
+
+Paper prose remained untouched throughout and may now resume per the
+handover; reconciling paper/draft.md with F17 through F23 is the next
+block's first task. Open threads left deliberately on file: the
+finite-budget composition of noise-softening and plateau arithmetic
+(P-Q2's refinement); the properly-posed FD-instrument split; the
+safe-side bound dips (no risk content, disclosed anatomy); Phase 6
+extensions (group-conditional two-step, Learn-then-Test selective
+certification, gradual drift).
