@@ -89,3 +89,20 @@ audit bins contribute zero to CalErr_loc while carrying target mass;
 within-bin cancellation; the audit model's own regularization default;
 post-audit mix drift. Reversible: Phase 4's registered loop may revise
 and re-attack.
+
+### Checkpoint 4: before building environment 7 (2026-08-19)
+
+Decision packet, written at build time. Preconditions verified: the
+certificate was frozen by commit (checkpoint 3) and then survived or
+was revised through two registered red-team rounds (one drift breach
+converted to a monitored validity window; binning pinned at the
+conservative end; final form v2 in wp2_redteam2's phase4_exit).
+Environment 7 (returns) was designed only after the freeze commit, with
+three disclosed design iterations, and passed all five gates on the
+frozen design. Its structure deliberately stresses the certificate's
+audited weak points: a gold interaction outside the audit model's
+class, and a blind driver with only a weak proxy. The prospective
+protocol is two-stage: stage A computes the certificate envelope from
+deployment-visible data only and the envelope numbers are registered
+as predictions; stage B sweeps realized risk. Reversible: nothing about
+stage B can retroactively change stage A's registered numbers.
