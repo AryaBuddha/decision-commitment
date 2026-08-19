@@ -34,5 +34,11 @@
     "P6": "PARTIAL MISS. Risk ordering across clips at beta=1.25 confirmed: (0.2,0.8) 0.0905 > (0.05,0.95) 0.0871 > (0.01,0.99) 0.0845. But the predicted anti-conservatism is WRONG: all mismatch cells are conservative (below alpha and below oracle), because the linear score keeps growing where tanh saturates, over-weighting the tails. And the L1 ordering INVERTED: the tight clip has the LOWEST L1 (0.173 vs 0.200) because clipping pulls the over-spread weights back toward truth. Tight clipping here moves risk toward alpha from below, not through it. Mismatch sits below full deprivation in both L1 and excess risk as predicted.",
     "P7": "CONFIRMED. Oracle arm CONSISTENT in all 30 cells, on both sampling rungs; first rung-2 verification of Proposition 2 in this project.",
     "headline": "Both registered questions answered: one curve does NOT fit all axes, and B*L1 IS a valid empirical envelope, but a loose one (>= 5x everywhere). The quantity WP2 must bound is not L1 magnitude but signed weight error aligned with the shifted, risk-relevant direction: under-weighting the shifted region is what breaks control (deprivation, starved fits at large shift); diffuse or over-spread error is conservative and merely costs deferral. The only violations outside deprivation: starvation n_fit=50 at beta=1.25."
-  }
+  },
+  "analysis_caveats": [
+    {
+      "date": "2026-08-18",
+      "note": "The mismatch axis is not at matched shift: the bounded tanh tilt at beta 0.75/1.25 produces chi2 = 0.21/0.52 while the linear axes sit at 0.76/3.77. 'Mismatch sits below deprivation' therefore partly reflects that the mismatch cells faced less shift. Cross-axis level comparisons must either rescale beta on that axis to match chi2 or carry this annotation; the deliverable figure now carries it. Within-axis orderings (clip ordering, monotonicity) are unaffected."
+    }
+  ]
 }

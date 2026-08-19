@@ -54,6 +54,10 @@ def main(run_dir: str) -> None:
                 Line2D([], [], color="gray", marker="s", ls="", label="β = 1.25")]
     ax.legend(handles=handles, fontsize=8, loc="upper left")
     ax.grid(alpha=0.25)
+    ax.text(0.99, 0.02,
+            "mismatch cells face smaller shift (chi2 = 0.21/0.52) than the\n"
+            "linear axes (0.76/3.77); cross-axis comparisons are not matched-shift",
+            transform=ax.transAxes, ha="right", fontsize=7, color="dimgray")
 
     fig.tight_layout()
     out = d / "wp1_misspec_l1_vs_excess.png"
