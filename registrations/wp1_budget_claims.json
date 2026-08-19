@@ -1,0 +1,23 @@
+{
+  "experiment": "wp1_budget_claims",
+  "registered": "2026-08-19",
+  "config_hash": "a473b915381bcb1e",
+  "evidence_tier": "REAL. Ablation C on claims: n_cal in {250, 1000, 4000} crossed with beta in {0, 3, 6}, 500 trials per cell. Produces the certifiable-shift-vs-budget table (definition of done, item 5).",
+  "question": "What does the calibration budget buy? The theorem holds at any n_cal; the table prices dispersion and conservatism against budget and shift.",
+  "predictions": {
+    "PC1": "Oracle consistent at all nine cells. Its conservatism grows as the budget falls: oracle mean risk at n_cal = 250 is at least 0.005 below its n_cal = 4000 value at every beta (the B/(n+1) charge, 0.004 vs 0.00025, plus coarser plateau overshoot).",
+    "PC2": "Weighted-arm trial dispersion scales like the square root of the budget: the ratio of the oracle's 90% spread (p95 - p05) between n_cal = 250 and n_cal = 4000 lies in [2.8, 5.7] at every beta (the 16x budget ratio predicts 4x, window allows 1.4x slack either way).",
+    "PC3": "The table's headline: at n_cal = 250, beta = 6 (chi2 3.54, oracle ESS near 58 of 250), the oracle's p95 realized risk is at least 0.125 even though its mean is controlled; at n_cal = 4000, beta = 6, p95 is at most 0.115. A mean certificate at small budget under large shift is real but practically loose.",
+    "PC4": "Estimated equivalence holds at every n_cal >= 1000 cell; at n_cal = 250 the equivalence CI may fail by width alone, and the paired-difference point estimate stays inside [-0.005, +0.005] at all nine cells.",
+    "PC5": "Unweighted decays identically across budgets (its failure is bias, not variance): its mean risk at beta = 6 differs by at most 0.005 across the three budgets."
+  },
+  "falsifiers": {
+    "PC1": "Oracle inconsistency anywhere follows the standing bug-presumption path; conservatism NOT growing as budget falls would mean the plateau overshoot dominates in the opposite direction and the B/(n+1) story is wrong here.",
+    "PC2": "Scaling far off square root implicates ESS nonlinearity in threshold noise; report the measured exponent.",
+    "PC4": "A paired-difference point estimate outside the margin at n_cal = 250 would mean small calibration samples interact with estimated weights beyond noise; that becomes a WP2 finite-sample term.",
+    "PC5": "Budget-dependence of the unweighted arm would mean the finite-sample terms are not negligible even for the biased baseline; recheck before quoting any decay number at n_cal = 250."
+  },
+  "decision_rule": "Per-cell three-outcome rule at raw z = 1.645 (nine cells, exploratory labels) with named claims PC1-PC5 judged at the stated tolerances; equivalence at the 90% paired CI. Endpoints and rung labelling as standard.",
+  "notes": "No design-phase probe was run; the PC3 bounds are derived from wp1c's measured trial dispersion at n_cal = 1000 scaled by the square-root law that PC2 itself tests, so a PC2 failure automatically requalifies PC3's derivation (this coupling is registered deliberately).",
+  "amendments": []
+}
