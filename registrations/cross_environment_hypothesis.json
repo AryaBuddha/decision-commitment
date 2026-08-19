@@ -1,0 +1,39 @@
+{
+  "registration": "cross_environment_hypothesis",
+  "registered": "2026-08-19",
+  "status": "REGISTERED BEFORE CONSTRUCTION. At registration time, environments 2 through 5 (tickets, fraud, moderation, compliance) do not exist: no generator code, no gold policy, no induction has been written. Only their one-line design intents below exist. This file is the ordering proof that the predictor, the protocol, and the confirmation thresholds preceded both the environments and their sweeps.",
+  "question": "Is there a number computable about a deployment BEFORE trusting selective commitment that predicts how badly the CRC guarantee will decay under a specified covariate shift? Candidate: the audit-predicted excess (APE) defined below, computable from labelled SOURCE data plus UNLABELLED target covariates only, which is exactly what deployments have.",
+  "statistic": {
+    "name": "APE, audit-predicted excess at the frozen threshold",
+    "definition": "Fit an audit model m(s, dec, X) approximating P(wrong | s, dec, X) on labelled source draws; freeze the unweighted CRC threshold lambda0 on an independent labelled source sample; then APE(level) = mean over UNLABELLED target covariate draws of m(s(X), dec(X), X) * 1{s(X) >= lambda0} minus alpha. Under the platform's enforced covariate shift, P(wrong | s, dec, X) is invariant between source and target, so APE is consistent for the population unweighted excess exactly when m is correctly specified; misspecification of m is the gap this hypothesis tests. The companion forecast CFR(level) = mean over the same target draws of 1{s(X) >= lambda0} predicts the unweighted commit rate and isolates the score-side self-correction component.",
+    "frozen_recipe": {
+      "audit_model": "sklearn LogisticRegression(max_iter=2000) on features [s, dec, X, dec*X] (dec in {0,1}, dec*X all columns), fit on n_audit = 60000 labelled source draws, seed SeedSequence [env_seed, 3001]",
+      "lambda0": "lhat_unweighted at alpha = 0.10 on one independent labelled source sample of n = 50000, seed [env_seed, 3002], lambda grid linspace(0, 1, 400)",
+      "target_draws": "200000 unlabelled covariate draws per tilt level (latents discarded), seed [env_seed, 3100 + level_idx]",
+      "outputs": "APE and CFR per registered tilt level, with MC standard errors, appended to this file under a dated audits key AFTER the environment passes gates and BEFORE any sweep of that environment runs"
+    }
+  },
+  "design_intents": {
+    "tickets": "Blind drift driver (customer frustration, never logged) with high gold weight and drawn INDEPENDENT of every logged feature: no reconstruction possible, no proxy self-correction. Intended largest decay.",
+    "compliance": "Blind drift driver with moderate gold weight and weak logged correlates, plus noisy experts and coarse rules (weak evidence signal, plateau-heavy loss curve). Intended second-largest decay and the plateau stress test of the collapse.",
+    "fraud": "Blind drift driver with strong gold weight but STRONGLY correlated logged features (device and velocity signals): reconstruction defends. Intended third.",
+    "moderation": "Primary tilt on a VISIBLE, gold-dominant feature (toxicity) that the rules split finely on, so the score-side deferral defense is strong and the blind residual is small. Intended smallest decay. Its gate-3 blind candidate (sarcasm, excluded from the induction view) exists for the collapse battery, not for the primary tilt."
+  },
+  "predictions": {
+    "H0": "Design-intent decay ordering, registered before any environment is built: tickets > compliance > fraud > moderation in realized unweighted excess at the matched top tilt level (chi2 approximately 3.47, matched per environment by MC bisection during design). Weakest tier of the ladder; H2 supersedes it once audits exist.",
+    "H1": "Calibration: for each of environments 2-5, realized unweighted mean excess at the top registered level equals APE(top) within +/- 0.0075 (four named comparisons; realized SE at 500 trials is ~0.001 so the tolerance dominates).",
+    "H2": "Ranking: across environments 2-5, the realized unweighted excess ordering at the top level matches the APE(top) ordering exactly, where a pairwise inversion falsifies only if the two realized excesses differ by more than 2 combined SE (statistically indistinguishable pairs cannot falsify). This is the confirmatory rank claim; Spearman over four points is reported descriptively alongside.",
+    "H3": "Mechanism split: for each environment, the realized unweighted commit rate at the top level matches CFR(top) within +/- 0.02, so the score-side self-correction component is separately forecastable from the same audit.",
+    "H2b": "Descriptive only: adding claims (whose sweeps already ran, so its APE is post-hoc by construction) preserves the ranking over five environments."
+  },
+  "falsifiers": {
+    "H1": "APE misses beyond tolerance in some environment: the audit model family is too weak there (named suspects: interactions the logistic misses, plateau effects at lambda0). The miss pattern names the required audit-model upgrade; the practitioner claim weakens from 'compute this number' to 'compute this number with the following model checks'.",
+    "H2": "A distinguishable rank inversion kills the headline practitioner sentence outright; report which environment property broke the ordering.",
+    "H3": "CFR missing while APE holds would mean the risk forecast is right for the wrong reasons (compensating errors between commit mass and conditional wrongness); investigate before quoting APE.",
+    "H0": "H0 wrong but H2 right is the GOOD outcome (design intuition was wrong, the audit statistic still predicted reality). H0 right but H2 wrong means the environments were built to the intuition and the statistic failed to track even that; the statistic dies."
+  },
+  "decision_rule": "Confirmation of the practitioner claim requires H1 AND H2. Verdicts filed here prediction-by-prediction after all four sweeps complete, misses verbatim. Each environment's own sweep runs under its own registration with its own predictions; this file only governs the cross-environment claims. Protocol order per environment, enforced by the trail: gates pass -> APE/CFR audit filed here (dated) -> sweep registration committed -> sweep runs. Any audit filed after its environment's sweep is void for H1/H2 and must be labelled so.",
+  "notes": "The predictor was chosen from the claims tilt-location result (3879b17b6fa4ae6f): decay is governed by gold-relevance net of self-correction, and APE operationalizes exactly that composite (the audit model carries the gold-relevance the score misses; the frozen-threshold commit indicator carries the defense). Claims numbers used in choosing the predictor: that is why claims is excluded from confirmatory H1/H2 and relegated to descriptive H2b.",
+  "audits": [],
+  "amendments": []
+}
