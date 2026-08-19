@@ -126,3 +126,52 @@ its signed component moves the threshold.
   the grid-based inf in the code already handles plateaus mechanically,
   but the first-order identity needs rho' > 0 in a neighborhood, which
   plateaus violate. Expect the real-environment collapse to be piecewise.
+
+## 6. Job 2 sketched: from aligned error to an observable certificate (2026-08-19)
+
+The evidence-tier collapse (56704982681d6960) plus the near-linearity
+finding reduce job 2 to bounding one number. Write the audit model
+m(s, dec, x) ~ P(wrong | s, dec, x) fitted on held-out source data, and
+let C(x) = 1{s(x) >= lambda}. Then for the true conditional p(x):
+
+    a = E_P0[(w - w_hat) p C]
+      = E_Q[p C] - E_P0[w_hat p C]
+      = { E_Q[m C] - E_P0[w_hat m C] }  +  { E_Q[(p - m) C] - E_P0[w_hat (p - m) C] }.
+
+The first brace is APE-minus-plug-in: fully computable from source labels
+plus unlabelled target covariates (both terms are integrals of m against
+observable empirical measures). The second brace is the audit model's
+miscalibration, integrated against the two weightings, RESTRICTED to the
+commit region. So
+
+    |a - a_hat|  <=  E_Q[|p - m| C] + E_P0[w_hat |p - m| C],
+
+a LOCALIZED calibration error: only miscalibration mass inside the
+commit region, under the target covariate law and the reweighted source
+law, matters. Neither expectation needs target labels if |p - m| can be
+bounded from a held-out source reliability analysis plus a smoothness or
+transfer argument; under the platform's enforced covariate shift, p is
+invariant, so a source-measurable calibration bound transfers exactly
+and the only gap is which covariate regions Q emphasizes, which the
+unlabelled target sample measures. Candidate certificate:
+
+    excess  <=  kappa_max * ( |a_hat| + CalErr_loc )  +  C2(a-boundary),
+
+with kappa_max from the loss-curve slope ratio (job 1), CalErr_loc the
+held-out localized reliability bound reweighted to the target covariate
+sample, and C2 active only beyond the measured first-order boundary,
+which no realistic mechanism reached on claims.
+
+What the cross-environment study contributes to job 2: H1 is exactly the
+question "is the miscalibration brace small for a plain logistic audit
+model across five worlds"; each H1 miss localizes where CalErr_loc must
+do real work. The empirical program and the theory program are now the
+same program.
+
+Open items for the theorem: (i) kappa_max under plateaus (piecewise
+constant rho makes the slope ratio a ratio of jump masses; the grid inf
+handles it mechanically but the statement needs care); (ii) the
+finite-n_cal term (the B/(n+1) charge and threshold noise, both
+currently absorbed empirically by the 0.0075 tolerances); (iii) whether
+CalErr_loc should be defined at lambda0 or at the realized lambda_hat
+(the audits use lambda0; the difference is second order in a).
