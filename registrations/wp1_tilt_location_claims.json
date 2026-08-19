@@ -1,0 +1,22 @@
+{
+  "experiment": "wp1_tilt_location_claims",
+  "registered": "2026-08-19",
+  "config_hash": "3879b17b6fa4ae6f",
+  "evidence_tier": "REAL. Ablation A on the gated claims environment: tilt location at matched chi2, 500 trials per cell, six tilted cells (two features at three matched levels).",
+  "question": "At matched covariate-space divergence, does the decay of unweighted CRC depend on whether the shift falls on the rule-visible feature (severity) or the rule-blind feature (inconsistency), and in which direction?",
+  "predictions": {
+    "PA1": "INVERSION of the placeholder expectation, registered from a disclosed design probe: at matched chi2, the severity tilt decays unweighted CRC MORE than the inconsistency tilt at every level (one-sided z = 2.128 per level, 0.05/3 across the three comparisons of independent cells), with severity-tilt risk near 0.152 at the top level (probe: 0.1526 +/- 0.0056 at 30 trials).",
+    "PA2": "Interpretation the data must support: chi2 matches divergence, not risk relevance. Severity carries more gold-side risk mass (coefficient 1.8 plus the half-blind 2.0 * severity * inconsistency interaction, of which the inconsistency factor is invisible to rules) than inconsistency (coefficient 2.6 but partially self-corrected through rule-visible correlates). Measurable corollary: the oracle arm defers MORE under the severity tilt than under the inconsistency tilt at every matched level (it has more risk mass to remove), by at least 0.01 absolute at the top level.",
+    "PA3": "The oracle arm is consistent-with-control at all six tilted cells (raw z; theorem-backed, exact rung-2 ratio on both features, both gate-2 verified).",
+    "PA4": "Neither tilt produces placeholder-style self-correction: unweighted deferral rate changes by less than 0.05 absolute from its beta = 0 value (0.090 in wp1c) in every cell, confirming that the evidence scores of shifted mass do not fall enough to defer it automatically on this environment."
+  },
+  "falsifiers": {
+    "PA1": "If the severity tilt does not decay faster at the registered z, the 30-trial probe was noise and the placeholder ordering may survive on real environments; either way the matched-chi2 comparison stands as the result.",
+    "PA2": "If oracle deferral does not order as predicted, the gold-side risk-mass account is wrong and the decomposition of the tilt-location effect needs different machinery (candidate: decomposing excess risk by leaf).",
+    "PA3": "Oracle failure follows the standing bug-presumption path.",
+    "PA4": "Deferral moving more than 0.05 would mean partial self-correction is operating through score composition after all; report which leaves drive it."
+  },
+  "decision_rule": "Per cell, three-outcome rule on mean marginal error mass across 500 trials; named confirmatory comparisons (PA1, PA2) use one-sided z = 2.128 (0.05/3); per-cell verdicts are also reported at z = 2.128 as verdict_named and at raw z = 1.645 labelled exploratory. Cross-feature comparisons at a level use the difference of independent cell means with combined SE. Matched betas were computed by Monte Carlo bisection on 400k draws during design (severity 1.490, 3.406, 6.163 matching inconsistency 2, 4, 6 at chi2 0.134, 0.874, 3.468); each cell re-reports its own MC chi2 with SE. Sampling rung 2 stated on every figure.",
+  "notes": "Design-phase probes, disclosed and never citable: 30-trial unweighted probes under the severity tilt gave 0.1138, 0.1320, 0.1526 at the three matched levels; the inconsistency-side values at 500 trials are already on file in wp1c (0.1089 at beta 2... wait, matched levels are beta 2, 4, 6: 0.1089, 0.1195, 0.1231) and this experiment re-runs them under its own seed rather than reusing wp1c cells. The probe motivated registering PA1 as an inversion of the placeholder expectation rather than a replication of it.",
+  "amendments": []
+}
