@@ -58,5 +58,34 @@
       "what": "Gate 3 failed again after amendment 1 (unsigned lift +0.0049 for inconsistency), and an offline design check showed unweighted CRC SELF-CORRECTING under the inconsistency tilt (risk falling to 0.091 at beta 5): auto_flag leaked inconsistency into the induction view (coefficient 0.5), routing high-inconsistency mass into low-purity, low-s leaves that defer by themselves. Three changes: (a) auto_flag now depends on severity (rule-visible) instead of inconsistency; inconsistency segment mixtures flattened, removing the proxy leak; (b) gold strengthened on the blind feature (inconsistency 1.6 to 2.6, interaction 1.2 to 2.0, intercept retuned to keep the wrong rate near 0.135); (c) the G3 audit is now decision-conditional, wrong ~ (s, dec) + (x_j, dec*x_j), threshold unchanged at 0.02, and the gate beta grid extends to 6. New gate config hash recorded above.",
       "why": "The unsigned audit provably cancels sign-opposed conditional effects: on identical data the unsigned lift for inconsistency was +0.0049 and the decision-conditional lift +0.0627 (corr(inc, wrong) = +0.29 in APPROVE-routed cases, -0.45 in INVESTIGATE-routed). The routed decision is available before commitment, so conditioning on it is legitimate. The proxy leak reproduced synth v1's self-correction disease through a realistic mechanism; decoupling restores the evidence-blind regime the programme studies (post-redesign offline check: unweighted risk rises 0.095 to 0.128 across beta 0 to 6, chi2 0 to 3.47)."
     }
-  ]
+  ],
+  "gates": {
+    "date": "2026-08-18",
+    "run": "artifacts/gates_claims_5459d3b5a7b3c1a1",
+    "verdict": "ALL PASS",
+    "G1": {
+      "deterministic": 1.0,
+      "well_defined": 1.0
+    },
+    "G2": "all tilt features pass at beta=6, worst moment diff 0.13 of tolerance",
+    "G3": {
+      "inconsistency": 0.0859,
+      "severity": 0.0372,
+      "doc_completeness": 0.0253,
+      "auc_s_dec": 0.7604,
+      "auc_full_X": 0.8016
+    },
+    "G4": {
+      "beta0": 0.0531,
+      "beta6": 0.2049
+    },
+    "G5": {
+      "distinct_grid_cells": 46
+    },
+    "prior_failed_runs": [
+      "gates_claims_36bc9577ed644af7",
+      "gates_claims_2ce3e00aea6b6b19"
+    ],
+    "report": "docs/gates/claims.md"
+  }
 }
