@@ -1,0 +1,19 @@
+{
+  "experiment": "wp1_clip_recovery",
+  "registered": "2026-08-19",
+  "config_hash": "29c648c1dd48b078",
+  "evidence_tier": "REAL. Block B4: clip promoted from boundary footnote to swept knob on the two blind-driver environments at their top two tilt levels, 500 trials per cell.",
+  "question": "Widening the ratio clip: where is oracle-equivalence of the correctly specified estimator recovered, and what does recovery cost in ESS?",
+  "predictions": {
+    "PB4-1": "Monotone recovery: the estimated-vs-oracle paired difference decreases as the clip widens in every env-level (four monotone triples), and equivalence (90% CI inside [-0.005, +0.005]) is recovered at clip (0.002, 0.998) in at least 3 of the 4 env-levels. Defense: the odds cap rises 99 to 199 to 499 while the maximum true ratio is exp(beta), 397 to 1309 for tickets and 246 to 740 for compliance; only the tickets top level (1309) still exceeds the widest cap, and the frustration mass above odds 499 is small, so 3 of 4 with the fourth borderline is the honest call.",
+    "PB4-2": "The recovery is paid in ESS: the estimated arm's ESS at (0.002, 0.998) is at least 15% below its (0.01, 0.99) value at every env-level (wider caps admit heavier weights).",
+    "PB4-3": "The oracle arm is consistent in all four env-levels (it does not depend on the clip; its rows are replicated per clip cell as a stability check and must agree within noise)."
+  },
+  "falsifiers": {
+    "PB4-1": "No recovery even at the widest clip would mean the wp1f P3 non-equivalence is fit-noise-driven rather than clip-driven, reopening that diagnosis; non-monotone recovery would mean clip interacts with fit noise beyond the cap mechanism.",
+    "PB4-2": "Recovery without ESS cost would be a free lunch worth understanding before anyone quotes it."
+  },
+  "decision_rule": "Equivalence at the 90% paired CI inside [-0.005, +0.005]; monotonicity on paired-difference point estimates with adjacent inversions within 2 combined SE tolerated; ESS ratios on estimated-arm means. Raw three-outcome verdicts reported per cell, labelled exploratory.",
+  "notes": "Predictions derive from the wp1f P3 miss diagnosis (clip binding at exp(beta) > odds cap) and arithmetic on the caps; no design-phase probe was run.",
+  "amendments": []
+}
