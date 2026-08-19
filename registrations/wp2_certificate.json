@@ -18,7 +18,13 @@
   },
   "decision_rule": "As stated; 30 draws/cell; coverage rule 27/30; audit model logistic on [s, dec, X, dec*X] per the B0 ledger, one audit per environment at n_audit 60000; n_src = n_tgt = 10000 per draw; ratio C = 1.0 (the deployed default, matching every archived cell). Verdicts prediction-by-prediction, misses verbatim.",
   "notes": "Disclosed design probe (5 draws, 3 cells, never citable): claims temper gamma 0.5 beta 5 bound +0.047 vs archived +0.02; claims deprivation rho 0 beta 5 bound +0.060 vs +0.05; tickets gamma 0 top-beta bound +0.124. CalErr_loc dominates the price. The certificate is frozen by the commit that carries this registration; Phase 4 attacks the frozen form.",
-  "amendments": [],
+  "amendments": [
+    {
+      "date": "2026-08-19",
+      "what": "certificate() gained Revision 3 (bound floored at zero) and component instrumentation after this experiment's run; the runner's config gained a version key so the frozen hash no longer matches and this experiment cannot silently rerun under changed semantics.",
+      "why": "Reviewer-facing correction: a negative certified excess is an over-claim (it certifies risk strictly below alpha) and produced 26 safe-side technical misses in P-C1; the final form is validated as wp2_certificate_v3."
+    }
+  ],
   "verdicts": {
     "date": "2026-08-19",
     "run": "artifacts/wp2cert_8098257736fc71f5, EVIDENCE TIER, 674 cells x 30 deployment draws",
