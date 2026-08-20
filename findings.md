@@ -472,3 +472,31 @@ their certified level (excess +0.014 to +0.036, up to 30 SE above
 zero), the envelope approached and not crossed (max approach ratio
 0.37; minimum price +0.048), and the oracle consistent everywhere.
 Figure: docs/wp2_prospective_stress.png.
+
+## F25. EVIDENCE TIER: the looseness attacked, attributed, and partly bought back; certificate v3.1 covers 674/674 (wp2cert_7f8658cdfc4cac42, wp2_drawtail_analysis, wp2_slack_attribution)
+
+The corrections round converted the v2 validation's accepted looseness
+into three registered results. First, definition: the certified excess
+is floored at zero (a certificate bounds risk from above; certifying
+below alpha was an over-claim), which converts the 26 safe-side
+technical misses into trivial coverage; the recomputed validation at
+the final recipe covers 673/674 with the single miss among the three
+cells the registration named in advance. Second, the registered
+follow-up on that cell found a genuine fragility, not a comparison
+artifact (object-matched per-draw coverage 84/100), diagnosed it as
+whole-draw co-movement through the calibration draw's threshold, and
+adopted the falsifier's prescription: the crossing-margin credit is
+never spent (Revision 3.1), repairing the cell to 99/100 at a global
+mean price of +0.0057; the exact per-draw recompute then covers
+674/674 at mean conservatism +0.0649 with zero dangerous-cell median
+failures. Third, attribution: CalErr_loc owns 87.4% of the slack on
+dangerous cells, of which 58.9% is the binomial confidence charge and
+most of the rest is measured audit miscalibration; the four
+statistical terms account for 100.0%, so the own-coordinate
+construction left no structural worst-case constant to remove (the
+F19 dividend was fully banked at the freeze), and the lever is
+measured: quadrupling the held-out audit samples cuts the worst-cell
+bounds by 0.030. Also finally evaluated on per-draw data: the
+crossing-margin term exceeds its registered 0.005 ceiling in a third
+of draws (max +0.126), a fat tail that under v3.1 prices bad estimator
+draws upward and is never spent as credit.
