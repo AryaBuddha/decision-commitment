@@ -1,0 +1,14 @@
+{
+  "experiment": "wp2_drawtail_analysis",
+  "registered": "2026-08-19",
+  "config_hash": "analysis-only: the stored per-draw components of the single P-V3-1 surviving miss cell (tickets, alpha 0.05, temper gamma 0.5, beta 5.982; 25/30 covered, median bound 5.0x its excess), registered before the components were examined",
+  "evidence_tier": "EVIDENCE-TIER DATA, analysis registration, honoring the P-V3-1 falsifier's commitment: the surviving cell's draw-tail fragility gets a registered diagnosis before any prose narrates it.",
+  "predictions": {
+    "P-DT1": "The five uncovered draws' bound dips are driven predominantly by the a_plugin term (the plug-in's target-and-source sampling variance at an extreme tilt), not by cal_err or b_own: across the 30 draws, the bound's correlation with its a_plugin component exceeds its correlation with each other component, and the five uncovered draws all sit in the bottom ten of a_plugin."
+  },
+  "falsifiers": {
+    "P-DT1": "If the dips are b_own-driven instead, the fat per-draw b_own tail (the P-V3-4 miss) is not just a pricing distribution fact but an under-coverage mechanism, and the certificate's crossing-margin term needs a floor of its own before prose."
+  },
+  "decision_rule": "Pearson correlations of per-draw bound with each component over the 30 stored draws; rank check of the uncovered draws within each component.",
+  "amendments": []
+}
