@@ -48,6 +48,13 @@ is still reported for diagnostics. The certificate also now reports
 the gap and confidence components of CalErr_loc separately, so slack
 can be attributed, and callers are expected to store per-draw values
 (the P-C4 instrumentation lesson).
+
+REVISION 3.1 (the drawtail closure): the crossing-margin CREDIT is
+also floored at zero inside the bound. The single genuine draw-tail
+fragility the v3 validation left (tickets alpha 0.05, temper 0.5, top
+beta: per-draw-paired coverage 84/100) is repaired by not spending the
+b_own credit (99/100 on the same draws), at a measured global mean
+price of +0.006. b_own_ucb is still reported signed.
 """
 
 from __future__ import annotations
@@ -144,7 +151,9 @@ def certificate(env, audit, alpha, rng, feat, beta, what_fn,
     b_own_ucb = b_own + z * float(bterm.std() / np.sqrt(n_src))
 
     bound_raw = a_plugin + cal_err + b_own_ucb + z * se_a
-    bound = max(0.0, bound_raw)          # Revision 3: never certify below alpha
+    # Revision 3: never certify below alpha. Revision 3.1: never spend
+    # the crossing-margin credit.
+    bound = max(0.0, a_plugin + cal_err + max(0.0, b_own_ucb) + z * se_a)
     return {
         "alpha_cert": alpha + bound,
         "excess_bound": bound,

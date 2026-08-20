@@ -11,5 +11,13 @@
     "P-SA4": "RISKY, the lever test: quadrupling the held-out samples (n_src = n_tgt = 40000) on a 30-cell dangerous subsample reduces the mean bound by >= 0.010 (the confidence charge scales as one over root n_src; if bounds do not shrink, the slack is gap-dominated or structural and P-SA2's falsifier branch holds)."
   },
   "decision_rule": "Attribution on the v3 per-draw parts, dangerous cells only, slack = mean bound - archived excess, components averaged over draws. Lever probe: 30 dangerous cells sampled by largest archived excess, 10 draws each at n_src = n_tgt in {10000, 40000}, same seed streams. Verdicts prediction-by-prediction, misses verbatim.",
-  "amendments": []
+  "amendments": [],
+  "verdicts": {
+    "date": "2026-08-19",
+    "run": "artifacts/wp2sa_analysis on the v3 per-draw parts; lever probe 30 worst cells x 10 draws x two audit sizes",
+    "P-SA1": "CONFIRMED: CalErr_loc owns 87.4% of the mean slack (+0.0631) on the 219 dangerous cells.",
+    "P-SA2": "CONFIRMED (RISKY): the confidence charge owns 58.9% of CalErr_loc (+0.0325 vs measured gap +0.0227). About half the total slack is a statistical noise floor, about a third is real audit miscalibration inside commit regions; the two tightening levers are, in order, more held-out data and better audit models.",
+    "P-SA3": "CONFIRMED: the four statistical terms account for 100.0% of the slack (a_plugin overshoot +0.0038, b_own +0.0001, z se +0.0040, CalErr as above). No structural remainder exists; the own-coordinate construction left no worst-case translation constant to remove, i.e. the F19 dividend was fully banked at the Phase 3 freeze.",
+    "P-SA4": "CONFIRMED (RISKY): quadrupling the held-out samples cuts the mean bound on the 30 worst cells from +0.1464 to +0.1162, a reduction of 0.0302 against the registered 0.010 floor. The slack is materially purchasable with audit data."
+  }
 }

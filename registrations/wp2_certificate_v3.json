@@ -11,5 +11,13 @@
   },
   "decision_rule": "As the v2 validation, with the floored bound as the certified quantity and per-draw arrays stored per cell. Verdicts prediction-by-prediction, misses verbatim.",
   "notes": "The v1/v2 runner's config gained a version key so its frozen hash no longer matches and it can never silently rerun under the changed certificate() semantics; the amendment on wp2_certificate records this. Registered together with wp2_slack_attribution, which consumes this run's per-draw parts.",
-  "amendments": []
+  "amendments": [],
+  "verdicts": {
+    "date": "2026-08-19",
+    "run": "artifacts/wp2cert_7f8658cdfc4cac42, EVIDENCE TIER, 674 cells x 30 draws, per-draw values stored",
+    "P-V3-1": "MISS BY ONE, and the one is among the three named in advance: 673/674 at the 27/30 rule; tickets alpha 0.05 temper gamma 0.5 beta 5.982 covered 25/30 with its median bound 5.0x its excess. Per the registered falsifier this triggered the draw-tail follow-up (wp2_drawtail_analysis), whose chain closed the phase: the dips are whole-draw co-movement through the calibration draw's threshold location (P-DT1 miss: all four components rank the uncovered draws bottom-five, correlations 0.92 to 0.98), the object-matched per-draw pairing FAILED its registered 90% (P-DT2: 84/100, a genuine fragility, not a comparison artifact), and the falsifier's prescription, flooring the crossing-margin credit, repairs it (99/100 on the same draws) at a measured global mean price of +0.0057. ADOPTED as Revision 3.1; exact recompute from the stored per-draw values: v3.1 coverage 674/674, mean conservatism +0.0649, dangerous median failures 0/219.",
+    "P-V3-2": "CONFIRMED: zero of 219 dangerous cells have a median bound below their excess (v3), and still zero under v3.1.",
+    "P-V3-3": "CONFIRMED: mean conservatism +0.0596, inside [0.045, 0.075]; +0.0649 under v3.1.",
+    "P-V3-4": "MISS, filed verbatim on the per-draw data the instrumentation fix finally provides: b_own_ucb <= 0.005 in 66.9% of 20220 draws (registered >= 85%), with a maximum of +0.126. The fat tail sits exactly on the high-variance estimator draws where a large measured crossing margin is the certificate pricing a genuinely bad w_hat draw; under Revision 3.1 the credit side of this distribution is never spent."
+  }
 }

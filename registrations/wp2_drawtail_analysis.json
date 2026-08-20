@@ -16,5 +16,11 @@
       "what": "Stage 2 added BEFORE running it: per-draw-paired coverage on the miss cell (each of 100 draws pairs one certificate with the SAME draw's realized excess on a 10000-case window, the R1-2 object). Prediction P-DT2: per-draw coverage >= 90%; the registered falsifier's b_own-floor prescription is adopted only if this fails.",
       "why": "P-DT1's data showed whole-draw co-movement through the calibration draw's threshold location (all four components rank the five uncovered draws bottom-five; correlations 0.92 to 0.98), which is neither registered branch; a high-threshold draw genuinely carries less risk, so the cell-mean comparison may mismatch objects exactly as R1-2 found."
     }
-  ]
+  ],
+  "verdicts": {
+    "date": "2026-08-19",
+    "P-DT1": "MISS, filed verbatim: no single component owns the dips. All four components rank the five uncovered draws bottom-five simultaneously (correlations with the bound 0.92 to 0.98; b_own highest at 0.975): the shared randomness is the calibration draw's threshold location.",
+    "P-DT2": "MISS, decisive: object-matched per-draw coverage is 84/100 (registered >= 90), breach p90 +0.012. The fragility is genuine.",
+    "closure": "The registered falsifier's prescription tested and adopted: flooring the crossing-margin credit lifts the same 100 draws to 99/100 at a global mean price of +0.0057 (computed from the stored v3 per-draw values). Certificate v3.1; the exact 674-cell recompute gives 674/674."
+  }
 }
