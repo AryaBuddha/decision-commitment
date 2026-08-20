@@ -10,5 +10,11 @@
     "P-DT1": "If the dips are b_own-driven instead, the fat per-draw b_own tail (the P-V3-4 miss) is not just a pricing distribution fact but an under-coverage mechanism, and the certificate's crossing-margin term needs a floor of its own before prose."
   },
   "decision_rule": "Pearson correlations of per-draw bound with each component over the 30 stored draws; rank check of the uncovered draws within each component.",
-  "amendments": []
+  "amendments": [
+    {
+      "date": "2026-08-19",
+      "what": "Stage 2 added BEFORE running it: per-draw-paired coverage on the miss cell (each of 100 draws pairs one certificate with the SAME draw's realized excess on a 10000-case window, the R1-2 object). Prediction P-DT2: per-draw coverage >= 90%; the registered falsifier's b_own-floor prescription is adopted only if this fails.",
+      "why": "P-DT1's data showed whole-draw co-movement through the calibration draw's threshold location (all four components rank the five uncovered draws bottom-five; correlations 0.92 to 0.98), which is neither registered branch; a high-threshold draw genuinely carries less risk, so the cell-mean comparison may mismatch objects exactly as R1-2 found."
+    }
+  ]
 }
